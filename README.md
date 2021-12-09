@@ -1,6 +1,6 @@
 # JobSite
 > ## Find your new career
-#### A mobile-first React web app for job seekers and employers alike.
+###### A mobile-first React web app for job seekers and employers alike.
 <hr/>
 
 
