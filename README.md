@@ -11,25 +11,32 @@ npm install
 
 ### 🔌 Usage
 
-[1] Compile with [Webpack] (https://github.com/webpack/webpack):
+1. Compile with [Webpack] (https://github.com/webpack/webpack):
 
 ``` npm webpack -w ```
 
-[2] Run the [Express] (https://github.com/expressjs/express) server:
+
+2. Run the [Express] (https://github.com/expressjs/express) server:
 
 ``` npm start ```
+
 
 ### 🧑‍🤝‍🧑 Collaboration
 Pull requests are welcomed. For major changes, please open an [issue] (https://github.com/PacificDevelopment/JobSite/issues) first to discuss proposed improvements.
 
+
 ### 💰 Sponsor
 Our team 
+
 
 ### 🐞 Bug Fixes
 
 We are always looking for ways to improve our product! <a href="https://github.com/PacificDevelopment/JobSite/issues">Open an Issue</a> so we can look into it.
 
+
 ### 📌 Adding New Features
+
+
 
 ### License
 [MIT](./LICENSE.md)
