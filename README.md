@@ -15,10 +15,10 @@ npm install
 ### Collaboration
 Pull requests are welcome. For major changes, please open an issue first to discuss proposed improvements.
 
-##### Sponsor
+### Sponsor
 
 
-##### Adding new features or fixing bugs
+### Adding new features or fixing bugs
 
 <a href="https://github.com/PacificDevelopment/JobSite/issues">Open an Issue</a> here.
 
@@ -31,4 +31,4 @@ Code Contributors
 
 A special thank you to all of our team members at Pacific Development.
 
-###### Leave a <a href="">:star:</a> if you found this helpful.
+##### Leave a <a href=""> :star: </a> if you found this helpful.
