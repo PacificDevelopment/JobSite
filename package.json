@@ -20,5 +20,12 @@
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "prettier-eslint": "^13.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "openid-client": "^5.1.0",
+    "passport-oauth": "^1.0.0",
+    "passport-openid": "^0.4.0",
+    "react-router-dom": "^6.0.2"
   }
 }
