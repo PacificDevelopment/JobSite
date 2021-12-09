@@ -1,6 +1,6 @@
 # JobSite
 > ## Find your new career
-
+#### A mobile-first React web app for job seekers and employers alike.
 
 ### Installation
 
@@ -11,6 +11,13 @@ npm install
 
 ### Usage
 
+[1] Compile with [Webpack] (https://github.com/webpack/webpack):
+
+``` npm webpack -w ```
+
+[2] Run the [Express] (https://github.com/expressjs/express) server:
+
+``` npm start ```
 
 ### Collaboration
 Pull requests are welcomed. For major changes, please open an issue first to discuss proposed improvements.
