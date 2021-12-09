@@ -4,14 +4,14 @@
 <hr/>
 
 
-### 🛠️ Installation
+### 🛠️  Installation
 
 Install the necessary dependencies with ```npm```
 ```bash
 npm install
 ```
 
-### 🔌 Usage
+### 🔌  Usage
 
 1. Compile with [Webpack] (https://github.com/webpack/webpack):
 
@@ -23,20 +23,17 @@ npm install
 ``` npm start ```
 
 
-### 🧑‍🤝‍🧑 Collaboration
-Pull requests are welcomed. For major changes, please open an [issue] (https://github.com/PacificDevelopment/JobSite/issues) first to discuss proposed improvements.
+### 🧑‍🤝‍🧑  Collaboration
 
+Collaboration is encouraged! 
 
-### 💰 Sponsor
-Our team 
+### 📌 Adding New Features
 
+For major changes, please open an [issue] (https://github.com/PacificDevelopment/JobSite/issues) first to discuss proposed improvements. Pull requests will be considered pending review by our team.
 
 ### 🐞 Bug Fixes
 
 We are always looking for ways to improve our product! <a href="https://github.com/PacificDevelopment/JobSite/issues">Open an Issue</a> so we can look into it.
-
-
-### 📌 Adding New Features
 
 
 
