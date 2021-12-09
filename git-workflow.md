@@ -97,8 +97,8 @@ Finally:
 ![Image showing step 2, trello github integration to attach Pull Request](https://user-images.githubusercontent.com/78059363/145341291-96dbe937-6cf6-4b0e-84d6-ea9be70a6fd9.png)
 3. Any other member of the team may pick up the PR for review by placing an emoji on the PR notification in the git Slack channel to note they are doing so.
 
-### Oh no I committed to the main branch locally instead of starting a new feature branch
-That's ok, we an cherry pick commits from one branch to another, and then reset your main branch, here's how:
+### Oh no I committed to the main branch locally instead of starting a NEW feature branch
+That's ok, we start a new branch from this history of commits, and then reset your main branch back to the original commit. Here's how:
 1. From the main branch with recent accidental commits
 ```
 git log --oneline
@@ -124,17 +124,17 @@ Great these commits are now part of the feature branch we made
 ```
 git reset --hard dffab65
 ```
-And that's it. Now your main branch is back to the original pulled commit, and your new branch should still have your new commits.
+And that's it. Now your main branch is back to the original pulled commit, and your new branch should still have your recent commits.
 
 ### Oh no I made commits to main that should have been on the feature branch I started earlier!
-That's ok, we an cherry pick commits from one branch to another, and then reset your main branch, here's how:
+That's ok, we can cherry pick commits from one branch to another, and then reset your main branch back to the original commit, here's how:
 1. From the main branch with recent accidental commits
 ```
 git log --oneline
 ```
 2. Note down the commit hash of the commits you want to move.
 ```
-4116a29 (HEAD -> main) Bad Commit
+cf9f2f0 (HEAD -> main) Mistaken commit 2
 dffab65 (origin/main, origin/HEAD) Merge pull request #1 from PacificDevelopment/eslint
 ```
 3. Move to the branch you want to cherry-pick the commits to.
@@ -143,18 +143,26 @@ git checkout feature-b
 ```
 4. Now in the feature branch you want to move commits to, git cherry-pick the commit hash
 ```
-git cherry-pick feafeafeafea!!!!!
+git cherry-pick cf9f2f0
 ```
-5. Repeat for as many commits as necessary.
-6. When done cherry-picking checkout main
+5. Follow terminal instructions if necessary to deal with Merge Conflicts.
+6. Repeat for as many commits as necessary.
+7. When done cherry-picking confirm your commit history is what you want for the feature branch.
+```
+git log --oneline
+6d4a25f (HEAD -> feature-b) Mistaken commit 2
+4116a29 Bad Commit
+dffab65 (origin/main, origin/HEAD) Merge pull request #1 from PacificDevelopment/eslint
+```
+8. If done fixing feature branch, checkout main branch
 ```
 git checkout main
 ```
-7. Force reset main branch back to the original commit known as origin/main, origin/HEAD. Note: This is the dangerous part, back up your changes somewhere just in case!
+8. Force reset main branch back to the original commit known as origin/main, origin/HEAD. Note: This is the dangerous part, back up your changes somewhere just in case!
 ```
 git reset --hard dffab65
 ```
-And that's it. Now your main branch is back to the original pulled commit, and your feature branch should still have your new commits.
+And that's it. Now your main branch is back to the original pulled commit, and your feature branch should still have your cherry-picked commits.
 
 ### Resolving lockfile conflicts
 
