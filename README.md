@@ -13,10 +13,10 @@ npm install
 
 
 ### Collaboration
-Pull requests are welcome. For major changes, please open an issue first to discuss proposed improvements.
+Pull requests are welcomed. For major changes, please open an issue first to discuss proposed improvements.
 
 ### Sponsor
-
+Our team 
 
 ### Adding new features or fixing bugs
 
@@ -24,7 +24,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 
 ### License
-[MIT]()
+[MIT](./LICENSE.md)
 
 
 ### Code Contributors
@@ -36,4 +36,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 
 
-### Leave a <a href=""> :star: </a> if you found this helpful.
+### Leave a <a href=""> :star: </a> if you found this helpful
