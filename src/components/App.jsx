@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function App() {
-  return <h1>Hello JobSeekers</h1>;
+  return <h2>Hello JobSeekers</h2>;
 }
