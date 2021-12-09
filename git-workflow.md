@@ -81,7 +81,8 @@ Once you have pushed your feature branch to its upstream branch at the `origin`:
 4. In the **comments**: describe your changes and any details that will be helpful for the reviewer
 5. Tag the appropiate person to merge your PR into main.
   Example:
-``` UI team please review @maki-q
+```
+    UI team please review @maki-q
       OR
     Tech team please review @Gobleizer
       OR
