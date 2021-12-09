@@ -29,7 +29,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ### Code Contributors
 
-#####A special thank you to all of our team members at Pacific Development<br/>
+##### A special thank you to all of our team members at Pacific Development<br/>
 <a href="https://github.com/PacificDevelopment/JobSite/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PacificDevelopment/JobSite" />
 </a>
