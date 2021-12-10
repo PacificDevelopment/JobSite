@@ -48,7 +48,7 @@ Then, visit [http://localhost:3000]. The page will need to be reloaded as change
 
 ### 🧑‍🤝‍🧑  Collaboration
 
-Collaboration is encouraged!
+Collaboration is encouraged! Changes should be on a new branch, as pushing to `main` is disabled. Some basic guidelines:
 
 ### 📌  Adding New Features
 
