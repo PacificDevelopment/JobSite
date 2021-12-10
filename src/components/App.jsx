@@ -1,5 +1,13 @@
 import React from "react";
+import SearchListings from "./SearchListings.jsx";
 
 export default function App() {
-  return <h2>Hello JobSeekers</h2>;
+  return (
+    <div>
+    <h2>Hello JobSeekers</h2>
+    <div>
+      <SearchListings  />
+    </div>
+  </div>
+  );
 }
