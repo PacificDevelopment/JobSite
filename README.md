@@ -74,4 +74,3 @@ We are always looking for ways to improve our product! <a href="https://github.c
 
 
 ## Leave a <a href="https://github.com/PacificDevelopment/JobSite/"> :star: </a>  if you found this helpful
-
