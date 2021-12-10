@@ -13,53 +13,52 @@ npm install
 
 ### 🔌  Usage
 
-##### npm scripts
-
-1. Compile the *bundle.js* file with [Webpack] (https://github.com/webpack/webpack):
-
-``` npm run build ```
-
-
-2. Run the [Express] (https://github.com/expressjs/express) server:
-
-``` npm start ```
-
-#### Various scripts available and what they do:
-
-1. To run a hotloading webpack server so that you can see changes to react components or styling in real time, without having to refresh the web page, run:
-```
-npm run serve-react-dev
-```
-Then, visit [localhost:9000]
-
-Resource to learn more: https://javascript.plainenglish.io/react-fast-refresh-the-new-react-hot-reloader-652c6645548c
-
-2. To run the regular webpack watch build without hot reloading
-```
-npm run react-dev
-```
-
-3. To run the server with nodemon watching for changes at port 3000
-```
-npm run server-dev
-```
-
-4. To run the server with node debugger attached and watching for changes at port 3000
-```
-npm run debug
-```
-
+> ##### `npm` Scripts
+>
+> [ ] Compile the *bundle.js* file with [Webpack] (https://github.com/webpack/webpack):
+>
+> ``` npm run build ```
+>
+>
+> [ ] Run the [Express] (https://github.com/expressjs/express) server:
+>
+> ``` npm start ```
+>
+> #### Various scripts available and what they do:
+>
+> 1. To run a hotloading webpack server so that you can see changes to react components or styling in real time, without having to refresh the web page, run:
+> ```
+> npm run serve-react-dev
+> ```
+> Then, visit [localhost:9000]
+>
+> Resource to learn more: https://javascript.plainenglish.io/react-fast-refresh-the-new-react-hot-reloader-652c6645548c
+>
+> 2. To run the regular webpack watch build without hot reloading
+> ```
+> npm run react-dev
+> ```
+>
+> 3. To run the server with nodemon watching for changes at port 3000
+> ```
+> npm run server-dev
+> ```
+>
+> 4. To run the server with node debugger attached and watching for changes at port 3000
+> ```
+> npm run debug
+> ```
 
 
 ### 🧑‍🤝‍🧑  Collaboration
 
-Collaboration is encouraged! 
+Collaboration is encouraged!
 
-### 📌 Adding New Features
+### 📌  Adding New Features
 
 For major changes, please open an [issue] (https://github.com/PacificDevelopment/JobSite/issues) first to discuss proposed improvements. Pull requests will be considered pending review by our team.
 
-### 🐞 Bug Fixes
+### 🐞  Bug Fixes
 
 We are always looking for ways to improve our product! <a href="https://github.com/PacificDevelopment/JobSite/issues">Open an Issue</a> so we can look into it.
 
@@ -78,4 +77,5 @@ We are always looking for ways to improve our product! <a href="https://github.c
 
 
 
-### Leave a <a href=""> :star: </a> if you found this helpful
+### Leave a <a href="https://github.com/PacificDevelopment/JobSite/graphs/contributors"> :star: </a> if you found this helpful
+
