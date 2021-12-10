@@ -15,11 +15,11 @@ npm install
 
 ##### `npm` Scripts
 
-[x]Compile the *bundle.js* file with [Webpack](https://github.com/webpack/webpack):
+- [x] Compile the *bundle.js* file with [Webpack](https://github.com/webpack/webpack):
 
 > ``` npm run build ```
 
-[x]Run the [Express](https://github.com/expressjs/express) server:
+- [x] Run the [Express](https://github.com/expressjs/express) server:
 
 > ``` npm start ```
 
@@ -29,7 +29,7 @@ npm install
 
 > ```npm run serve-react-dev```
 
-Then, visit [localhost:9000]
+Then, visit [http://localhost:9000]
 
  Resource to learn more: https://javascript.plainenglish.io/react-fast-refresh-the-new-react-hot-reloader-652c6645548c
 
