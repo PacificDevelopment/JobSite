@@ -66,7 +66,7 @@ We are always looking for ways to improve our product! <a href="https://github.c
 
 ### Code Contributors
 
-##### A special thank you to all of our team members at Pacific Development<br/>
+##### A special thank you to all of our team members at [Pacific Development[(https://github.com/PacificDevelopment)<br/>
 <a href="https://github.com/PacificDevelopment/JobSite/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PacificDevelopment/JobSite" />
 </a>
