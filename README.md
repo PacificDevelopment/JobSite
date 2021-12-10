@@ -25,7 +25,7 @@ npm install
 
  #### Various scripts available and what they do:
 
-> 1. Run the `webpack-dev-server` with [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/), run:
+1. Run the `webpack-dev-server` with [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/), run:
 
 > ```npm run serve-react-dev```
 > Then, visit [http://localhost:9000]. The page will automatically reload as file changes are made and saved.
