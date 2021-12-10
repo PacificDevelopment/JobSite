@@ -27,18 +27,18 @@ npm install
 
 1. Run the `webpack-dev-server` with [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/), run:
 
-> ```npm run serve-react-dev```
-> Then, visit [http://localhost:9000]. The page will automatically reload as file changes are made and saved.
+> ```npm run serve-react-dev``` <br/>
+Then, visit [http://localhost:9000]. The page will automatically reload as file changes are made and saved.
 
  2. Run webpack watch/build *without* Hot Module Replacement
 
-> ```npm run react-dev```
+> `npm run react-dev`
 
 
  3. Run the [Express](https://github.com/expressjs/express) server with [nodemon](https://nodemon.io/) watching for changes at port 3000
 
-> ```npm run server-dev```
-> Then, visit [http://localhost:3000]. The page will need to be reloaded as changes are made, but the Express server will not need to be restarted.
+> `npm run server-dev` <br/>
+Then, visit [http://localhost:3000]. The page will need to be reloaded as changes are made, but the Express server will not need to be restarted.
 
 
 4. Run the server with node debugger attached and watching for changes at port 3000
