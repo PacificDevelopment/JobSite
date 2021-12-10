@@ -6,7 +6,7 @@
 
 ### 🛠️  Installation
 
-Install the necessary dependencies with ```npm```
+Install the necessary dependencies with [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 ```bash
 npm install
 ```
