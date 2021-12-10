@@ -15,11 +15,11 @@ npm install
 
 ##### `npm` Scripts
 
-[]Compile the *bundle.js* file with [Webpack] (https://github.com/webpack/webpack):
+[x]Compile the *bundle.js* file with [Webpack](https://github.com/webpack/webpack):
 
 > ``` npm run build ```
 
-[]Run the [Express] (https://github.com/expressjs/express) server:
+[x]Run the [Express](https://github.com/expressjs/express) server:
 
 > ``` npm start ```
 
