@@ -1,5 +1,7 @@
 import React from "react";
 
 export default function App() {
-  return <h2>Hello JobSeekers</h2>;
+  return (
+    <div data-testid="app"><h2>Hellooo JobSeekers</h2></div>
+  );
 }
