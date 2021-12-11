@@ -8,7 +8,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'airbnb'
+    'airbnb',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -23,7 +23,7 @@ module.exports = {
   ],
   rules: {
     'linebreak-style': 0,
-    "react/prop-types": 0,
+    'react/prop-types': 0,
   },
 
 };
