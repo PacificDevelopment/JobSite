@@ -1,41 +1,47 @@
 import React from "react";
 import { Routes, Route, Link } from 'react-router-dom';
 import { Home, Dashboard, LogIn, SignUp, Jobs, Profile } from './pages';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Toolbar from '@mui/material/Toolbar';
+import MenuIcon from '@mui/icons-material/Menu';
+import Typography from '@mui/material/Typography';
+import { ThemeProvider } from '@mui/material/styles';
+import Theme from './Theme';
+
+
 
 export default function App() {
   return (
       <div data-testid="app">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-            <li>
-              <Link to="/login">Log In</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/jobs">Jobs</Link>
-            </li>
-          </ul>
-        </nav>
+        <ThemeProvider theme={Theme}>
+          <Box sx={{ flexGrow: 1 }} style={Theme.palette.azure}>
+            <AppBar position="static">
+              <Toolbar sx={{justifyContent: 'space-between'}}>
+                <h1 style={{margin: 0}}>JobSite</h1>
+                <div>
+                  <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white'}} to="/">Home</Link></Button>
+                  <Button color="inherit" style={Theme.palette.independence}> <Link style={{ textDecoration: 'none', color: 'white'}} to="/signup">Sign Up</Link></Button>
+                  <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white'}} to="/login">Log In</Link></Button>
+                  <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white'}} to="/dashboard">Dashboard</Link></Button>
+                  <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white'}} to="/profile">Profile</Link></Button>
+                  <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white'}} to="/jobs">Jobs</Link></Button>
+                </div>
+              </Toolbar>
+            </AppBar>
+          </Box>
 
-        <Routes>
-          <Route path='/' element={<Home />} exact />
-          <Route path='/signup' element={<SignUp />} exact />
-          <Route path='/login' element={<LogIn />} exact />
-          <Route path='/dashboard' element={<Dashboard />} exact />
-          <Route path='/profile' element={<Profile />} exact />
-          <Route path='/jobs' element={<Jobs />} exact />
-        </Routes>
+          <Routes>
+            <Route path='/' element={<Home />} exact />
+            <Route path='/signup' element={<SignUp />} exact />
+            <Route path='/login' element={<LogIn />} exact />
+            <Route path='/dashboard' element={<Dashboard />} exact />
+            <Route path='/profile' element={<Profile />} exact />
+            <Route path='/jobs' element={<Jobs />} exact />
+          </Routes>
+        </ThemeProvider>
       </div>
   );
 }

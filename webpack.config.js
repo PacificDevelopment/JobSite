@@ -10,13 +10,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
-    publicPath: '/'
+    publicPath: '/' // Needed for React Router
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true, // Needed for React Router
     static: {
       directory: path.resolve(__dirname, './dist')
     },
