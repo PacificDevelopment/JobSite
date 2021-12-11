@@ -35,10 +35,14 @@
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.4.4",
     "jest-summarizing-reporter": "^1.1.4",
     "msw": "^0.36.3",
+    "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0",
     "react-refresh": "^0.11.0",
     "supertest": "^6.1.6",
@@ -51,6 +55,7 @@
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
+    "eslint-config-airbnb": "^19.0.2",
     "express": "^4.17.1",
     "firebase": "^9.6.1",
     "openid-client": "^5.1.0",
@@ -60,11 +65,7 @@
     "passport-openid": "^0.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
-    "react-router-dom": "^6.0.2"
-=======
     "react-router": "^6.1.0",
     "react-router-dom": "^6.1.0"
->>>>>>> de1237aa7cac3e5eb4a1c1401232d222077b360b
   }
 }

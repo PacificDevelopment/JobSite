@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    es6: true,
     browser: true,
     es2021: true,
     node: true,
@@ -7,8 +8,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'airbnb',
-    "prettier",
+    'airbnb'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'prettier',
   ],
   rules: {
     'linebreak-style': 0,
