@@ -46,4 +46,4 @@ const SalarySlider = () => {
   );
 }
 
-export default SalarySlider
+export default SalarySlider;

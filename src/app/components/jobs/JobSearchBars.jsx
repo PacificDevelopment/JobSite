@@ -14,7 +14,7 @@ export const LocationSearch = () => {
           id="input-with-icon-adornment"
           startAdornment={
             <InputAdornment position="start">
-              <AccountCircle />
+
             </InputAdornment>
           }
         />
