@@ -1,27 +1,76 @@
-# jobsite
-The default Start and Build commands are available.
+# JobSite
+## Find your new career
+###### A mobile-first React web app for job seekers and employers alike.
+<hr/>
 
-Various scripts available and what they do:
 
-1. To run a hotloading webpack server so that you can see changes to react components or styling in real time, without having to refresh the web page, run:
-```
-npm run serve-react-dev
-```
-Then visit localhost:9000
+### 🛠️  Installation
 
-Resource to learn more: https://javascript.plainenglish.io/react-fast-refresh-the-new-react-hot-reloader-652c6645548c
-
-2. To run the regular webpack watch build without hot reloading
-```
-npm run react-dev
+Install the necessary dependencies with [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+```bash
+npm install
 ```
 
-3. To run the server with nodemon watching for changes at port 3000
-```
-npm run server-dev
-```
+### 🔌  Usage
 
-4. To run the server with node debugger attached and watching for changes at port 3000
-```
-npm run debug
-```
+##### `npm` Scripts
+
+- [x] Compile the *bundle.js* file with [Webpack](https://github.com/webpack/webpack) in production mode:
+
+> ``` npm run build ```
+
+- [x] Run the [Express](https://github.com/expressjs/express) server in production mode:
+
+> ``` npm start ```
+
+ #### Various scripts available and what they do:
+
+1. Run the `webpack-dev-server` with [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/), run:
+
+> ```npm run serve-react-dev``` <br/>
+Then, visit [http://localhost:9000]. The page will automatically reload as file changes are made and saved.
+
+ 2. Run webpack watch/build *without* Hot Module Replacement
+
+> `npm run react-dev`
+
+
+ 3. Run the [Express](https://github.com/expressjs/express) server with [nodemon](https://nodemon.io/) watching for changes at port 3000
+
+> `npm run server-dev` <br/>
+Then, visit [http://localhost:3000]. The page will need to be reloaded as changes are made, but the Express server will not need to be restarted.
+
+
+4. Run the server with node debugger attached and watching for changes at port 3000
+
+> `npm run debug`
+
+
+### 🧑‍🤝‍🧑  Collaboration
+
+Collaboration is encouraged! Changes should be on a new branch, as pushing to `main` is disabled. Some basic guidelines:
+
+### 📌  Adding New Features
+
+For major changes, please open an [issue](https://github.com/PacificDevelopment/JobSite/issues) first to discuss proposed improvements. Pull requests will be considered pending review by our team.
+
+### 🐞  Bug Fixes
+
+We are always looking for ways to improve our product! <a href="https://github.com/PacificDevelopment/JobSite/issues">Open an Issue</a> so we can look into it.
+
+
+
+### License
+[MIT](./LICENSE.md)
+
+
+### Code Contributors
+
+##### A special thank you to all of our team members at [Pacific Development](https://github.com/PacificDevelopment)<br/>
+<a href="https://github.com/PacificDevelopment/JobSite/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=PacificDevelopment/JobSite" />
+</a>
+
+
+
+## Leave a <a href="https://github.com/PacificDevelopment/JobSite/"> :star: </a>  if you found this helpful

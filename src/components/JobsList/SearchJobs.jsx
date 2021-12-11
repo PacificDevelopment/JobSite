@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
-import axios from 'axios';
 
   const SearchJobs = () => {
     // const [locField, setLoc] = useState('')
     const [keyword, setKeyword] = useState('')
-    
 
     const searchByKeyword = () => {
 

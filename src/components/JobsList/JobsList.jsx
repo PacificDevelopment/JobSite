@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from 'react';
+import $ from 'jquery';
+import axios from 'axios';
 import SearchListings from "./SearchListings.jsx";
 
 const JobsList = () => {
