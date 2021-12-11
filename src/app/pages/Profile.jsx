@@ -1,14 +1,13 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Theme from '../Theme';
 
-export function Profile() {
+const Profile = function () {
   return (
     <Box>
-      <Box style={{borderWidth: 1, borderColor: 'black'}}>
+      <Box style={{ borderWidth: 1, borderColor: 'black' }}>
         <h1>Profile Picture Placeholder</h1>
         <span>FirstName LastName</span>
         <span>City, State</span>
@@ -40,8 +39,10 @@ export function Profile() {
         <span>City, State, Zip</span>
       </Box>
       <Button variant="outlined" style={Theme.palette.independence}>Calendar</Button>
-      <Button variant="outlined" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white'}} to="/dashboard">View Jobs</Link></Button>
+      <Button variant="outlined" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">View Jobs</Link></Button>
       <Button variant="outlined" style={Theme.palette.independence}>Reset Password</Button>
     </Box>
-  )
-}
+  );
+};
+
+export default Profile;
