@@ -4,7 +4,7 @@ import { Home, Dashboard, LogIn, SignUp, Jobs, Profile } from './pages';
 
 export default function App() {
   return (
-      <div>
+      <div data-testid="app">
         <nav>
           <ul>
             <li>
