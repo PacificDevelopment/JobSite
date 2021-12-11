@@ -1,4 +1,5 @@
 import React from 'react';
+import JobSearch from '../components/jobs/JobSearch.jsx'
 
 export function Jobs() {
   return (
@@ -6,6 +7,7 @@ export function Jobs() {
       <h1>
         Job Dashboard Placeholder
       </h1>
+      <JobSearch />
     </div>
   )
 }
