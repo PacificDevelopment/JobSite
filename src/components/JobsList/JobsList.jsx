@@ -28,7 +28,7 @@ const JobsList = () => {
   return (
     <div>
       {jobsState.map((job) =>
-        <JobItem locations={job.locations} />
+        <JobItem  job={job} />
       )}
     </div>
   )
