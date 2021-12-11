@@ -50,6 +50,7 @@
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
+    "@mui/core": "^5.0.0-alpha.54",
     "@mui/icons-material": "^5.2.1",
     "@mui/material": "^5.2.3",
     "compression": "^1.7.4",
