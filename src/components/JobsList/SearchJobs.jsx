@@ -10,7 +10,7 @@ import React, { useState, useEffect } from 'react';
 
     return (
       <>
-      <div >Weather Info</div>
+      <div >Input keyword</div>
         <div >
             <div >
                 <form onSubmit={searchByKeyword} >
@@ -19,9 +19,10 @@ import React, { useState, useEffect } from 'react';
                     name="job" />
                     <button >Search</button>
                 </form>
-              {weather && <Weath />}
+
           </div>
       </div>
+
   </>
     )
   }
