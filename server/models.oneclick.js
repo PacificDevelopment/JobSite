@@ -9,9 +9,15 @@ const axios = require('axios');
 //app.get / app.post
 //invoke queryTheDatabase(ids)
 
+const oneClickModels = require('models.oneclick.js')
+
 app.post('/oneclick', (req, res) => {
   let reqdata = req.body;
-  res.send('Hello Job Seekers!')
+  oneClickModels.quickApply(reqdata.session_id, reqdata.job_post_id)
+    .then((data) => console.log('WE ARE MASTERS'), data)
+    .then((data) => res.status(200).send(data));
+    .catch((err) => console.log('WHYYYYY', err));
+
 })
 
 //database model will look like:
@@ -24,16 +30,15 @@ return the saved resume and saved CL
 Queries Job Listing table --> return employerID
 */
 
-async (session_id, job_post_id) => {
-  let user = await pool.query('SELECT user_id FROM users WHERE session_id = $1',[session_id]);
+const quickApply = async (session_id, job_post_id) => {
+  let user = await pool.query('SELECT user_id FROM users WHERE session_id = $1', [session_id]);
   let resume = await pool.query('SELECT id FROM resumes WHERE user_id = $1', [user]);
   let coverLetter = await pool.query('SELECT id FROM cover_letters WHERE user_id = $1', [user]);
   let employerID = await pool.query('SELECT employer_id FROM job_posts WHERE id = $1', [job_post_id]);
 
-  pool.query(`INSERT into Applications (employer_id, cover_letter_id, resume_id, job_post_id, user_id) values ($1, $2, $3, $4, $5)`,
-  [employerID, coverLetter, resume, job_post_id, user])
-  .then((data) => console.log('WE ARE MASTERS'), data)
-  .catch((err) => console.log('WHYYYYY', err));
+  let response = await pool.query(`INSERT into Applications (employer_id, cover_letter_id, resume_id, job_post_id, user_id) values ($1, $2, $3, $4, $5)`,
+    [employerID, coverLetter, resume, job_post_id, user])
+  return response
 }
 
 
