@@ -16,7 +16,7 @@ export default createMuiTheme({
         },
         independence: {
             backgroundColor: '#4A485B',
-            color: '#4A485B',
+            color: '#fff',
         },
         manatee: {
             backgroundColor: '#9096A3',

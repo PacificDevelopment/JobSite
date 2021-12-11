@@ -9,11 +9,13 @@ import Toolbar from '@mui/material/Toolbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material/styles';
+import { useWindowSize } from './utils/customHooks';
 import Theme from './Theme';
 
 
 
 export default function App() {
+  const { width, height } = useWindowSize();
   return (
       <div data-testid="app">
         <ThemeProvider theme={Theme}>
@@ -35,8 +37,8 @@ export default function App() {
 
           <Routes>
             <Route path='/' element={<Home />} exact />
-            <Route path='/signup' element={<SignUp />} exact />
-            <Route path='/login' element={<LogIn />} exact />
+            <Route path='/signup' element={width < 800 ? <SignUp /> : <Home createAccount />} exact />
+            <Route path='/login' element={width < 800 ? <LogIn /> : <Home />} exact />
             <Route path='/dashboard' element={<Dashboard />} exact />
             <Route path='/profile' element={<Profile />} exact />
             <Route path='/jobs' element={<Jobs />} exact />
