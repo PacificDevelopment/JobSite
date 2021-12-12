@@ -11,7 +11,7 @@ const SalarySlider = () => {
   const marks = [
     {
       value: 0,
-      label: '0d'
+      label: '0'
     },
     {
       value: 50,
@@ -27,8 +27,8 @@ const SalarySlider = () => {
     },
     {
       value: 200,
-      label: '200'
-    },
+      label: '200+'
+    }
   ]
   const formatLabel = (x) => x = '$' + x + (x=== 0 ? '' : 'K') + (x === 200 ? '+' : '')
 
@@ -37,7 +37,7 @@ const SalarySlider = () => {
       onChange={updateSalaryRange}
       min={0}
       max={200}
-      step={5}
+      step={2}
       defaultValue={salary}
       marks={marks}
       valueLabelFormat={formatLabel}

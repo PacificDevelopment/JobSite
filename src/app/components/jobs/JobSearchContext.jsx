@@ -12,6 +12,7 @@ const JobSearchProvider = (props) => {
   let [keywords, setKeywords] = useState('');
   let [salary, setSalary] = useState([0, 200]);
   let [drawer, setDrawer] = useState(false);
+  let [query, setQuery] = useState({keywords: keywords, params: {}});
 
   return (
     <JobSearchContext.Provider value={{
@@ -36,3 +37,16 @@ const JobSearchProvider = (props) => {
 }
 
 export default JobSearchProvider;
+/*
+params = {
+  salary: [int, int] //filter results from API server-side,
+  sortBy: '', //default null
+  radius: int,
+  emplymentType: 't' || 'p',
+
+
+
+
+}
+
+*/

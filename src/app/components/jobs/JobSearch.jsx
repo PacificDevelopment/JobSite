@@ -7,7 +7,7 @@ import JobSearchBars from './JobSearchBars.jsx';
 
 const JobSearch = (props) => {
 
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState({keyword: '', params: {}});
 
   return (
     <JobSearchProvider>
