@@ -60,4 +60,3 @@ export default SubmitSearchButton;
 // contracttype, //f or 'p' or omitted
 // contractperiod, //i or t or omitted
 // } = req.query // from API
-

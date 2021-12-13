@@ -1,7 +1,7 @@
 import React from 'react';
 import JobsList from './JobsList/JobsList';
 
-const App = function () {
+function App() {
   return (
     <div>
       <h2>Hello JobSeekers</h2>
@@ -10,6 +10,6 @@ const App = function () {
       </div>
     </div>
   );
-};
+}
 
 export default App;

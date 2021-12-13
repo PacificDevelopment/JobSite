@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
-    publicPath: '/' // Needed for React Router
+    publicPath: '/', // Needed for React Router
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -18,11 +18,11 @@ module.exports = {
   devServer: {
     historyApiFallback: true, // Needed for React Router
     static: {
-      directory: path.resolve(__dirname, './dist')
+      directory: path.resolve(__dirname, './dist'),
     },
     compress: true,
     port: 9000,
-    hot: true
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -46,6 +46,11 @@ module.exports = {
             plugins: ['react-refresh/babel'],
           },
         },
+      },
+      // Images
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },

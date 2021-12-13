@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogIn = function () {
+function LogIn() {
   return (
     <div>
       <h1>
@@ -8,6 +8,6 @@ const LogIn = function () {
       </h1>
     </div>
   );
-};
+}
 
 export default LogIn;
