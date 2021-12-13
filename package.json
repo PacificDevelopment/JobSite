@@ -51,6 +51,9 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -66,7 +69,6 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "eslint-config-airbnb": "^19.0.2",
-    "express": "^4.17.1",
     "express-session": "^1.17.2",
     "firebase": "^9.6.1",
     "openid-client": "^5.1.0",

@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+
+const employers = require('./controllers/employersController');
 const User = require('./user'); // update to postgres pool
 
 // ----------------------------------------- END OF IMPORTS-----------------------------------------
@@ -84,6 +86,8 @@ app.get('/user', (req, res) => {
 //       res.status(404).send(err);
 //     });
 // });
+
+app.get('/data/employers', employers.retrieveEmployerData);
 
 app.listen(port, () => {
   console.log(`Jobsite app listening at http://localhost:${port}`);
