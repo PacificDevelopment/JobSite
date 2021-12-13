@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Slider, Typography } from '@mui/material'
-import { JobSearchContext } from './JobSearchContext.jsx'
+import { Slider, Typography } from '@mui/material';
+import { JobSearchContext } from './JobSearchContext';
 
 
 const SalarySlider = () => {
@@ -31,22 +31,23 @@ const SalarySlider = () => {
       label: '200+'
     }
   ]
-  const formatLabel = (x) => x = '$' + x + (x=== 0 ? '' : 'K') + (x === 200 ? '+' : '')
+
+  const formatLabel = (x) => x = '$' + x + (x === 0 ? '' : 'K') + (x === 200 ? '+' : '')
 
   return (
     <>
-    <Typography>Salary Range</Typography>
-    <Slider
-      onChange={updateSalaryRange}
-      min={0}
-      max={200}
-      step={2}
-      // defaultValue={salary}
-      value={salary}
-      marks={marks}
-      valueLabelFormat={formatLabel}
-      valueLabelDisplay={'auto'}
-    />
+      <Typography>Salary Range</Typography>
+      <Slider
+        onChange={updateSalaryRange}
+        min={0}
+        max={200}
+        step={2}
+        // defaultValue={salary}
+        value={salary}
+        marks={marks}
+        valueLabelFormat={formatLabel}
+        valueLabelDisplay={'auto'}
+      />
     </>
   );
 }
