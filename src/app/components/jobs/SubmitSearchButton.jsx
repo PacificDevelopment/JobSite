@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import {parseSearchInput} from '../../utils/searchUtils'
 import React, { useContext } from 'react';
 import { Button } from "@mui/material";
@@ -7,11 +7,9 @@ import axios from 'axios'
 
 const SubmitSearchButton = (props) => {
   let [searchParams, setSearchParams] = useSearchParams();
-
   let {
     range,
     sort,
-    drawer,
     salary,
     location,
     keywords,
@@ -19,16 +17,29 @@ const SubmitSearchButton = (props) => {
     employmentType,
   } = useContext(JobSearchContext);
 
-  let queryString = '';
-  (keywords) && (queryString += keywords);
-  (location) && (queryString += location);
-  (range) && (queryString += range);
+  const submitSearch = () => {
+    // integrate page into URL, useLocation to add pagination to QS
+    // search default size
+    let query = [];
+    (keywords) && (query.push(keywords));
+    (location) && (query.push(location));
+    (range) && (query.push(range));
+    (sort) && (query.push(sort));
 
-  console.log(queryString)
+    let queryString = query.join('&')
+    console.log(queryString)
 
+    axios.get(`/data/jobs/?${queryString}`)
+
+  }
 
   return (
-    <Button {...{ props }} fullWidth sx={{background: 'blue'}}>
+    <Button
+      {...{ props }}
+      fullWidth
+      sx={{background: 'blue'}}
+      onClick={submitSearch}
+    >
       Submit Search
     </Button>
   )

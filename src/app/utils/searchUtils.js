@@ -1,8 +1,6 @@
-export const parseSearchInput = (string) => {
-  if (typeof string !== 'string') {
-    console.log('Unexpected data type');
-    return false;
+export const parseSearchInput = (e, key) => {
+  if (!e.target.value) {
+    return ''
   }
-
-  return string.length ? string.replaceAll(' ', '%20') : ''
+  return e.target.value?.length ? `${key}=` + e.target.value.replaceAll(' ', '%20') : ''
 }

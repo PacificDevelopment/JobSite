@@ -92,16 +92,16 @@ export const EmploymentType = () => {
 };
 
 export const WorkSite = () => {
-  const { workSite, setWorkSite } = useState(null);
+  const { workSite, setWorkSite } = useState('');
 
   return (
     <FormControl fullWidth>
-      <FormLabel id="workSite">Employment Type</FormLabel>
+      <FormLabel id="workSite">Work Site</FormLabel>
       <RadioGroup
         aria-label="workSite"
         defaultValue={null}
         name="workSite"
-        onChange={(e) => setWorkSite(e.target.value)}
+        onChange={(e) => setWorkSite('worksite=' + e.target.value)}
       >
         <FormControlLabel value="remote" label="Remote" control={<Radio />} />
         <FormControlLabel value="onsite" label="On Site" control={<Radio />} />

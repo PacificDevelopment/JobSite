@@ -14,7 +14,6 @@ const JobSearchDrawer = () => {
 
   return (
     <>
-      {/* <Button onClick={toggleDrawer} fullWidth >Search Filters</Button> */}
       <Button onClick={updateQuery} sx={{ background: 'black' }} fullWidth>Search</Button>
       <Drawer
         anchor="right"
