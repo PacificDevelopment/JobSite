@@ -1,7 +1,6 @@
-
 --Create tables and load database from csv's
--- Assumes keeper Database Exists
-  --CREATE DATABASE keeper;  command to create database, if needed.
+-- Assumes jobsite Database Exists
+  --CREATE DATABASE jobsite;  command to create database, if needed.
 -- Run this SQL file against jobsite database
   -- psql -U postgres     enter psql
   -- \l                   lists databases
@@ -69,7 +68,7 @@ CREATE TABLE Users
  CONSTRAINT fk_employer_users FOREIGN KEY ( employer_id ) REFERENCES Employers ( id )
 );
 
-CREATE INDEX fk_employer_users ON Users
+CREATE INDEX fk_employer_users_index ON Users
 (
  employer_id
 );
@@ -104,7 +103,7 @@ CREATE INDEX job_api_id_index ON Job_Posts
  job_api_id
 );
 
-CREATE INDEX fk_employer_job_post ON Job_Posts
+CREATE INDEX fk_employer_job_post_index ON Job_Posts
 (
  employer_id
 );
@@ -121,12 +120,12 @@ CREATE TABLE Saved_Jobs
  CONSTRAINT fk_job_post_saved FOREIGN KEY ( job_post_id ) REFERENCES Job_Posts ( id )
 );
 
-CREATE INDEX fk_user_saved ON Saved_Jobs
+CREATE INDEX fk_user_saved_index ON Saved_Jobs
 (
  user_id
 );
 
-CREATE INDEX fk_job_post_saved ON Saved_Jobs
+CREATE INDEX fk_job_post_saved_index ON Saved_Jobs
 (
  job_post_id
 );
@@ -146,17 +145,17 @@ CREATE TABLE Applications
  CONSTRAINT fk_job_post_app FOREIGN KEY ( job_post_id ) REFERENCES Job_Posts ( id )
 );
 
-CREATE INDEX fk_employer_app ON Applications
+CREATE INDEX fk_employer_app_index ON Applications
 (
  employer_id
 );
 
-CREATE INDEX fk_user_app ON Applications
+CREATE INDEX fk_user_app_index ON Applications
 (
  user_id
 );
 
-CREATE INDEX fk_job_post_app ON Applications
+CREATE INDEX fk_job_post_app_index ON Applications
 (
  job_post_id
 );
