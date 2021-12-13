@@ -1,18 +1,20 @@
 import React from 'react';
-import { Box, Button } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import JobSearchDrawer from './JobSearchDrawer';
-import JobSearchProvider from './JobSearchContext';
+import JobSearchProvider, { JobSearchContext } from './JobSearchContext';
 import JobSearchBars from './JobSearchBars';
+import SubmitSearchButton from './SubmitSearchButton';
 
 const JobSearch = () => {
-  // const [query, setQuery] = React.useState({ keyword: '', params: {} });
 
   return (
     <JobSearchProvider>
       <Box sx={{ minWidth: 120, m: 2 }}>
-        <JobSearchBars />
+        <Stack> {/* Maybe pass this in as props to reuse component around the site */}
+          <JobSearchBars />
+        </Stack>
         <JobSearchDrawer />
-        <Button sx={{ background: '#000' }}>Button</Button>
+        <SubmitSearchButton />
       </Box>
     </JobSearchProvider>
   );

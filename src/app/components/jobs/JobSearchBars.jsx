@@ -68,12 +68,10 @@ export const KeywordSearch = () => {
 };
 
 const JobSearchBars = () => (
-  <Box>
-    <Stack>
-      <KeywordSearch />
-      <LocationSearch />
-    </Stack>
-  </Box>
+  <>
+    <KeywordSearch />
+    <LocationSearch />
+  </>
 );
 
 export default JobSearchBars;

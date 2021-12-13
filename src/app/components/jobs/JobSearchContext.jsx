@@ -7,21 +7,17 @@ const JobSearchProvider = (props) => {
   const [drawer, setDrawer] = useState(false);
   const [keywords, setKeywords] = useState('');
   const [location, setLocation] = useState('');
-  const [sortBy, setSortBy] = React.useState('');
+  const [sort, setSort] = React.useState('');
   const [salary, setSalary] = useState([0, 200]);
   const [datePosted, setDatePosted] = useState(null);
   const [experience, setExperience] = useState(null);
   const [employmentType, setEmploymentType] = useState(null);
-  const [query, setQuery] = useState('');
-
   return (
     <JobSearchContext.Provider value={{
-      query,
-      setQuery,
       range,
       setRange,
-      sortBy,
-      setSortBy,
+      sort,
+      setSort,
       drawer,
       setDrawer,
       salary,

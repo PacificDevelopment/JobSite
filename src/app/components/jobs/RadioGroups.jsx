@@ -4,18 +4,17 @@ import {
 } from '@mui/material';
 import { JobSearchContext } from './JobSearchContext.jsx';
 
-export var SortBy = () => {
-  const { sortBy, setSortBy } = useContext(JobSearchContext);
+export const Sort = () => {
+  const { sort, setSort } = useContext(JobSearchContext);
 
   return (
     <FormControl fullWidth>
-      <FormLabel id="sortBy">Sort By</FormLabel>
+      <FormLabel id="sort">Sort By</FormLabel>
       <RadioGroup
-        // row
-        aria-label="sortBy"
+        aria-label="sort"
         defaultValue=""
-        name="sortBy"
-        onChange={(e) => { setSortBy(e.target.value); }}
+        name="sort"
+        onChange={(e) => { setSort(e.target.value); }}
       >
         <FormControlLabel value="sort=relevance" label="Relevance" control={<Radio />} />
         <FormControlLabel value="sort=date" label="Date" control={<Radio />} />
@@ -25,7 +24,7 @@ export var SortBy = () => {
   );
 };
 
-export var Range = () => {
+export const Range = () => {
   const { range, setRange } = useContext(JobSearchContext);
 
   return (
@@ -48,7 +47,7 @@ export var Range = () => {
   );
 };
 
-export var Experience = () => {
+export const Experience = () => {
   const { experience, setExperience } = useContext(JobSearchContext);
   // Non-functional - Responses will have to be filtered server-side
 
@@ -71,14 +70,13 @@ export var Experience = () => {
   );
 };
 
-export var EmploymentType = () => {
+export const EmploymentType = () => {
   const { employmentType, setEmploymentType } = useContext(JobSearchContext);
 
   return (
     <FormControl fullWidth>
       <FormLabel id="employmentType">Employment Type</FormLabel>
       <RadioGroup
-        row
         aria-label="employmentType"
         defaultValue={null}
         name="employmentType"
@@ -88,6 +86,26 @@ export var EmploymentType = () => {
         <FormControlLabel value="contractperiod=p" label="Part Time" control={<Radio />} />
         <FormControlLabel value="contracttype=i" label="Temporary" control={<Radio />} />
         <FormControlLabel value="contracttype=t" label="Internship" control={<Radio />} />
+      </RadioGroup>
+    </FormControl>
+  );
+};
+
+export const WorkSite = () => {
+  const { workSite, setWorkSite } = useState(null);
+
+  return (
+    <FormControl fullWidth>
+      <FormLabel id="workSite">Employment Type</FormLabel>
+      <RadioGroup
+        aria-label="workSite"
+        defaultValue={null}
+        name="workSite"
+        onChange={(e) => setWorkSite(e.target.value)}
+      >
+        <FormControlLabel value="remote" label="Remote" control={<Radio />} />
+        <FormControlLabel value="onsite" label="On Site" control={<Radio />} />
+        <FormControlLabel value="mixed" label="Mixed" control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );

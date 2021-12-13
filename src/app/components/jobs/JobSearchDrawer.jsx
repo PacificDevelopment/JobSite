@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Drawer, Button, Box, Typography,
+  Drawer, Button, Box, Typography, Form
 } from '@mui/material';
 import JobSearchParams from './JobSearchParams';
 import { JobSearchContext } from './JobSearchContext';
@@ -22,8 +22,8 @@ const JobSearchDrawer = () => {
         open={drawer}
         onClose={toggleDrawer}
       >
-        <Box role="presentation" sx={{ width: 250, m: 2 }}>
-          <Typography>Filters</Typography>
+        <Box role="presentation" sx={{ minWidth: 350, m: 1 }}>
+          <Typography variant={'h5'}>Filters</Typography>
           <JobSearchParams />
           <Button onClick={updateQuery} label="Apply Filters" />
         </Box>
