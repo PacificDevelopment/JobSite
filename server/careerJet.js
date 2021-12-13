@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 const request = require('request');
 let axios = require('axios');
 
@@ -31,21 +32,38 @@ module.exports = function () {
     user_agent,
     // keywords : '', //  Keywords to search in job offers. Example: 'java manager'. Default: none (Returns all offers from default country)
     // location : '', //  Location to search job offers in. Examples: 'London', 'Paris'. Default: none (Returns all offers from default country)
-    sort : 'relevance', // Type of sort. Available values are 'relevance' (default), 'date', and 'salary'.
+    sort: 'relevance', // Type of sort. Available values are 'relevance' (default), 'date', and 'salary'.
     start_num : 1, //  Num of first offer returned in entire result space should be >= 1 and <= Number of hits. Default: 1
-    pagesize: 20 // Number of offers returned in one call. Default: 20. Max: 99.
+    pagesize: 20, // Number of offers returned in one call. Default: 20. Max: 99.
     // page: 1, // Current page number (should be >=1). If set, will override start_num. The maxumum number of page is given by $result->pages
-    // contracttype: '', // Character code for contract types:<br>
+    contracttype: 'Default', // Character code for contract types:<br>
     // *    'p'    - permanent job<br>
     // *    'c'    - contract<br>
     // *    't'    - temporary<br>
     // *    'i'    - training<br>
     // *    'v'    - voluntary<br>
     // *    Default: none (all contract types)
-    // contractperiod: '', // Character code for contract contract periods:
+    contractperiod: 'Default', // Character code for contract contract periods:
     // *    'f'     - Full time<br>
     // *    'p'     - Part time<br>
     // *    Default: none (all contract periods)
+  };
+
+  this.employmentType = function (type) {
+    switch (type) {
+      case 'Full Time':
+        query.contractperiod = 'f';
+        break;
+      case 'Part Time':
+        query.contractperiod = 'p';
+        break;
+      case 'Temporary':
+        query.contracttype = 't';
+        break;
+      case 'Internship':
+        query.contracttype = 'i';
+    }
+    return this;
   };
 
   this.keywords = function (keywords) {

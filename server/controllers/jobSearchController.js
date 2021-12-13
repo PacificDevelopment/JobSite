@@ -1,61 +1,101 @@
-var careerjet = require('../careerJet.js');
-
-let axios = require('axios');
+const axios = require('axios');
 const cheerio = require('cheerio');
 
 require('dotenv').config();
 
-exports.jobSearch = (req, res) => {
-  console.log('querying jobs!');
-  let { location, keywords, sortBy, pagesize, radius, page } = req.query;
+const CareerJet = require('../careerJet');
 
-  //careerjet api does not support "remote" location, add remote to search
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+const randomExperienceLevel = () => {
+  const experienceLevels = {
+    0: 'Entry',
+    1: 'Mid',
+    2: 'Senior',
+    3: 'Executive',
+  };
+
+  const randomExperience = getRandomIntInclusive(0, 4);
+  return experienceLevels[randomExperience];
+};
+
+const randomWorksite = () => {
+  const random = getRandomIntInclusive(0, 1);
+  return random ? 'On-Site' : 'Mixed';
+};
+
+exports.jobSearch = (req, res) => {
+  let {
+    location,
+    keywords,
+    // eslint-disable-next-line prefer-const
+    sortBy,
+    pagesize,
+    radius,
+    page,
+    // eslint-disable-next-line prefer-const
+    employmentType,
+  } = req.query;
+
+  // careerjet api does not support "remote" location
+  // add remote to search
+  let worksite;
   if (location.match(/remote/i) || location.match(/anywhere/i)) {
-    keywords = location + ' ' + keywords;
+    keywords = `${location} ${keywords}`;
     location = '';
+    worksite = 'Remote';
   }
 
-  pagesize = parseInt(pagesize);
-  radius = parseInt(radius);
-  page = parseInt(page);
+  pagesize = parseInt(pagesize, 10);
+  radius = parseInt(radius, 10);
+  page = parseInt(page, 10);
 
-  const careerjetAPI = new careerjet({locale: 'en_US', affid: process.env.AFFID, user_ip: '192.0.0.1', user_agent: 'JobSite'});
+  const careerjetAPI = new CareerJet({
+    locale: 'en_US',
+    affid: process.env.AFFID,
+    user_ip: '192.0.0.1',
+    user_agent: 'JobSite',
+  });
 
-  /*
-  contracttype: Selected contract type.p — permanent job, c — contract, t — temporary, i — training, v — voluntary, none — all contract types.
-
-  contractperiod = contractperiod || ''
-  Selected contract period. f — full time, p — part time, none — all contract periods.
-  */
+  console.log(careerjetAPI);
 
   careerjetAPI
     .location(location)
     .keywords(keywords)
-    //date, relevance, salary
     .sortBy(sortBy)
     .pagesize(pagesize)
     .radius(radius)
     .page(page)
+    .employmentType(employmentType)
     .query()
-      .then((response) => {
-        const results = response.data;
-        //web scrape each returned url to get full description and external application url
-        Promise.all(results.jobs.map(async (job, index) => {
-          await axios.get(job.url)
-            .then((response) => {
-              const html = response.data;
-              const $ = cheerio.load(html);
-              const description = $('.content');
-              const companyURL = $('.source').children('a').attr('href');
-              results.jobs[index].description = description.html();
-              //possible use regex to change /n in description to <br/>
-              results.jobs[index].applyExternal = 'careerjet.com' + companyURL;
-            });
-        }))
-        .then(() => res.send(results));
-      })
-      .catch((err) => console.log(err));
-}
+    .then((data) => {
+      const results = data.data;
+
+      results.employmentType = employmentType;
+      // web scrape each returned url to get full description and external application url
+      Promise.all(results.jobs.map(async (job, index) => {
+        await axios.get(job.url)
+          .then((response) => {
+            const html = response.data;
+            const $ = cheerio.load(html);
+            const description = $('.content');
+            // const companyURL = $('.source').children('a').attr('href');
+            results.jobs[index].description = description.html();
+            results.jobs[index].experienceLevel = randomExperienceLevel();
+            results.jobs[index].worksite = worksite || randomWorksite();
+            // possible use regex to change /n in description to <br/>
+            // results.jobs[index].applyExternal = 'careerjet.com' + companyURL;
+          });
+      }))
+        .then(() => res.send(results.jobs));
+    })
+    .catch((err) => console.log(err));
+};
 
 exports.googleJobsSearch = (req, res) => {
   const SerpApi = require('google-search-results-nodejs');
