@@ -13,6 +13,7 @@ const Dashboard = function () {
   const location = useLocation();
 
   useEffect(() => {
+    console.log(location);
     const url = new URLSearchParams(location.search);
     if (url.has('jobsearch')) {
       setJobSearch(url.get('jobsearch'));

@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
 const AccountSelection = function ({ createAccount }) {
@@ -15,7 +16,10 @@ const AccountSelection = function ({ createAccount }) {
       );
     }
     return (
-      <Box>
+      <Box style={{
+        display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
+      }}
+      >
         <Box>
           <TextField id="job-title" label="Job Title or Keyword" />
           <TextField id="location" label="Search by Location" />
@@ -28,7 +32,7 @@ const AccountSelection = function ({ createAccount }) {
     );
   }
   return (
-    <Box sx={{ margin: 20, display: 'flex', flexDirection: 'column' }}>
+    <Paper elevation={9} sx={{ backgroundColor: 'rgba(255, 255, 255, .7)', padding: 5 }}>
       {header()}
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -53,7 +57,7 @@ const AccountSelection = function ({ createAccount }) {
         </Box>
       </Box>
       {createAccount ? <Link style={{ textDecoration: 'none', color: 'black' }} to="/LogIn">Already have an account? Sign-In</Link> : null}
-    </Box>
+    </Paper>
   );
 };
 
