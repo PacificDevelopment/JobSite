@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import JobSearchDrawer from './JobSearchDrawer.jsx';
 import JobSearchProvider from './JobSearchContext.jsx';
 import JobSearchBars from './JobSearchBars.jsx';
@@ -11,7 +11,7 @@ const JobSearch = (props) => {
 
   return (
     <JobSearchProvider>
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ minWidth: 120, m: 2 }}>
         <JobSearchBars />
         <JobSearchDrawer />
       </Box>

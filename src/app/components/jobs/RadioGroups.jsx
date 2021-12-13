@@ -13,13 +13,13 @@ export const SortBy = () => {
       <RadioGroup
         // row
         aria-label='sortBy'
-        defaultValue='relevance'
+        defaultValue=''
         name='sortBy'
         onChange={(e) => { setSortBy(e.target.value) }}
       >
-        <FormControlLabel value='relevance' label='Relevance' control={<Radio />} />
-        <FormControlLabel value='date' label='Date' control={<Radio />} />
-        <FormControlLabel value='salary' label='Salary' control={<Radio />} />
+        <FormControlLabel value='sort=relevance' label='Relevance' control={<Radio />} />
+        <FormControlLabel value='sort=date' label='Date' control={<Radio />} />
+        <FormControlLabel value='sort=salary' label='Salary' control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );
@@ -36,15 +36,15 @@ export const Range = () => {
       <RadioGroup
         // row
         aria-label='range'
-        defaultValue={'anywhere'}
+        defaultValue={''}
         name='range'
         onChange={(e) => { setRange(e.target.value) }}
       >
-        <FormControlLabel value={5} label='5 miles' control={<Radio />} />
-        <FormControlLabel value={20} label='20 miles' control={<Radio />} />
-        <FormControlLabel value={50} label='50 miles' control={<Radio />} />
-        <FormControlLabel value={100} label='100 miles' control={<Radio />} />
-        <FormControlLabel value={'anywhere'} label='Anywhere' control={<Radio />} />
+        <FormControlLabel value={'radius=5'} label='5 miles' control={<Radio />} />
+        <FormControlLabel value={'radius=20'} label='20 miles' control={<Radio />} />
+        <FormControlLabel value={'radius=50'} label='50 miles' control={<Radio />} />
+        <FormControlLabel value={'radius=100'} label='100 miles' control={<Radio />} />
+        <FormControlLabel value={''} label='Anywhere' control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );
@@ -53,7 +53,8 @@ export const Range = () => {
 
 export const Experience = () => {
 
-  let [experience, setExperience] = useState(null)
+  let { experience, setExperience } = useContext(JobSearchContext);
+  // Non-functional - Responses will have to be filtered server-side
 
   return (
     <FormControl fullWidth>
@@ -69,6 +70,30 @@ export const Experience = () => {
         <FormControlLabel value={1} label='Mid Level' control={<Radio />} />
         <FormControlLabel value={2} label='Senior Level' control={<Radio />} />
         <FormControlLabel value={3} label='Executive Level' control={<Radio />} />
+      </RadioGroup>
+    </FormControl>
+  );
+};
+
+
+export const EmploymentType = () => {
+
+  let {employmentType, setEmploymentType} = useContext(JobSearchContext)
+
+  return (
+    <FormControl fullWidth>
+      <FormLabel id='employmentType'>Employment Type</FormLabel>
+      <RadioGroup
+        // row
+        aria-label='employmentType'
+        defaultValue={null}
+        name='employmentType'
+        onChange={(e) => setEmploymentType(e.target.value)}
+      >
+        <FormControlLabel value={'contractperiod=f'} label='Full Time' control={<Radio />} />
+        <FormControlLabel value={'contractperiod=p'} label='Part Time' control={<Radio />} />
+        <FormControlLabel value={'contracttype=i'} label='Temporary' control={<Radio />} />
+        <FormControlLabel value={'contracttype=t'} label='Internship' control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );

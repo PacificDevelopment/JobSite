@@ -4,27 +4,10 @@ import { LocationOn, LocationOff, Tune } from '@mui/icons-material';
 import {JobSearchContext} from './JobSearchContext.jsx';
 
 
-// export const LocationSearchIcon = () => {
-
-//   let [anywhere, setAnywhere] = useState(false);
-//   let icon = anywhere ? <LocationOn sx={{color:'red'}}/> : <LocationOff /> //change color
-
-//   return (
-//     < InputAdornment
-//       position="end"
-//       onClick={() => setAnywhere(!anywhere)}
-//     >
-//       {icon}
-//     </InputAdornment >
-//   )
-// }
-
-// export default LocationSearchIcon;
-
-
 export const LocationSearch = () => {
   let [anywhere, setAnywhere] = useState(false);
-  let [color, setColor] = useState('red')
+  let [color, setColor] = useState('red');
+  let {location, setLocation} = useContext(JobSearchContext)
   let label = anywhere ? 'Anywhere' : 'Search Location' //change color
 
   const LocationSearchIcon = () => {
@@ -48,6 +31,7 @@ export const LocationSearch = () => {
       <Input
         id="location"
         onFocus={() => setAnywhere(false)}
+        onChange={(e) => setLocation('location=' + e.target.value)}
         endAdornment={[<LocationSearchIcon />]}
       />
     </FormControl>
@@ -57,7 +41,9 @@ export const LocationSearch = () => {
 
 export const KeywordSearch = () => {
 
-  const LocationSearchIcon = () => {
+  let {keywords, setKeywords} = useContext(JobSearchContext)
+
+  const FiltersIcon = () => {
 
     let {drawer, setDrawer} = useContext(JobSearchContext)
 
@@ -78,14 +64,15 @@ export const KeywordSearch = () => {
       </InputLabel>
       <Input
         id="keyword"
-        endAdornment={<LocationSearchIcon />}
+        onChange={e => setKeywords('keywords=' + e.target.value)}
+        endAdornment={<FiltersIcon />}
       />
     </FormControl>
   )
 }
 
 const JobSearchBars = () => (
-  <Box variant='presentation'>
+  <Box>
     <Stack>
       <KeywordSearch />
       <LocationSearch />
