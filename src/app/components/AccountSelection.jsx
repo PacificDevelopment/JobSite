@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
-const AccountSelection = function ({ createAccount }) {
+function AccountSelection({ createAccount }) {
   function header() {
     if (createAccount) {
       return (
@@ -59,6 +59,6 @@ const AccountSelection = function ({ createAccount }) {
       {createAccount ? <Link style={{ textDecoration: 'none', color: 'black' }} to="/LogIn">Already have an account? Sign-In</Link> : null}
     </Paper>
   );
-};
+}
 
 export default AccountSelection;

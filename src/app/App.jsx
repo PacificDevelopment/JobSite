@@ -11,7 +11,7 @@ import Theme from './Theme';
 
 import NavBar from './components/NavBar';
 
-const App = function () {
+function App() {
   const { width } = useWindowSize();
   return (
     <div data-testid="app">
@@ -32,6 +32,6 @@ const App = function () {
       </ThemeProvider>
     </div>
   );
-};
+}
 
 export default App;

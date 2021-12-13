@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import Theme from '../Theme';
 
-const Dashboard = function () {
+function Dashboard() {
   const [jobSearch, setJobSearch] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
   const location = useLocation();
@@ -54,6 +54,6 @@ const Dashboard = function () {
       </Box>
     </Box>
   );
-};
+}
 
 export default Dashboard;

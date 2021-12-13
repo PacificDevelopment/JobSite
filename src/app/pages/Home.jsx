@@ -14,7 +14,7 @@ const centerStyle = {
   justifyContent: 'center',
 };
 
-const Home = function ({ createAccount }) {
+function Home({ createAccount }) {
   const { width } = useWindowSize();
   if (width < 800) { // mobile rendering
     return (
@@ -59,6 +59,6 @@ const Home = function ({ createAccount }) {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default Home;

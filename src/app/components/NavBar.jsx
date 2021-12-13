@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import TextLogo from '../assets/TextLogo.png';
 import Theme from '../Theme';
 
-const NavBar = function () {
+function NavBar() {
   return (
     <Grid item xs={2} style={Theme.palette.azure}>
       <AppBar position="static" style={{ height: '100%' }}>
@@ -28,6 +28,6 @@ const NavBar = function () {
       </AppBar>
     </Grid>
   );
-};
+}
 
 export default NavBar;
