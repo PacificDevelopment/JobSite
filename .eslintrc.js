@@ -26,5 +26,10 @@ module.exports = {
     'react/prop-types': 0,
     'func-names': 0,
   },
-
+  "react/function-component-definition": [
+    2,
+    {
+      namedComponents: "function-declaration",
+    },
+  ],
 };

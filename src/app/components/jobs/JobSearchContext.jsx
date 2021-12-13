@@ -1,23 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useState } from 'react';
 
 export const JobSearchContext = createContext(null);
 
 const JobSearchProvider = (props) => {
-
-  let [range, setRange] = useState(null);
-  let [drawer, setDrawer] = useState(false);
-  let [keywords, setKeywords] = useState('');
-  let [location, setLocation] = useState('');
-  let [sortBy, setSortBy] = React.useState('');
-  let [salary, setSalary] = useState([0, 200]);
-  let [datePosted, setDatePosted] = useState(null);
-  let [experience, setExperience] = useState(null);
-  let [employmentType, setEmploymentType] = useState(null);
-  let [query, setQuery] = useState({keywords: keywords, location: location, params: []});
+  const [range, setRange] = useState(null);
+  const [drawer, setDrawer] = useState(false);
+  const [keywords, setKeywords] = useState('');
+  const [location, setLocation] = useState('');
+  const [sortBy, setSortBy] = React.useState('');
+  const [salary, setSalary] = useState([0, 200]);
+  const [datePosted, setDatePosted] = useState(null);
+  const [experience, setExperience] = useState(null);
+  const [employmentType, setEmploymentType] = useState(null);
+  const [query, setQuery] = useState('');
 
   return (
     <JobSearchContext.Provider value={{
+      query,
+      setQuery,
       range,
       setRange,
       sortBy,
@@ -35,24 +35,12 @@ const JobSearchProvider = (props) => {
       experience,
       setExperience,
       employmentType,
-      setEmploymentType
-    }}>
-      { props.children }
+      setEmploymentType,
+    }}
+    >
+      {props.children}
     </JobSearchContext.Provider>
-  )
-}
+  );
+};
 
 export default JobSearchProvider;
-/*
-params = {
-  salary: [int, int] //filter results from API server-side,
-  sortBy: '', //default null
-  radius: int,
-  emplymentType: 't' || 'p',
-
-
-
-
-}
-
-*/
