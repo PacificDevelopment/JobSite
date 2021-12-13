@@ -9,8 +9,8 @@ import Typography from '@mui/material/Typography';
 const JobItem = (props) => {
   return (
 
-      <Card >
-        <CardContent>
+    <Card >
+      <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {props.job.company}
         </Typography>
@@ -25,10 +25,10 @@ const JobItem = (props) => {
           <br />
           {props.job.date}
         </Typography>
-        </CardContent>
-      </Card>
+      </CardContent>
+    </Card>
 
-    )
+  )
 }
 
 export default JobItem;
