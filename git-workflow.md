@@ -71,7 +71,30 @@ git commit -m "implement click event handler on checkout button"
 ```
 Resource for writing good commit messages: https://cbea.ms/git-commit/
 
+### Setting Co-authors for commits with a pair partner
+
+Follow the directions at this link for your local environment
+https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors
+
 ### Incorporating your updates into the `main` branch
+
+First merge with the latest main following these steps:
+Assuming you are on your feature branch:
+1. Update your local copy of Main
+```
+git checkout main
+git pull origin main
+```
+2. Merge your feature branch with the latest changes from main
+```
+git checkout <Your Feature Branch>
+git merge main
+```
+3. Resolve any conflicts, if package log conflicts see note at the bottom.
+4. Push your branch to remote.
+```
+git push origin <Your Feature Branch>
+```
 
 Once you have pushed your feature branch to its upstream branch at the `origin`:
 
