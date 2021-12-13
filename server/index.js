@@ -1,5 +1,5 @@
+const employers = require('./controllers/employersController');
 const express = require('express');
-
 const app = express();
 const port = 3000;
 
@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
 //       res.status(404).send(err);
 //     });
 // });
+
+app.get('/data/employers', employers.retrieveEmployerData);
 
 app.listen(port, () => {
   console.log(`Jobsite app listening at http://localhost:${port}`);
