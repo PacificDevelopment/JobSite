@@ -49,12 +49,14 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.16.4",
     "axios": "^0.24.0",
-    "careerjet": "^0.3.1",
+    "cheerio": "^1.0.0-rc.10",
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "firebase": "^9.6.1",
+    "google-search-results-nodejs": "^2.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "request": "^2.88.2"
   }
 }
