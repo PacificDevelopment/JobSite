@@ -23,13 +23,10 @@ const Main = () => {
 
   const mainFocusFunction = (targetJobItem) => {
     setItem(targetJobItem);
-    console.log('targetJobItem from main', targetJobItem)
-    console.log('state from main', jobFocusState)
+    // console.log('targetJobItem from main', targetJobItem)
+    // console.log('state from main', jobFocusState)
   }
-  useEffect(() => {
-    console.log('useEffect in main job state', jobFocusState);
 
-  },[]);
 
   return (
 
