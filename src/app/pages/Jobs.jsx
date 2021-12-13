@@ -1,7 +1,7 @@
 import React from 'react';
 import JobSearch from '../components/jobs/JobSearch.jsx'
 
-export function Jobs() {
+const Jobs = function () {
   return (
     <div>
       <h1>
@@ -9,5 +9,7 @@ export function Jobs() {
       </h1>
       <JobSearch />
     </div>
-  )
-}
+  );
+};
+
+export default Jobs;
