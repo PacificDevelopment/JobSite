@@ -1,6 +1,7 @@
 const employers = require('./controllers/employersController');
 const jobSearch = require('./controllers/jobSearchController');
 
+const applications = require('./controllers/applicationsController');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -16,6 +17,8 @@ app.get('/', (req, res) => {
 app.get('/jobsearch', jobSearch.jobSearch);
 
 app.get('/data/employers', employers.retrieveEmployerData);
+
+app.post('/onclick', applications.oneClickApply);
 
 app.listen(port, () => {
   console.log(`Jobsite app listening at http://localhost:${port}`);

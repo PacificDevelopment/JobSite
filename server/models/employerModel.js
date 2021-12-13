@@ -11,6 +11,6 @@ exports.getSingleEmployerData = (employerId, callback) => {
       } else {
         callback(null, results.rows[0]);
       }
-    }
-  )
-}
+    },
+  );
+};
