@@ -1,11 +1,13 @@
 import React from 'react';
 
-export function LogIn() {
+function LogIn() {
   return (
     <div>
       <h1>
         Login Screen Placeholder
       </h1>
     </div>
-  )
+  );
 }
+
+export default LogIn;

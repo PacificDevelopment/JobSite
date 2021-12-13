@@ -1,66 +1,64 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import AccountSelection from '../components/AccountSelection';
 import { useWindowSize } from '../utils/customHooks';
+import Hero from '../assets/hero.png';
+import Glass from '../assets/magnifying-glass.png';
+import Checklist from '../assets/checklist.png';
+import Click from '../assets/click 1.png';
+import Job from '../assets/job 1.png';
 
-export function Home() {
-  const { width, height } = useWindowSize()
+const centerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
 
-  if (width < 800) { //mobile rendering
+function Home({ createAccount }) {
+  const { width } = useWindowSize();
+  if (width < 800) { // mobile rendering
     return (
       <div>
         <h1>
           Mobile Home Screen Placeholder
         </h1>
       </div>
-    )
-  } else { //desktop rendering
-    return (
-      <div>
-        <div className='hero' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <Box sx={{margin: 20, display: 'flex', flexDirection: 'column'}}>
+    );
+  } // desktop rendering
+  return (
+    <Grid container item xs={10} direction="column">
+      <Grid
+        item
+        xs={8}
+        className="hero"
+        style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(${Hero})`, backgroundSize: 'cover',
+        }}
+      >
+        <AccountSelection createAccount={createAccount} />
+      </Grid>
 
-            <Box>
-              <TextField id="job-title" label="Job Title or Keyword" />
-              <TextField id="location" label="Search by Location" />
-            </Box>
-
-            <Button variant="contained">Find Jobs</Button>
-
-            <Link style={{ textDecoration: 'none', color: 'black'}} to="/LogIn">Been here before?</Link>
-
-            <Box sx={{display: 'flex', flexDirection: 'row'}}>
-              <Box sx={{display: 'flex', flexDirection: 'column'}}>
-                <Button sx={{backgroundColor: 'black', color: 'white'}}>Continue with Apple</Button>
-                <Button sx={{backgroundColor: '#3b5998', color: 'white'}}>Continue with Facebook</Button>
-                <Button sx={{backgroundColor: 'white', color: 'black'}}>Continue with Google</Button>
-              </Box>
-
-              <p>OR</p>
-
-              <Box sx={{display: 'flex', flexDirection: 'column'}}>
-                <TextField id="job-title" label="Email address" />
-                <TextField id="location" label="Enter password" />
-                <Button variant="contained">Continue with Email</Button>
-                <Box>
-                <Link style={{ textDecoration: 'none', color: 'black'}} to="/SignUp">Don't have an account yet? Sign up.</Link>
-                <Link style={{ textDecoration: 'none', color: 'black'}} to="/SignUp">Forgot password?</Link>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </div>
-
-        <Box>
-          <h1>How JobSite Works</h1>
-          <Button variant="contained">Find Jobs</Button>
-          <Button variant="contained">Organize Your Search</Button>
-          <Button variant="contained">Apply In One Click</Button>
-          <Button variant="contained">Keep Track Of Interviews</Button>
-        </Box>
-      </div>
-    )
-  }
+      <Grid xs={4} item container>
+        <Grid xs={12} sx={centerStyle}>How JobSite Works</Grid>
+        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+          <img src={Glass} alt="Find Jobs" width={75} />
+          <p>Find Jobs</p>
+        </Grid>
+        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+          <img src={Checklist} alt="Organize Your Search" width={75} />
+          <p>Organize Your Search</p>
+        </Grid>
+        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+          <img src={Click} alt="Apply In One Click" width={75} />
+          <p>Apply In One Click</p>
+        </Grid>
+        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+          <img src={Job} alt="Keep Track Of Interviews" width={75} />
+          <p>Keep Track Of Interviews</p>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 }
+
+export default Home;

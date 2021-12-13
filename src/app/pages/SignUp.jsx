@@ -1,11 +1,13 @@
 import React from 'react';
 
-export function SignUp() {
+function SignUp() {
   return (
     <div>
       <h1>
-        Sign Up Placeholder
+        Mobile Sign Up Screen Placeholder
       </h1>
     </div>
-  )
+  );
 }
+
+export default SignUp;

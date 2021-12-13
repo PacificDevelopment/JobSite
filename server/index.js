@@ -1,13 +1,15 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const employers = require('./controllers/employersController');
+const applications = require('./controllers/applicationsController');
+const express = require('express');
+const app = express();
+const port = 3000;
 
 app.use(express.static('dist'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello Job Seekers!')
-})
+  res.send('Hello Job Seekers!');
+});
 
 // app.get('/job_listings', (req, res) => {
 //   console.log('express get request');
@@ -20,6 +22,10 @@ app.get('/', (req, res) => {
 //     });
 // });
 
+app.get('/data/employers', employers.retrieveEmployerData);
+
+app.post('/onclick', applications.oneClickApply);
+
 app.listen(port, () => {
-  console.log(`Jobsite app listening at http://localhost:${port}`)
-})
+  console.log(`Jobsite app listening at http://localhost:${port}`);
+});
