@@ -1,4 +1,5 @@
 import React from 'react';
+import JobSearch from '../components/jobs/JobSearch.jsx'
 
 const Jobs = function () {
   return (
@@ -6,6 +7,7 @@ const Jobs = function () {
       <h1>
         Job Dashboard Placeholder
       </h1>
+      <JobSearch />
     </div>
   );
 };
