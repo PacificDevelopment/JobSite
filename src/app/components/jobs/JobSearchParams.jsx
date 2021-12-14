@@ -1,19 +1,23 @@
 import React from 'react';
-import { Box } from '@mui/material';
-import { SortBy, Range } from './RadioGroups.jsx';
+import { Stack, Button, Container } from '@mui/material';
+import {
+  SortBy, Range, Experience, EmploymentType,
+} from './RadioGroups.jsx';
 import SalarySlider from './SalarySlider.jsx';
 
-
 const JobSearchParams = () => {
-
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <SortBy />
-      <Range />
-      <SalarySlider />
-    </Box>
+    <Container>
+      <Stack>
+        <SortBy />
+        <Range />
+        <Experience />
+        <EmploymentType />
+        <SalarySlider />
+        <Button onClick="" label="Apply Filters" />
+      </Stack>
+    </Container>
   );
-}
-
+};
 
 export default JobSearchParams;
