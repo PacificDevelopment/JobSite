@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { createContext, useState } from 'react';
 
 export const JobSearchContext = createContext(null);
@@ -7,6 +8,7 @@ const JobSearchProvider = (props) => {
   const [drawer, setDrawer] = useState(false);
   const [keywords, setKeywords] = useState('');
   const [location, setLocation] = useState('');
+  const [workSite, setWorkSite] = useState('');
   const [sort, setSort] = React.useState('');
   const [salary, setSalary] = useState([0, 200]);
   const [datePosted, setDatePosted] = useState(null);
@@ -22,6 +24,8 @@ const JobSearchProvider = (props) => {
       setDrawer,
       salary,
       setSalary,
+      workSite,
+      setWorkSite,
       location,
       setLocation,
       keywords,

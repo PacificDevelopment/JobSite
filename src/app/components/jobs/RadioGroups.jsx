@@ -1,10 +1,11 @@
+/* eslint-disable */
 import React, { useState, useContext } from 'react';
 import {
-  FormControl, FormControlLabel, FormLabel, InputLabel, RadioGroup, Radio,
+  FormControl, FormControlLabel, FormLabel, RadioGroup, Radio,
 } from '@mui/material';
-import { JobSearchContext } from './JobSearchContext.jsx';
+import { JobSearchContext } from './JobSearchContext';
 
-export const Sort = () => {
+export function Sort() {
   const { sort, setSort } = useContext(JobSearchContext);
 
   return (
@@ -22,16 +23,15 @@ export const Sort = () => {
       </RadioGroup>
     </FormControl>
   );
-};
+}
 
-export const Range = () => {
+export function Range() {
   const { range, setRange } = useContext(JobSearchContext);
 
   return (
     <FormControl fullWidth>
       <FormLabel id="range">Location Range</FormLabel>
       <RadioGroup
-        // row
         aria-label="range"
         defaultValue=""
         name="range"
@@ -45,9 +45,9 @@ export const Range = () => {
       </RadioGroup>
     </FormControl>
   );
-};
+}
 
-export const Experience = () => {
+export function Experience() {
   const { experience, setExperience } = useContext(JobSearchContext);
   // Non-functional - Responses will have to be filtered server-side
 
@@ -61,16 +61,16 @@ export const Experience = () => {
         name="experience"
         onChange={(e) => setExperience(e.target.value)}
       >
-        <FormControlLabel value={0} label="Entry Level" control={<Radio />} />
-        <FormControlLabel value={1} label="Mid Level" control={<Radio />} />
-        <FormControlLabel value={2} label="Senior Level" control={<Radio />} />
-        <FormControlLabel value={3} label="Executive Level" control={<Radio />} />
+        <FormControlLabel value={'experienceLevel=entry'} label="Entry Level" control={<Radio />} />
+        <FormControlLabel value={'experienceLevel=mid'} label="Mid Level" control={<Radio />} />
+        <FormControlLabel value={'experienceLevel=senior'} label="Senior Level" control={<Radio />} />
+        <FormControlLabel value={'experienceLevel=executive'} label="Executive Level" control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );
-};
+}
 
-export const EmploymentType = () => {
+export function EmploymentType() {
   const { employmentType, setEmploymentType } = useContext(JobSearchContext);
 
   return (
@@ -82,31 +82,31 @@ export const EmploymentType = () => {
         name="employmentType"
         onChange={(e) => setEmploymentType(e.target.value)}
       >
-        <FormControlLabel value="contractperiod=f" label="Full Time" control={<Radio />} />
-        <FormControlLabel value="contractperiod=p" label="Part Time" control={<Radio />} />
-        <FormControlLabel value="contracttype=i" label="Temporary" control={<Radio />} />
-        <FormControlLabel value="contracttype=t" label="Internship" control={<Radio />} />
+        <FormControlLabel value="employmentType=p" label="Part Time" control={<Radio />} />
+        <FormControlLabel value="employmentType=f" label="Full Time" control={<Radio />} />
+        <FormControlLabel value="employmentType=t" label="Temporary" control={<Radio />} />
+        <FormControlLabel value="employmentType=i" label="Internship" control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );
-};
+}
 
-export const WorkSite = () => {
-  const { workSite, setWorkSite } = useState('');
+export function WorkSite() {
+  const { workSite, setWorkSite } = useContext(JobSearchContext);
 
   return (
     <FormControl fullWidth>
-      <FormLabel id="workSite">Work Site</FormLabel>
+      <FormLabel id="worksite">Work Site</FormLabel>
       <RadioGroup
-        aria-label="workSite"
+        aria-label="worksite"
         defaultValue={null}
-        name="workSite"
-        onChange={(e) => setWorkSite('worksite=' + e.target.value)}
+        name="worksite"
+        onChange={(e) => setWorkSite(`worksite=${e.target.value}`)}
       >
-        <FormControlLabel value="remote" label="Remote" control={<Radio />} />
-        <FormControlLabel value="onsite" label="On Site" control={<Radio />} />
-        <FormControlLabel value="mixed" label="Mixed" control={<Radio />} />
+        <FormControlLabel value="worksite=remote" label="Remote" control={<Radio />} />
+        <FormControlLabel value="worksite=onsite" label="On Site" control={<Radio />} />
+        <FormControlLabel value="" label="Mixed" control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );
-};
+}

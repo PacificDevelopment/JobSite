@@ -1,62 +1,49 @@
+/* eslint-disable */
 import { useSearchParams, useLocation } from 'react-router-dom';
-import {parseSearchInput} from '../../utils/searchUtils'
 import React, { useContext } from 'react';
-import { Button } from "@mui/material";
+import { Button } from '@mui/material';
+import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
-import axios from 'axios'
+import { parseSearchInput } from '../../utils/searchUtils';
 
-const SubmitSearchButton = (props) => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  let {
+function SubmitSearchButton(props) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const {
     range,
     sort,
-    salary,
     location,
     keywords,
-    // datePosted,
     employmentType,
+    experience,
   } = useContext(JobSearchContext);
 
   const submitSearch = () => {
     // integrate page into URL, useLocation to add pagination to QS
     // search default size
-    let query = [];
+    const query = [];
+    (sort) && (query.push(sort));
+    (range) && (query.push(range));
     (keywords) && (query.push(keywords));
     (location) && (query.push(location));
-    (range) && (query.push(range));
-    (sort) && (query.push(sort));
+    (experience) && (query.push(experience));
+    (employmentType) && (query.push(employmentType));
 
-    let queryString = query.join('&')
-    console.log(queryString)
+    const queryString = query.join('&');
+    console.log(queryString);
 
-    axios.get(`/data/jobs/?${queryString}`)
-
-  }
+    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`);
+  };
 
   return (
     <Button
       {...{ props }}
       fullWidth
-      sx={{background: 'blue'}}
+      sx={{ background: 'blue' }}
       onClick={submitSearch}
     >
       Submit Search
     </Button>
-  )
+  );
 }
 
 export default SubmitSearchButton;
-
-// log all variables,
-// chek if truthy,
-// if truthy, construct query string
-// send post request to backend
-
-// let {
-// keywords,
-// location,
-// sort,
-// radius,
-// contracttype, //f or 'p' or omitted
-// contractperiod, //i or t or omitted
-// } = req.query // from API
