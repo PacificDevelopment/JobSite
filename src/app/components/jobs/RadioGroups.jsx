@@ -82,10 +82,10 @@ export function EmploymentType() {
         name="employmentType"
         onChange={(e) => setEmploymentType(e.target.value)}
       >
-        <FormControlLabel value="employmentType=p" label="Part Time" control={<Radio />} />
-        <FormControlLabel value="employmentType=f" label="Full Time" control={<Radio />} />
-        <FormControlLabel value="employmentType=t" label="Temporary" control={<Radio />} />
-        <FormControlLabel value="employmentType=i" label="Internship" control={<Radio />} />
+        <FormControlLabel value="employmentType=Part Time" label="Part Time" control={<Radio />} />
+        <FormControlLabel value="employmentType=Full Time" label="Full Time" control={<Radio />} />
+        <FormControlLabel value="employmentType=Temporary" label="Temporary" control={<Radio />} />
+        <FormControlLabel value="employmentType=Internship" label="Internship" control={<Radio />} />
       </RadioGroup>
     </FormControl>
   );
