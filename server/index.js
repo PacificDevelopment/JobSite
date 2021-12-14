@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 const employers = require('./controllers/employersController');
+const jobSearch = require('./controllers/jobSearchController');
+
 const applications = require('./controllers/applicationsController');
 
 const app = express();
@@ -8,6 +10,7 @@ const port = 3000;
 
 app.use(express.static('dist'));
 app.use(express.json());
+app.use(express.urlencoded());
 
 // app.get('/job_listings', (req, res) => {
 //   console.log('express get request');
