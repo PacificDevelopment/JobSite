@@ -1,34 +1,24 @@
+/* eslint-disable */
 import React, { useContext } from 'react';
-import {
-  Drawer, Button, Box, Typography,
-} from '@mui/material';
+import { Drawer, Box, Typography } from '@mui/material';
 import JobSearchParams from './JobSearchParams';
 import { JobSearchContext } from './JobSearchContext';
 
 const JobSearchDrawer = () => {
-  const {
-    drawer, setDrawer,
-  } = useContext(JobSearchContext);
+  const { drawer, setDrawer } = useContext(JobSearchContext);
   const toggleDrawer = () => setDrawer((d) => !d);
-  const updateQuery = () => { };
-
   return (
-    <>
-      {/* <Button onClick={toggleDrawer} fullWidth >Search Filters</Button> */}
-      <Button onClick={updateQuery} sx={{ background: 'black' }} fullWidth>Search</Button>
-      <Drawer
-        anchor="right"
-        variant="temporary"
-        open={drawer}
-        onClose={toggleDrawer}
-      >
-        <Box role="presentation" sx={{ width: 250, m: 2 }}>
-          <Typography>Filters</Typography>
-          <JobSearchParams />
-          <Button onClick={updateQuery} label="Apply Filters" />
-        </Box>
-      </Drawer>
-    </>
+    <Drawer
+      anchor="right"
+      variant="temporary"
+      open={drawer}
+      onClose={toggleDrawer}
+    >
+      <Box sx={{ minWidth: 350, m: 1 }}>
+        <Typography variant={'h5'}>Filters</Typography>
+        <JobSearchParams />
+      </Box>
+    </Drawer>
   );
 };
 
