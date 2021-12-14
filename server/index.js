@@ -1,6 +1,7 @@
 const express = require('express');
 const employers = require('./controllers/employersController');
 const applications = require('./controllers/applicationsController');
+const savedJobs = require('./controllers/savedJobsController');
 const app = express();
 const port = 3000;
 
@@ -31,7 +32,6 @@ app.get('/appliedJobs', applications.getAppliedJobs);
 app.post('/savedJobs', savedJobs.saveJob);
 
 app.get('/savedJobs', savedJobs.getSavedJobs);
-
 
 app.listen(port, () => {
   console.log(`Jobsite app listening at http://localhost:${port}`);
