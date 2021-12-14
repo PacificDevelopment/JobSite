@@ -33,7 +33,7 @@ function Home({ createAccount }) {
         xs={8}
         className="hero"
         style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(${Hero})`, backgroundSize: 'cover',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(${Hero})`, backgroundSize: 'cover', p: 0,
         }}
       >
         <AccountSelection createAccount={createAccount} />
@@ -52,7 +52,7 @@ function Home({ createAccount }) {
         <Grid
           xs={3}
           sx={[centerStyle, {
-            flexDirection: 'column', justifyContent: 'start', padding: 5,
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
           }]}
         >
           <img src={Glass} alt="Find Jobs" width={75} />
@@ -61,7 +61,7 @@ function Home({ createAccount }) {
         <Grid
           xs={3}
           sx={[centerStyle, {
-            flexDirection: 'column', justifyContent: 'start', padding: 5,
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
           }]}
         >
           <img src={Checklist} alt="Organize Your Search" width={75} />
@@ -70,7 +70,7 @@ function Home({ createAccount }) {
         <Grid
           xs={3}
           sx={[centerStyle, {
-            flexDirection: 'column', justifyContent: 'start', padding: 5,
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
           }]}
         >
           <img src={Click} alt="Apply In One Click" width={75} />
@@ -79,7 +79,7 @@ function Home({ createAccount }) {
         <Grid
           xs={3}
           sx={[centerStyle, {
-            flexDirection: 'column', justifyContent: 'start', padding: 5,
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
           }]}
         >
           <img src={Job} alt="Keep Track Of Interviews" width={75} />

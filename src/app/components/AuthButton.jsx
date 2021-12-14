@@ -45,7 +45,7 @@ export default function AuthButton({
       color="secondary"
       onClick={onClick}
       sx={[{
-        textTransform: 'none', p: 2, pl: 2, m: 1, justifyContent: 'start', width: 400,
+        textTransform: 'none', p: 2, pl: 2, m: 1, justifyContent: 'start', width: 300,
       }, type, styleOverride]}
     >
       <img src={image} width="20" alt={`${text} logo`} style={{ transform: 'translateY(-5%)' }} />
