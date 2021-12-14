@@ -3,12 +3,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Theme from '../Theme';
+import JobSearch from '../components/jobs/JobSearch';
 
 function Jobs() {
   return (
     <Box>
       <Box>
         <Button variant="outline" style={Theme.palette.independence}>Filter</Button>
+        <JobSearch />
         <TextField id="job-title" label="Job Title or Keyword" />
         <TextField id="location" label="Search by Location" />
         <Button variant="outline" style={Theme.palette.independence}>View Results</Button>

@@ -9,10 +9,10 @@ import Theme from '../Theme';
 
 function NavBar() {
   return (
-    <Grid item xs={2} style={Theme.palette.azure}>
+    <Grid item xs={1} style={Theme.palette.azure}>
       <AppBar position="static" style={{ height: '100%' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <img alt="JobSite" src={TextLogo} />
+          <img alt="JobSite" src={TextLogo} height="100" />
           <div>
             <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDeoration: 'none', color: 'white' }} to="/">Home</Link></Button>
             <Button color="inherit" style={Theme.palette.independence}>

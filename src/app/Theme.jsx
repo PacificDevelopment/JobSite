@@ -31,4 +31,14 @@ export default createMuiTheme({
       color: '#85CDD2',
     },
   },
+  typography: {
+    fontFamily: [
+      'Catamaran',
+      'Actor',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
+  },
 });

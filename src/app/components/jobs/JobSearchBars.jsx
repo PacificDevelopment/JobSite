@@ -1,7 +1,9 @@
+/*eslint-disable*/
 import React, { useContext, useState } from 'react';
 import {
   Box, Stack, FormControl, InputLabel, Input, InputAdornment,
 } from '@mui/material';
+import { parseSearchInput } from '../../utils/searchUtils'
 import { LocationOn, LocationOff, Tune } from '@mui/icons-material';
 import { JobSearchContext } from './JobSearchContext';
 
@@ -23,6 +25,8 @@ export const LocationSearch = () => {
     );
   };
 
+  let handleLocationInput = (e) => setLocation(parseSearchInput(e, 'location'))
+
   return (
 
     <FormControl variant="outlined" disabled={!!anywhere}>
@@ -30,7 +34,8 @@ export const LocationSearch = () => {
       <Input
         id="location"
         onFocus={() => setAnywhere(false)}
-        onChange={(e) => setLocation(`location=${e.target.value}`)}
+        onChange={handleLocationInput}
+        // onChange={(e) => setLocation(`location=${e.target.value}`)}
         endAdornment={[<LocationSearchIcon />]}
       />
     </FormControl>
@@ -52,15 +57,16 @@ export const KeywordSearch = () => {
     );
   };
 
+  let handleKeywordsInput = (e) => setKeywords(parseSearchInput(e, 'keywords'))
+
   return (
     <FormControl>
-      <InputLabel htmlFor="keyword">
+      <InputLabel htmlFor="keywords">
         Search Jobs
       </InputLabel>
       <Input
-        id="keyword"
-        value={keywords}
-        onChange={(e) => setKeywords(e.target.value)}
+        id="keywords"
+        onChange={handleKeywordsInput}
         endAdornment={<FiltersIcon />}
       />
     </FormControl>
@@ -68,12 +74,10 @@ export const KeywordSearch = () => {
 };
 
 const JobSearchBars = () => (
-  <Box>
-    <Stack>
-      <KeywordSearch />
-      <LocationSearch />
-    </Stack>
-  </Box>
+  <>
+    <KeywordSearch />
+    <LocationSearch />
+  </>
 );
 
 export default JobSearchBars;
