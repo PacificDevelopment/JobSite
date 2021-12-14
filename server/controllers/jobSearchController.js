@@ -44,25 +44,34 @@ exports.scrapeDescription = (req, res) => {
 
 exports.jobSearch = (req, res) => {
   let {
-    location, //
-    keywords,
+    location, // String
+    keywords, // String
     // eslint-disable-next-line prefer-const
-    sortBy, //sort
-    pagesize,
-    radius,
-    page,
+    sort, // String ('relevance', 'data', 'salary')
+    pagesize, // Integer
+    radius, // Integer (5, 10, 50, 100)
+    page, // Integer
     // eslint-disable-next-line prefer-const
-    employmentType,
+    employmentType, // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
+    experienceLevel, //String ('Entry', 'Mid', 'Senior', 'Executive')
+    worksite, // String ('remote', 'onsite', 'mixed')
+
   } = req.query;
+
+  keywords = experienceLevel && `${experienceLevel} ${keywords}`;
+  // if (experienceLevel) {
+  //   keywords = `${experienceLevel} ${keywords}`;
+  // }
 
   // careerjet api does not support "remote" location
   // add remote to search
-  let worksite;
-  if (location.match(/remote/i) || location.match(/anywhere/i)) {
+  if (location.match(/remote/i) || location.match(/anywhere/i) || worksite === 'remote') {
     keywords = `${location} ${keywords}`;
     location = '';
     worksite = 'Remote';
   }
+
+
 
   pagesize = parseInt(pagesize, 10);
   radius = parseInt(radius, 10);
@@ -78,7 +87,7 @@ exports.jobSearch = (req, res) => {
   careerjetAPI
     .location(location)
     .keywords(keywords)
-    .sortBy(sortBy)
+    .sortBy(sort)
     .pagesize(pagesize)
     .radius(radius)
     .page(page)
@@ -86,24 +95,13 @@ exports.jobSearch = (req, res) => {
     .query()
     .then((data) => {
       const results = data.data;
-      console.log(results);
-      results.employmentType = employmentType;
-      // web scrape each returned url to get full description and external application url
-      Promise.all(results.jobs.map(async (job, index) => {
-        await axios.get(job.url)
-          .then((response) => {
-            const html = response.data;
-            const $ = cheerio.load(html);
-            const description = $('.content');
-            // const companyURL = $('.source').children('a').attr('href');
-            results.jobs[index].description = description.html();
-            results.jobs[index].experienceLevel = randomExperienceLevel();
-            results.jobs[index].worksite = worksite || randomWorksite();
-            // possible use regex to change /n in description to <br/>
-            // results.jobs[index].applyExternal = 'careerjet.com' + companyURL;
-          });
-      }))
-        .then(() => res.send(results.jobs));
+      if (results.jobs) {
+      for (let i = 0; i < results.jobs.length; i++) {
+        results.jobs[i].employmentType = employmentType;
+        results.jobs[i].experienceLevel = experienceLevel || randomExperienceLevel();
+        results.jobs[i].worksite = worksite || randomWorksite();
+      }}
+      res.send(results)
     })
     .catch((err) => console.log(err));
 };

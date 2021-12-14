@@ -1,7 +1,7 @@
 
 --Create tables and load database from csv's
 -- Assumes keeper Database Exists
-  --CREATE DATABASE keeper;  command to create database, if needed.
+  --CREATE DATABASE keeper;  command to create database, if needed. (i had to run command "createdb keeper")
 -- Run this SQL file against jobsite database
   -- psql -U postgres     enter psql
   -- \l                   lists databases

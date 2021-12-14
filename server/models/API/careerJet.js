@@ -128,6 +128,7 @@ module.exports = function () {
   };
 
   this.query = function (resolved, rejected) {
+    console.log('query', query);
     if (validateRequiredFields()) {
       // request.get(url, { qs: query }, (err, response, body) => {
       //   if (err) { return rejected(err); }
