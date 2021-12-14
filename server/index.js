@@ -4,6 +4,7 @@ const employers = require('./controllers/employersController');
 const jobSearch = require('./controllers/jobSearchController');
 
 const applications = require('./controllers/applicationsController');
+const savedJobs = require('./controllers/savedJobsController');
 
 const app = express();
 const port = 3000;
@@ -25,7 +26,13 @@ app.use(express.urlencoded());
 
 app.get('/data/employers', employers.retrieveEmployerData);
 
-app.post('/onclick', applications.oneClickApply);
+app.post('/appliedJobs', applications.oneClickApply);
+
+app.get('/appliedJobs', applications.getAppliedJobs);
+
+app.post('/savedJobs', savedJobs.saveJob);
+
+app.get('/savedJobs', savedJobs.getSavedJobs);
 
 // Should always be last route
 app.get('*', (req, res) => {
