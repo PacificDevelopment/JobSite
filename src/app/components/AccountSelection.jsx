@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+import AuthButton from './AuthButton';
+import CustomButton from './CustomButton';
 
 function AccountSelection({ createAccount }) {
   function header() {
@@ -25,7 +26,7 @@ function AccountSelection({ createAccount }) {
           <TextField id="location" label="Search by Location" />
         </Box>
 
-        <Button variant="contained">Find Jobs</Button>
+        <CustomButton text="Find Jobs" />
 
         <Link style={{ textDecoration: 'none', color: 'black' }} to="/LogIn">Been here before?</Link>
       </Box>
@@ -36,9 +37,9 @@ function AccountSelection({ createAccount }) {
       {header()}
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Button sx={{ backgroundColor: 'black', color: 'white' }}>Continue with Apple</Button>
-          <Button sx={{ backgroundColor: '#3b5998', color: 'white' }}>Continue with Facebook</Button>
-          <Button sx={{ backgroundColor: 'white', color: 'black' }}>Continue with Google</Button>
+          <AuthButton text="Apple" />
+          <AuthButton text="Facebook" />
+          <AuthButton text="Google" />
         </Box>
 
         <p>OR</p>
@@ -46,7 +47,20 @@ function AccountSelection({ createAccount }) {
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <TextField id="job-title" label="Email address" />
           <TextField id="location" label="Enter password" />
-          <Button variant="contained">Continue with Email</Button>
+          <CustomButton
+            text="Continue with Email"
+            styleOverride={{
+              width: 400,
+              m: 0,
+              mt: 1,
+              mb: 1,
+              pl: 2,
+              justifyContent: 'start',
+            }}
+            textStyleOverride={{
+              fontWeight: 600,
+            }}
+          />
           {createAccount ? null
             : (
               <Box>

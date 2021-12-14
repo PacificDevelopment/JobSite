@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import AccountSelection from '../components/AccountSelection';
 import { useWindowSize } from '../utils/customHooks';
 import Hero from '../assets/hero.png';
@@ -39,22 +40,50 @@ function Home({ createAccount }) {
       </Grid>
 
       <Grid xs={4} item container>
-        <Grid xs={12} sx={centerStyle}>How JobSite Works</Grid>
-        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+        <Grid xs={12} sx={centerStyle}>
+          <Typography variant="h4">
+            How
+            {' '}
+            <Typography display="inline" variant="h4" color="secondary" sx={{ fontWeight: 'bold' }}>JobSite</Typography>
+            {' '}
+            Works
+          </Typography>
+        </Grid>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 5,
+          }]}
+        >
           <img src={Glass} alt="Find Jobs" width={75} />
-          <p>Find Jobs</p>
+          <Typography variant="h5">Find Jobs</Typography>
         </Grid>
-        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 5,
+          }]}
+        >
           <img src={Checklist} alt="Organize Your Search" width={75} />
-          <p>Organize Your Search</p>
+          <Typography variant="h5">Organize Your Search</Typography>
         </Grid>
-        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 5,
+          }]}
+        >
           <img src={Click} alt="Apply In One Click" width={75} />
-          <p>Apply In One Click</p>
+          <Typography variant="h5">Apply In One Click</Typography>
         </Grid>
-        <Grid xs={3} sx={[centerStyle, { flexDirection: 'column' }]}>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 5,
+          }]}
+        >
           <img src={Job} alt="Keep Track Of Interviews" width={75} />
-          <p>Keep Track Of Interviews</p>
+          <Typography variant="h5">Keep Track Of Interviews</Typography>
         </Grid>
       </Grid>
     </Grid>
