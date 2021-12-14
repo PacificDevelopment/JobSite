@@ -51,16 +51,16 @@ module.exports = function () {
 
   this.employmentType = function (type) {
     switch (type) {
-      case 'Full Time':
+      case 'f':
         query.contractperiod = 'f';
         break;
-      case 'Part Time':
+      case 'p':
         query.contractperiod = 'p';
         break;
-      case 'Temporary':
+      case 't':
         query.contracttype = 't';
         break;
-      case 'Internship':
+      case 'i':
         query.contracttype = 'i';
     }
     return this;

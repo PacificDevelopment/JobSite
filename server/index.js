@@ -14,7 +14,9 @@ app.get('/', (req, res) => {
   res.send('Hello Job Seekers!')
 });
 
-app.get('/jobsearch', jobSearch.jobSearch);
+app.get('/data/jobsearch', jobSearch.jobSearch);
+
+app.get('/data/jobsearchdescription', jobSearch.scrapeDescription);
 
 app.get('/data/employers', employers.retrieveEmployerData);
 

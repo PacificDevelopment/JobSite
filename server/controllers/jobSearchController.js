@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 require('dotenv').config();
 
-const CareerJet = require('../careerJet');
+const CareerJet = require('../models/API/careerJet');
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -29,12 +29,25 @@ const randomWorksite = () => {
   return random ? 'On-Site' : 'Mixed';
 };
 
+exports.scrapeDescription = (req, res) => {
+  const { url } = req.query;
+  axios.get(url)
+    .then((response) => {
+      const html = response.data;
+
+      const $ = cheerio.load(html);
+      const description = $('.content');
+      res.send(description.html());
+    })
+    .catch((err) => res.send(err));
+};
+
 exports.jobSearch = (req, res) => {
   let {
-    location,
+    location, //
     keywords,
     // eslint-disable-next-line prefer-const
-    sortBy,
+    sortBy, //sort
     pagesize,
     radius,
     page,
@@ -62,8 +75,6 @@ exports.jobSearch = (req, res) => {
     user_agent: 'JobSite',
   });
 
-  console.log(careerjetAPI);
-
   careerjetAPI
     .location(location)
     .keywords(keywords)
@@ -75,7 +86,7 @@ exports.jobSearch = (req, res) => {
     .query()
     .then((data) => {
       const results = data.data;
-
+      console.log(results);
       results.employmentType = employmentType;
       // web scrape each returned url to get full description and external application url
       Promise.all(results.jobs.map(async (job, index) => {
