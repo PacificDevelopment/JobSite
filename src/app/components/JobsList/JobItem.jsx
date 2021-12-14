@@ -13,10 +13,9 @@ const JobItem = (props) => {
 
   const jobSelect = (selectedJob) => {
     props.handleFocus(selectedJob)
-    console.log('what is up yall', selectedJob);
+
   }
   useEffect(() => {
-    console.log('useEffect in jobItem');
     if (displayToggle) {
       props.handleFocus(props.job);
       setToggle(false);

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 const JobFocusItem = (props) => {
    if (props.job){
       return (
-      <Card display="flex">
+      <Card sx={{ justifyContent: 'center' }}>
         <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {props.job.company}
