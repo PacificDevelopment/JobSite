@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
@@ -8,7 +9,11 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 
 const employers = require('./controllers/employersController');
-const User = require('./user'); // update to postgres pool
+const jobSearch = require('./controllers/jobSearchController');
+
+const applications = require('./controllers/applicationsController');
+const savedJobs = require('./controllers/savedJobsController');
+const User = require('./models/userModel');
 
 // ----------------------------------------- END OF IMPORTS-----------------------------------------
 
@@ -38,6 +43,7 @@ app.use(express.json());
 require('./passportConfig')(passport);
 
 // -------------------------------------- END OF MIDDLEWARE-----------------------------------------
+app.use(express.urlencoded());
 
 app.get('/', (req, res) => {
   res.send('Hello Job Seekers!');
@@ -92,8 +98,28 @@ app.get('/user', (req, res) => {
 //       res.status(404).send(err);
 //     });
 // });
+app.get('/data/jobsearch', jobSearch.jobSearch);
+
+app.get('/data/jobsearchdescription', jobSearch.scrapeDescription);
 
 app.get('/data/employers', employers.retrieveEmployerData);
+
+app.post('/appliedJobs', applications.oneClickApply);
+
+app.get('/appliedJobs', applications.getAppliedJobs);
+
+app.post('/savedJobs', savedJobs.saveJob);
+
+app.get('/savedJobs', savedJobs.getSavedJobs);
+
+// Should always be last route
+app.get('*', (req, res) => {
+  if (req.path.endsWith('bundle.js')) {
+    res.sendFile(path.resolve(__dirname, '../dist/main.bundle.js'));
+  } else {
+    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+  }
+});
 
 app.listen(port, () => {
   console.log(`Jobsite app listening at http://localhost:${port}`);

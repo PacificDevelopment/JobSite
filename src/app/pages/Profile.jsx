@@ -1,10 +1,9 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import Theme from '../Theme';
 
-const Profile = function () {
+function Profile() {
   return (
     <Box>
       <Box style={{ borderWidth: 1, borderColor: 'black' }}>
@@ -43,6 +42,6 @@ const Profile = function () {
       <Button variant="outlined" style={Theme.palette.independence}>Reset Password</Button>
     </Box>
   );
-};
+}
 
 export default Profile;

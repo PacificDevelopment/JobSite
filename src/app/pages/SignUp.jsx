@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-const SignUp = function () {
+function SignUp() {
   const [registerUsername, setRegisterUsername] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const register = () => {
@@ -31,6 +31,6 @@ const SignUp = function () {
       </div>
     </div>
   );
-};
+}
 
 export default SignUp;

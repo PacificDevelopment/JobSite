@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 
-const LogIn = function () {
+function LogIn() {
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [data, setData] = useState(null);
@@ -55,6 +55,6 @@ const LogIn = function () {
       </div>
     </div>
   );
-};
+}
 
 export default LogIn;

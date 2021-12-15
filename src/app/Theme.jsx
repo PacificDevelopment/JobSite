@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
-export default createMuiTheme({
+export default createTheme({
   palette: {
     primary: {
       main: '#EDFEFF',
@@ -30,5 +30,15 @@ export default createMuiTheme({
       backgroundColor: '#85CDD2',
       color: '#85CDD2',
     },
+  },
+  typography: {
+    fontFamily: [
+      'Catamaran',
+      'Actor',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
   },
 });
