@@ -23,6 +23,7 @@ module.exports = function (passport) {
     cb(null, user.rows[0].id);
   });
   passport.deserializeUser((id, cb) => {
+    debugger;
     User.findById(id, (err, user) => {
       const userInformation = {
         username: user.rows[0].email,

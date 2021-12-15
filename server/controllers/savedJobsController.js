@@ -1,10 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-const savedJobModels = require('../models/savedJobModel.js');
+const savedJobModels = require('../models/savedJobModel');
 const employerModel = require('../models/employerModel');
 const jobPostModel = require('../models/jobPostModel');
 
 exports.saveJob = async (req, res) => {
+  //debugger;
+  req.user = req.body.data.user;
+
+  //console.log(req.user.id);
   const {
     salary_min,
     locations,
@@ -21,9 +25,8 @@ exports.saveJob = async (req, res) => {
     employmentType,
     experienceLevel,
     worksite,
-    session_id,
     interest_level,
-  } = req.body;
+  } = req.body.data.job;
 
   await employerModel.insertEmployer({ name: company })
     .then((data) => {
@@ -35,11 +38,10 @@ exports.saveJob = async (req, res) => {
   await jobPostModel.insertJobPost(req.body)
     .then((data) => { job_post_id = data.rows[0].id; })
     .catch((err) => console.log(err));
-
-
-  savedJobModels.saveJob(session_id, interest_level, job_post_id)
+  debugger;
+  savedJobModels.saveJob(req.user.id, interest_level, job_post_id)
     .then((data) => {
-      res.status(200).send(data);
+      res.status(201).send(data);
     })
     .catch((err) => {
       res.send(err);
@@ -47,9 +49,9 @@ exports.saveJob = async (req, res) => {
 };
 
 exports.getSavedJobs = (req, res) => {
-  savedJobModels.getSavedJobs(req.body.session_id)
+  savedJobModels.getSavedJobs(req.user.id)
     .then((data) => {
-      res.status(200).send(data);
+      res.status(200).send(data.rows);
     })
     .catch((err) => {
       res.send(err);

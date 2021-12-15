@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
-
+import SaveJobButton from '../SaveJobButton/SaveJobButton';
+import PrimaryButton from '../PrimaryButton';
 
 const JobItem = (props) => {
   const [displayToggle, setDisplayToggle] = useState(true);
@@ -42,8 +42,8 @@ const JobItem = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={(e) => { jobSelect(props.job) }}>Learn More</Button>
-        <Button size="small" onClick={(e) => {  }}>Save Job</Button>
+        <PrimaryButton text="Learn More" onClick={(e) => { jobSelect(props.job) }} />
+        <SaveJobButton job={props.job} />
       </CardActions>
     </Card>
   )
