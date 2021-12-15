@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import AuthButton from './AuthButton';
 
-import CustomButton from './CustomButton';
+import CustomButton from '../CustomButton';
 
 function AccountSelection({ createAccount }) {
   function header() {
@@ -38,7 +38,7 @@ function AccountSelection({ createAccount }) {
     <Paper
       elevation={9}
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, .7)', p: 1, pr: 5, pl: 5,
+        backgroundColor: 'rgba(255, 255, 255, .7)', p: 2, pr: 5, pl: 5, m: 3,
       }}
     >
       {header()}

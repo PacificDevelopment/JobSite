@@ -9,7 +9,7 @@ import Theme from '../Theme';
 
 function NavBar() {
   return (
-    <Grid item xs={1} style={Theme.palette.azure}>
+    <Grid item xs={1} sx={Theme.palette.azure}>
       <AppBar position="static" style={{ height: '100%' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <img alt="JobSite" src={TextLogo} height="100" />
