@@ -16,7 +16,7 @@ function SearchJobsList() {
         <JobSearch setSearchResults={setSearchResults} />
       </Box>
       <Box>
-        <Main jobsData={searchResults} />
+        <Main jobsData={searchResults.jobs} />
       </Box>
     </Box>
   );

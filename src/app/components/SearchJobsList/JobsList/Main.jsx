@@ -9,8 +9,9 @@ import JobSearch from "../jobs/JobSearch.jsx";
 
 
 const Main = ({ jobsData }) => {
-  const [jobsState, setJobs] = useState(jobsData.jobs);
+  // const [jobsState, setJobs] = useState(jobsData.jobs);
   const [jobFocusState, setItem] = useState({})
+
 
   const mainFocusFunction = (targetJobItem) => {
     setItem(targetJobItem);
@@ -24,7 +25,7 @@ const Main = ({ jobsData }) => {
     <Container sx={{ display: 'flex' }}>
 
       <Box >
-        <JobsList mainFocusFunction={mainFocusFunction} listOfJobs={jobsState} />
+        <JobsList mainFocusFunction={mainFocusFunction} listOfJobs={jobsData} />
       </Box>
       <Box sx={{ alignItems: 'center' }}>
         <JobFocusItem job={jobFocusState} />
