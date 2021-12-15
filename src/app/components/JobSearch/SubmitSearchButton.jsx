@@ -1,20 +1,22 @@
 /* eslint-disable */
 import { useSearchParams, useLocation } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
 import React, { useContext } from 'react';
-import { Button } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
 import { parseSearchInput } from '../../utils/searchUtils';
+import PrimaryButton from '../PrimaryButton';
 
 function SubmitSearchButton(props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const {
     range,
     sort,
-    location,
     keywords,
-    employmentType,
+    location,
     experience,
+    employmentType,
   } = useContext(JobSearchContext);
 
   const submitSearch = () => {
@@ -31,19 +33,40 @@ function SubmitSearchButton(props) {
     const queryString = query.join('&');
     console.log(queryString);
 
-    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`);
+    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
+      .then((results) => {
+        props.setSearchResults(results.data);
+      });
   };
 
   return (
-    <Button
-      {...{ props }}
-      fullWidth
-      sx={{ background: 'blue' }}
+    <PrimaryButton
       onClick={submitSearch}
-    >
-      Submit Search
-    </Button>
+      text="Find Jobs"
+    />
   );
 }
 
 export default SubmitSearchButton;
+
+
+
+
+
+// export default function PrimaryButton({
+//   text, onClick, styleOverride, textStyleOverride, fullWidth,
+// }) {
+//   return (
+//     <Button
+//       fullWidth={fullWidth}
+//       variant="contained"
+//       color="secondary"
+//       onClick={onClick}
+//       sx={[{
+//         textTransform: 'none', p: 1, pr: 5, pl: 5, m: 2,
+//       }, styleOverride]}
+//     >
+//       <Typography sx={[textStyleOverride]}>{text}</Typography>
+//     </Button>
+//   );
+// }

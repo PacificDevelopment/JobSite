@@ -4,40 +4,38 @@ import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import axios from 'axios';
-import SavedJobsList from "./SavedJobsList.jsx";
+import SavedJobsList from './SavedJobsList.jsx';
 
-const Main = () => {
+function Main() {
   const [jobsState, setJobs] = useState({});
 
   useEffect(() => {
-    getSavedJobs()
+    getSavedJobs();
   }, []);
 
   const getSavedJobs = () => {
     axios.get('/savedJobs')
-      .then(results => {
+      .then((results) => {
         setJobs(results.data);
-        console.log('hopefully a saved jobs list', results.data)
+        console.log('hopefully a saved jobs list', results.data);
       })
       .catch((err) => {
-        console.log('get request failed')
-      }
-      )
-  }
+        console.log('get request failed');
+      });
+  };
 
   if (jobsState !== {}) {
-    console.log('this is jobs state', jobsState)
-    return (<div>Nothing here until get request returns data</div>)
-  } else {
-
-    return (
-      <Container sx={{ display: 'flex' }}>
-        <Box >
-          <SavedJobsList listOfJobs={jobsState} />
-        </Box>
-      </Container>
-    )
+    console.log('this is jobs state', jobsState);
+    return (<div>Nothing here until get request returns data</div>);
   }
+
+  return (
+    <Container sx={{ display: 'flex' }}>
+      <Box>
+        <SavedJobsList listOfJobs={jobsState} />
+      </Box>
+    </Container>
+  );
 }
 
 export default Main;

@@ -6,16 +6,14 @@ import JobSearchProvider from './JobSearchContext';
 import JobSearchBars from './JobSearchBars';
 import SubmitSearchButton from './SubmitSearchButton';
 
-const JobSearch = () => {
+const JobSearch = ({setSearchResults}) => {
+
   return (
     <JobSearchProvider>
-      <Box sx={{ minWidth: 120, m: 2 }}>
-        <Stack> {/* Maybe pass this in as props to change layout and reuse component around the site */}
-          <JobSearchBars />
-        </Stack>
+      <JobSearchBars>
+        <SubmitSearchButton setSearchResults={setSearchResults} />
         <JobSearchDrawer />
-        <SubmitSearchButton />
-      </Box>
+      </JobSearchBars>
     </JobSearchProvider>
   );
 };

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import {
-  useLocation, Link,
+  useLocation,
 } from 'react-router-dom';
-import Theme from '../Theme';
+import JobSearch from '../components/JobSearch/JobSearch';
 
 function Dashboard() {
   const [jobSearch, setJobSearch] = useState('');
@@ -29,16 +27,8 @@ function Dashboard() {
 
   return (
     <Box>
-      <Box>
-        <form onSubmit={handleSubmit}>
-          <Button variant="outline" style={Theme.palette.independence}>Filter</Button>
-          <TextField id="job-title" value={jobSearch} onChange={((e) => setJobSearch(e.target.value))} label="Job Title or Keyword" />
-          <TextField id="location" value={locationSearch} onChange={((e) => setLocationSearch(e.target.value))} label="Search by Location" />
-          <Button type="submit" variant="outline" style={Theme.palette.independence}>
-            <Link to={`/dashboard?jobsearch=${jobSearch}&location=${locationSearch}`}>Search</Link>
-          </Button>
-        </form>
-      </Box>
+      <JobSearch />
+
       <h1>Employers: Post a job here</h1>
       <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
         <Box>

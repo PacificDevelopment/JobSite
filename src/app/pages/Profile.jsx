@@ -1,7 +1,6 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import Theme from '../Theme';
 
 function Profile() {

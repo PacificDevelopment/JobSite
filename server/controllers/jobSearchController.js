@@ -59,7 +59,9 @@ exports.jobSearch = (req, res) => {
 
   } = req.query;
 
-  keywords = experienceLevel && `${experienceLevel} ${keywords}`;
+  //Add the input experience level to keywords
+  //keywords = experienceLevel && `${experienceLevel} ${keywords}`;
+  keywords = `${experienceLevel} ${keywords}`;
 
   // careerjet api does not support "remote" location
   // add remote to search
