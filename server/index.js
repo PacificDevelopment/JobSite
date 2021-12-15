@@ -27,7 +27,7 @@ app.use(
     origin: 'http://localhost:3000', // <-- location of the react app were connecting to
     credentials: true,
   }),
-); // ^^^ Might need to delete Cors since there is no cross-server?
+);
 app.use(
   session({
     secret: 'secretcode',
@@ -52,8 +52,11 @@ app.get('/', (req, res) => {
 app.post('/login', authorization.login);
 app.post('/register', authorization.register);
 app.get('/user', (req, res) => {
-  // console.log('u', req);
-  // console.log('u', req.user);
+  if (!req.user) {
+    req.user = { loggedIn: false };
+  } else {
+    req.user.loggedIn = true;
+  }
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside it.
 });
 
