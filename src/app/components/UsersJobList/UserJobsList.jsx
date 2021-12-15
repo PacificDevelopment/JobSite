@@ -1,21 +1,21 @@
 import *  as React from 'react';
 import { useState, useEffect} from 'react';
 import { styled } from '@mui/material/styles';
-import SavedJobItem from "./SavedJobItem.jsx";
+import UserJobItem from "./UserJobItem.jsx";
 import Container from '@mui/material/Container';
 
 
 
 
-const SavedJobsList = (props) => {
+const UserJobsList = (props) => {
 
     return (
       <Container >
       {props.listOfJobs.map((job) =>
-        <SavedJobItem  key ={job.url} job={job} handleFocus={handleFocusItem}/>
+        <UserJobItem  key ={job.url} job={job} handleFocus={handleFocusItem}/>
       )}
       </Container>
   );
 };
 
-export default SavedJobsList;
+export default UserJobsList;

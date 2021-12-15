@@ -1,11 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box, Stack, Button,
 } from '@mui/material';
 import Theme from '../Theme';
 import JobSearch from '../components/JobSearch/JobSearch';
+import Main from '../components/UsersJobList/Main.jsx';
+import axios from 'axios';
 
-function Jobs() {
+
+
+const Jobs = () => {
+  const [savedJobsList, setJobs] = useState({})
+  const [interestLevel, setInterest] = useState('');
+
+  useEffect(() => {
+    getSavedJobs();
+  }, []);
+
+  const getSavedJobs = (interestParam) => {
+    axios.get('/savedJobs')
+      .then((results) => {
+        setJobs(results.data);
+        setInterest(interestParam);
+        //this returns a list of ALL saved jobs for ALL interest levels
+        console.log('hopefully a saved jobs list', results.data);
+      })
+      .catch((err) => {
+        console.log('get request failed');
+      });
+  };
+
+  const getAppliedJobs = (interestParam) => {
+    axios.get('/appliedJobs')
+      .then((results) => {
+        setJobs(results.data);
+        setInterest(interestParam);
+        console.log('hopefully a saved jobs list', results.data);
+      })
+      .catch((err) => {
+        console.log('get request failed');
+      });
+  }
+
+  const selectJobList = (event) => {
+    const interestLevel = event.target.innerText;
+    switch (event.target.innerText) {
+      case "APPLIED":
+        getAppliedJobs(interestLevel);
+        break;
+      case "EXTREMELY INTERESTED":
+        getSavedJobs(interestLevel);
+        break;
+      case "VERY INTERESTED":
+        getSavedJobs(interestLevel);
+        break;
+      case "INTERESTED":
+        getSavedJobs(interestLevel);
+        break;
+    }
+    getSavedJobs(interestLevel);
+  }
   return (
     <Box>
       <Stack sx={{ m: 3 }}>
@@ -13,20 +67,19 @@ function Jobs() {
       </Stack>
       <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
         <h1>My Jobs</h1>
-        <Button variant="outline" style={Theme.palette.independence}>Applied</Button>
-        <Button variant="outline" style={Theme.palette.independence}>Extremely Interested</Button>
-        <Button variant="outline" style={Theme.palette.independence}>Very Interested</Button>
-        <Button variant="outline" style={Theme.palette.independence}>Interested</Button>
+        <Button
+          variant="outline"
+          style={Theme.palette.independence}
+          onClick={selectJobList}
+        >Applied</Button>
+        <Button variant="outline" style={Theme.palette.independence} onClick={selectJobList}
+        >Extremely Interested</Button>
+        <Button variant="outline" style={Theme.palette.independence} onClick={selectJobList}
+        >Very Interested</Button>
+        <Button variant="outline" style={Theme.palette.independence} onClick={(event) => selectJobList}
+        >Interested</Button>
       </Box>
-      <Box>
-        <p>Job Card</p>
-        r
-        <p>Job Card</p>
-        <p>Job Card</p>
-        <p>Job Card</p>
-        <p>Job Card</p>
-        <p>Job Card</p>
-      </Box>
+      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} />
     </Box>
   );
 }

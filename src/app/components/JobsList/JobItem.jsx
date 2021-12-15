@@ -5,23 +5,23 @@ import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
-
+import SaveJobButton from '../SaveJobButton/SaveJobButton';
+import PrimaryButton from '../PrimaryButton';
 
 const JobItem = (props) => {
-  const [displayToggle, setToggle] = useState(true);
+  const [displayToggle, setDisplayToggle] = useState(true);
 
   const jobSelect = (selectedJob) => {
     props.handleFocus(selectedJob)
-    console.log('what is up yall', selectedJob);
+
   }
-  useEffect(() => {
-    console.log('useEffect in jobItem');
-    if (displayToggle) {
-      props.handleFocus(props.job);
-      setToggle(false);
-    }
-  }, []);
+
+  // useEffect(() => {
+  //   if (displayToggle) {
+  //     props.handleFocus(props.job);
+  //     setDisplayToggle(false);
+  //   }
+  // }, []);
 
   return (
     <Card >
@@ -42,7 +42,8 @@ const JobItem = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={(e) => { jobSelect(props.job) }}>Learn More</Button>
+        <PrimaryButton text="Learn More" onClick={(e) => { jobSelect(props.job) }} />
+        <SaveJobButton job={props.job} />
       </CardActions>
     </Card>
   )
