@@ -5,12 +5,8 @@ import React, { useContext } from 'react';
 import { Grid, Button } from '@mui/material';
 import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
-<<<<<<< HEAD:src/app/components/SearchJobsList/jobs/SubmitSearchButton.jsx
-import { parseSearchInput } from '../../../utils/searchUtils';
-=======
 import { parseSearchInput } from '../../utils/searchUtils';
 import PrimaryButton from '../PrimaryButton';
->>>>>>> main:src/app/components/JobSearch/SubmitSearchButton.jsx
 
 function SubmitSearchButton(props) {
   const [searchParams, setSearchParams] = useSearchParams();

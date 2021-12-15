@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
 
 
@@ -42,6 +43,7 @@ const JobItem = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={(e) => { jobSelect(props.job) }}>Learn More</Button>
+        <Button size="small" onClick={(e) => { jobSave(props.job) }}>Save Job</Button>
       </CardActions>
     </Card>
   )
