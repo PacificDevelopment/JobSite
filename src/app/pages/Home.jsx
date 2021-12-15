@@ -11,7 +11,7 @@ import Checklist from '../assets/checklist.png';
 import Click from '../assets/click 1.png';
 import Job from '../assets/job 1.png';
 import CustomCard from '../components/home/CustomCard';
-import CustomButton from '../components/CustomButton';
+import PrimaryButton from '../components/PrimaryButton';
 import JobSearch from '../components/JobSearch/JobSearch';
 
 const centerStyle = {
@@ -60,7 +60,7 @@ function Home({ createAccount }) {
             >
               Connecting people with jobs and jobs with people.
             </Typography>
-            <CustomButton
+            <PrimaryButton
               sx={{
                 mt: 5, mb: 5, pl: 2, pr: 2, mr: 2, ml: 2,
               }}
@@ -80,7 +80,7 @@ function Home({ createAccount }) {
           </Paper>
         ))}
 
-        <CustomButton sx={{ mt: 3, mb: 3 }} text="Get Started" />
+        <PrimaryButton sx={{ mt: 3, mb: 3 }} text="Get Started" />
       </Box>
 
     );
