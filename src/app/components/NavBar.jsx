@@ -4,12 +4,44 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import TextLogo from '../assets/TextLogo.png';
+import MobileLogo from '../assets/MobileLogo.png';
+import { useWindowSize } from '../utils/customHooks';
+import MobilePopout from './home/MobilePopout';
 import Theme from '../Theme';
 
 function NavBar() {
+  const { width } = useWindowSize();
+
+  const ovalStyle = {
+    position: 'absolute',
+    top: -190,
+    right: -180,
+    borderRadius: '35%',
+    width: 280,
+    height: 250,
+    backgroundColor: '#4A485B',
+  };
+
+  if (width < 800) {
+    return (
+      <Grid item xs={1} sx={[{ zIndex: 2 }, Theme.palette.azure]}>
+        <AppBar position="static" elevation={0} style={{ height: '100%' }}>
+          <Toolbar sx={{
+            justifyContent: 'space-between', position: 'relative', overflow: 'hidden', pr: 0,
+          }}
+          >
+            <img alt="JobSite" src={MobileLogo} height="60" />
+            <Box sx={ovalStyle} />
+            <MobilePopout />
+          </Toolbar>
+        </AppBar>
+      </Grid>
+    );
+  }
   return (
-    <Grid item xs={1} style={Theme.palette.azure}>
+    <Grid item xs={1} sx={Theme.palette.azure}>
       <AppBar position="static" style={{ height: '100%' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <img alt="JobSite" src={TextLogo} height="100" />

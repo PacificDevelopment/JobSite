@@ -1,12 +1,13 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import {
+  Box, Paper, Typography,
+} from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import AuthButton from './AuthButton';
+import JobSearch from '../JobSearch/JobSearch';
 
-import CustomButton from './CustomButton';
+import PrimaryButton from '../PrimaryButton';
 
 function AccountSelection({ createAccount }) {
   function header() {
@@ -19,26 +20,14 @@ function AccountSelection({ createAccount }) {
       );
     }
     return (
-      <Box style={{
-        display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
-      }}
-      >
-        <Box>
-          <TextField id="job-title" label="Job Title or Keyword" />
-          <TextField id="location" label="Search by Location" />
-        </Box>
-
-        <CustomButton text="Find Jobs" />
-
-        <Link style={{ textDecoration: 'none', color: 'black' }} to="/LogIn">Been here before?</Link>
-      </Box>
+      <JobSearch />
     );
   }
   return (
     <Paper
       elevation={9}
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, .7)', p: 1, pr: 5, pl: 5,
+        backgroundColor: 'rgba(255, 255, 255, .7)', p: 2, pr: 5, pl: 5, m: 3,
       }}
     >
       {header()}
@@ -83,9 +72,9 @@ function AccountSelection({ createAccount }) {
           <Paper sx={{ mt: 2, mb: 1 }}>
             <TextField label="Enter password" fullWidth />
           </Paper>
-          <CustomButton
+          <PrimaryButton
             text="Continue with Email"
-            styleOverride={{
+            sx={{
               width: 300,
               m: 0,
               mt: 1,
