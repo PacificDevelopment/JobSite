@@ -22,8 +22,8 @@ const LogIn = function () {
       withCredentials: true,
       url: 'http://localhost:3000/user',
     }).then((res) => {
+      console.log('gu', res.data);
       setData(res.data);
-      console.log(res.data);
     });
   };
   return (

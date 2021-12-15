@@ -51,7 +51,7 @@ app.post('/login', (req, res, next) => {
       req.logIn(user, (err) => {
         if (err) throw err;
         res.send('Successfully Authenticated');
-        console.log(req.user);
+        // console.log(req.user);
       });
     }
   })(req, res, next);
@@ -60,7 +60,7 @@ app.post('/register', (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc.rows.length > 0) {
-      console.log(doc);
+      // console.log('d', doc);
       res.send('User Already Exists');
     }
     if (doc.rows.length === 0) {
@@ -77,6 +77,8 @@ app.post('/register', (req, res) => {
   });
 });
 app.get('/user', (req, res) => {
+  console.log('u', req);
+  console.log('u', req.user);
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside it.
 });
 
