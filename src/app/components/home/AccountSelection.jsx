@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import AuthButton from './AuthButton';
 import JobSearch from '../JobSearch/JobSearch';
 
-import CustomButton from '../CustomButton';
+import PrimaryButton from '../PrimaryButton';
 
 function AccountSelection({ createAccount }) {
   function header() {
@@ -72,7 +72,7 @@ function AccountSelection({ createAccount }) {
           <Paper sx={{ mt: 2, mb: 1 }}>
             <TextField label="Enter password" fullWidth />
           </Paper>
-          <CustomButton
+          <PrimaryButton
             text="Continue with Email"
             sx={{
               width: 300,

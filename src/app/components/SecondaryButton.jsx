@@ -2,7 +2,9 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-export default function CustomButton({
+// Secondary button for dashboard pages
+
+export default function SecondaryButton({
   text, onClick, sx, textStyleOverride, fullWidth,
 }) {
   return (
