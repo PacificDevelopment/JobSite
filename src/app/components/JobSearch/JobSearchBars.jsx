@@ -30,8 +30,9 @@ export const LocationSearch = () => {
   return (
 
     <FormControl variant="outlined" disabled={!!anywhere}>
-      <InputLabel htmlFor="location">{label}</InputLabel>
+      <InputLabel color="secondary" htmlFor="location">{label}</InputLabel>
       <Input
+        color="secondary"
         id="location"
         onFocus={() => setAnywhere(false)}
         onChange={handleLocationInput}
@@ -41,7 +42,7 @@ export const LocationSearch = () => {
   );
 };
 
-export const KeywordSearch = () => {
+export const KeywordSearch = ({sx}) => {
   const { keywords, setKeywords } = useContext(JobSearchContext);
   const { drawer, setDrawer } = useContext(JobSearchContext);
 
@@ -59,11 +60,12 @@ export const KeywordSearch = () => {
   let handleKeywordsInput = (e) => setKeywords(parseSearchInput(e, 'keywords'))
 
   return (
-    <FormControl>
-      <InputLabel htmlFor="keywords">
+    <FormControl sx={sx}>
+      <InputLabel color="secondary" htmlFor="keywords">
         Search Jobs
       </InputLabel>
       <Input
+        color="secondary"
         id="keywords"
         onChange={handleKeywordsInput}
         endAdornment={<FiltersIcon />}
@@ -74,7 +76,7 @@ export const KeywordSearch = () => {
 
 const JobSearchBars = (props) => (
   <Stack sx={{m:1, p:1}}>
-    <KeywordSearch />
+    <KeywordSearch sx={{mb: 1}} />
     <LocationSearch />
     {props.children}
   </Stack>

@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import {
-  useLocation, Link,
+  useLocation,
 } from 'react-router-dom';
-import Theme from '../Theme';
 import JobSearch from '../components/JobSearch/JobSearch';
 
 function Dashboard() {

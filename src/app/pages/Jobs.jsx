@@ -1,14 +1,14 @@
 import React from 'react';
-import {Box, Stack} from '@mui/material';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import {
+  Box, Stack, Button,
+} from '@mui/material';
 import Theme from '../Theme';
 import JobSearch from '../components/JobSearch/JobSearch';
 
 function Jobs() {
   return (
     <Box>
-      <Stack sx={{m:3}}>
+      <Stack sx={{ m: 3 }}>
         <JobSearch />
       </Stack>
       <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
@@ -19,7 +19,8 @@ function Jobs() {
         <Button variant="outline" style={Theme.palette.independence}>Interested</Button>
       </Box>
       <Box>
-        <p>Job Card</p>r
+        <p>Job Card</p>
+        r
         <p>Job Card</p>
         <p>Job Card</p>
         <p>Job Card</p>

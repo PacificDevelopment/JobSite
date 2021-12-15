@@ -1,9 +1,8 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Google from '../assets/Google.svg';
-import Facebook from '../assets/Facebook logo.svg';
-import Apple from '../assets/apple logo.svg';
+import { Typography, Button } from '@mui/material';
+import Google from '../../assets/Google.svg';
+import Facebook from '../../assets/Facebook logo.svg';
+import Apple from '../../assets/apple logo.svg';
 
 const fb = {
   backgroundColor: '#3b5998', color: 'white',

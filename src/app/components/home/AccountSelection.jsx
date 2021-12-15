@@ -1,13 +1,13 @@
 import React from 'react';
-import { Box, Stack } from '@mui/material';
+import {
+  Box, Paper, Typography,
+} from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import AuthButton from './AuthButton';
-import JobSearch from './JobSearch/JobSearch'
+import JobSearch from '../JobSearch/JobSearch';
 
-import CustomButton from './CustomButton';
+import CustomButton from '../CustomButton';
 
 function AccountSelection({ createAccount }) {
   function header() {
@@ -20,17 +20,14 @@ function AccountSelection({ createAccount }) {
       );
     }
     return (
-
-      <Box>
-        <JobSearch />
-      </Box>
+      <JobSearch />
     );
   }
   return (
     <Paper
       elevation={9}
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, .7)', p: 1, pr: 5, pl: 5,
+        backgroundColor: 'rgba(255, 255, 255, .7)', p: 2, pr: 5, pl: 5, m: 3,
       }}
     >
       {header()}
@@ -77,7 +74,7 @@ function AccountSelection({ createAccount }) {
           </Paper>
           <CustomButton
             text="Continue with Email"
-            styleOverride={{
+            sx={{
               width: 300,
               m: 0,
               mt: 1,
