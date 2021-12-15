@@ -1,10 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import {
+  Grid, Paper, TextField, Typography, Box,
+} from '@mui/material';
 import AccountSelection from '../components/home/AccountSelection';
 import { useWindowSize } from '../utils/customHooks';
 import Hero from '../assets/hero.png';
@@ -14,6 +12,7 @@ import Click from '../assets/click 1.png';
 import Job from '../assets/job 1.png';
 import CustomCard from '../components/home/CustomCard';
 import CustomButton from '../components/CustomButton';
+import JobSearch from '../components/JobSearch/JobSearch';
 
 const centerStyle = {
   display: 'flex',
@@ -47,18 +46,28 @@ function Home({ createAccount }) {
           elevation={5}
           square
           sx={{
-            width: '100%', backgroundColor: '#EDFEFF', p: 3, zIndex: -1,
+            width: '100%', backgroundColor: '#EDFEFF', p: 3,
           }}
         >
           <Box sx={{
-            display: 'flex', flexDirection: 'column', textAlign: 'center', maxWidth: 200, mr: 'auto', ml: 'auto',
+            display: 'flex', flexDirection: 'column', textAlign: 'center', maxWidth: 250, mr: 'auto', ml: 'auto',
           }}
           >
-            <TextField id="job-title" label="Job Title or Keyword" />
-            <Typography sx={{ fontWeight: 700, mt: 3 }}>Connecting people with jobs and jobs with people.</Typography>
-            <CustomButton sx={{ mt: 3, mb: 3 }} text="Get Started" />
-            <Typography variant="subtitle2" sx={{ mb: 3 }}>Looking for work? Find jobs in your area and apply in one click! Spend more time interviewing, less time searching.</Typography>
-            <Typography variant="subtitle2">Organize your search, filter starred jobs, keep track of upcoming interviews, and much more. Let’s get to work.</Typography>
+            <JobSearch />
+            <Typography sx={{
+              fontWeight: 700, mt: 3, pl: 2, pr: 2,
+            }}
+            >
+              Connecting people with jobs and jobs with people.
+            </Typography>
+            <CustomButton
+              sx={{
+                mt: 5, mb: 5, pl: 2, pr: 2, mr: 2, ml: 2,
+              }}
+              text="Get Started"
+            />
+            <Typography variant="subtitle2" sx={{ mb: 5, pl: 2, pr: 2 }}>Looking for work? Find jobs in your area and apply in one click! Spend more time interviewing, less time searching.</Typography>
+            <Typography sx={{ pl: 2, pr: 2 }} variant="subtitle2">Organize your search, filter starred jobs, keep track of upcoming interviews, and much more. Let’s get to work.</Typography>
           </Box>
         </Paper>
 

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Popover from '@mui/material/Popover';
+import {
+  Card, CardActionArea, Grid, Typography, Popover,
+} from '@mui/material';
 
 export default function CustomCard({ buttonData, centerStyle }) {
   const [anchorEl, setAnchorEl] = useState(null);
