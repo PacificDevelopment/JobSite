@@ -18,6 +18,7 @@ export const LocationSearch = () => {
     return (
       <InputAdornment
         position="end"
+        sx={{cursor: 'pointer'}}
         onClick={() => setAnywhere(!anywhere)}
       >
         {icon}
@@ -49,6 +50,7 @@ export const KeywordSearch = ({sx}) => {
   const FiltersIcon = () => {
     return (
       <InputAdornment
+        sx={{cursor: 'pointer'}}
         position="end"
         onClick={() => setDrawer(!drawer)}
       >
