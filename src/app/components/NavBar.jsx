@@ -32,7 +32,7 @@ function NavBar() {
             justifyContent: 'space-between', position: 'relative', overflow: 'hidden', pr: 0,
           }}
           >
-            <img alt="JobSite" src={MobileLogo} height="50" />
+            <img alt="JobSite" src={MobileLogo} height="60" />
             <Box sx={ovalStyle} />
             <MobilePopout />
           </Toolbar>
