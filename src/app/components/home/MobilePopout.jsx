@@ -8,12 +8,18 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
+import Typography from '@mui/material/Typography';
 
 export default function MobilePopout() {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  const navRoutes = [['Log In/ Create an Account', '/login'], ['Find Jobs', '/jobs'], ['Upload Resume', '/profile'], ['For Employers', '/']];
+  const LOGGEDIN = true;
+  const SAMPLEUSER = 'Quinton Maki';
+
+  const navRoutes = LOGGEDIN
+    ? [['Find Jobs', '/jobs'], ['Profile', '/profile'], ['View Saved Jobs', '/jobs/saved'], ['View Applied Jobs', '/jobs/applied'], ['View Resume', '/profile'], ['For Employers', '/']]
+    : [['Log In/ Create an Account', '/login'], ['Find Jobs', '/jobs'], ['Upload Resume', '/profile'], ['For Employers', '/']];
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -38,7 +44,20 @@ export default function MobilePopout() {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <Button sx={{ p: 2, ml: 28 }}><CloseIcon /></Button>
+      {LOGGEDIN ? (
+        <Box sx={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}
+        >
+          <Typography sx={{
+            ml: 2, color: 'white', mb: -1, fontWeight: 700,
+          }}
+          >
+            {SAMPLEUSER}
+          </Typography>
+          <Button sx={{ p: 2 }}><CloseIcon /></Button>
+        </Box>
+      ) : <Button sx={{ p: 2, ml: 28 }}><CloseIcon /></Button>}
       <List>
         {navRoutes.map((text, index) => (
           <ListItem button sx={{ borderBottom: 1, borderTop: index === 0 ? 1 : 0, borderColor: 'white' }} onClick={() => handleClick(text[1])} key={text[0]}>
