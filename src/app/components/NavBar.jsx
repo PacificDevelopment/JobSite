@@ -27,7 +27,7 @@ function NavBar() {
   if (width < 800) {
     return (
       <Grid item xs={1} sx={Theme.palette.azure}>
-        <AppBar position="static" style={{ height: '100%' }}>
+        <AppBar position="static" elevation={0} style={{ height: '100%' }}>
           <Toolbar sx={{
             justifyContent: 'space-between', position: 'relative', overflow: 'hidden', pr: 0,
           }}

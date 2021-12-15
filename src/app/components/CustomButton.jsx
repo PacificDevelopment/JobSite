@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function CustomButton({
-  text, onClick, styleOverride, textStyleOverride,
+  text, onClick, sx, textStyleOverride,
 }) {
   return (
     <Button
@@ -12,7 +12,7 @@ export default function CustomButton({
       onClick={onClick}
       sx={[{
         textTransform: 'none', p: 1, pr: 5, pl: 5, m: 2,
-      }, styleOverride]}
+      }, sx]}
     >
       <Typography sx={[textStyleOverride]}>{text}</Typography>
     </Button>
