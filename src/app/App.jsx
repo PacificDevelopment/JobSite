@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
-  Home, Dashboard, LogIn, SignUp, Jobs, Profile,
+  Home, Dashboard, LogIn, SignUp, Jobs, Profile, SearchJobsList
 } from './pages';
 import { useWindowSize } from './utils/customHooks';
 import Theme from './Theme';
@@ -17,7 +17,7 @@ function App() {
     <div data-testid="app">
       <CssBaseline />
       <ThemeProvider theme={Theme}>
-        <Grid container direction="column" sx={{ width: '100vw', height: '100vh' }}>
+        <Grid container direction="column" sx={{ width: '100vw', height: '100vh', display: "flex", flexDirection: 'column' }}>
           <NavBar />
 
           <Routes>
@@ -27,6 +27,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} exact />
             <Route path="/profile" element={<Profile />} exact />
             <Route path="/jobs" element={<Jobs />} exact />
+            <Route path="/search" element={<SearchJobsList />} exact />
           </Routes>
         </Grid>
       </ThemeProvider>

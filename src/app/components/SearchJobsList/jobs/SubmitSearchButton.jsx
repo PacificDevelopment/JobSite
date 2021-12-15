@@ -17,7 +17,7 @@ function SubmitSearchButton(props) {
     experience,
   } = useContext(JobSearchContext);
 
-  const submitSearch = () => {
+  const submitSearch = ({setSearchResults}) => {
     // integrate page into URL, useLocation to add pagination to QS
     // search default size
     const query = [];
@@ -31,7 +31,8 @@ function SubmitSearchButton(props) {
     const queryString = query.join('&');
     console.log(queryString);
 
-    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`);
+    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
+      .then((results) => setSearchResults(results.data));
   };
 
   return (

@@ -23,6 +23,7 @@ function NavBar() {
             <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>
             <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/profile">Profile</Link></Button>
             <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/jobs">Jobs</Link></Button>
+            <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/search">Search</Link></Button>
           </div>
         </Toolbar>
       </AppBar>

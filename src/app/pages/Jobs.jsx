@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Theme from '../Theme';
-import JobSearch from '../components/jobs/JobSearch';
+import JobSearch from '../components/SearchJobsList/jobs/JobSearch';
 
 function Jobs() {
   return (

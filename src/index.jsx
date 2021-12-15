@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-// import App from './app/App';
-import Main from './app/components/SearchJobsList/JobsList/Main.jsx';
-// import Main from './app/components/SavedJobsList/Main.jsx';
+import App from './app/App';
 
-ReactDOM.render(<BrowserRouter><Main /></BrowserRouter>, document.getElementById('app'));
+ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('app'));

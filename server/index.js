@@ -34,6 +34,8 @@ app.post('/savedJobs', savedJobs.saveJob);
 
 app.get('/savedJobs', savedJobs.getSavedJobs);
 
+app.get('/data/jobsearch', jobSearch.jobSearch);
+
 // Should always be last route
 app.get('*', (req, res) => {
   if (req.path.endsWith('bundle.js')) {

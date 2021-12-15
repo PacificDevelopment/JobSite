@@ -6,7 +6,8 @@ import JobSearchProvider from './JobSearchContext';
 import JobSearchBars from './JobSearchBars';
 import SubmitSearchButton from './SubmitSearchButton';
 
-const JobSearch = () => {
+const JobSearch = ({setSearchResults}) => {
+
   return (
     <JobSearchProvider>
       <Box sx={{ minWidth: 120, m: 2 }}>
@@ -14,7 +15,7 @@ const JobSearch = () => {
           <JobSearchBars />
         </Stack>
         <JobSearchDrawer />
-        <SubmitSearchButton />
+        <SubmitSearchButton setSearchResults={setSearchResults}/>
       </Box>
     </JobSearchProvider>
   );
