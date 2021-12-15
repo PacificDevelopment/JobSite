@@ -5,6 +5,7 @@ const employerModel = require('../models/employerModel');
 const jobPostModel = require('../models/jobPostModel');
 
 exports.saveJob = async (req, res) => {
+  console.log(req.user.id);
   const {
     salary_min,
     locations,
@@ -21,7 +22,6 @@ exports.saveJob = async (req, res) => {
     employmentType,
     experienceLevel,
     worksite,
-    session_id,
     interest_level,
   } = req.body;
 
@@ -38,7 +38,7 @@ exports.saveJob = async (req, res) => {
 
   savedJobModels.saveJob(req.user.id, interest_level, job_post_id)
     .then((data) => {
-      res.status(200).send(data);
+      res.status(201).send(data);
     })
     .catch((err) => {
       res.send(err);
@@ -46,9 +46,9 @@ exports.saveJob = async (req, res) => {
 };
 
 exports.getSavedJobs = (req, res) => {
-  savedJobModels.getSavedJobs(req.body.session_id)
+  savedJobModels.getSavedJobs(req.user.id)
     .then((data) => {
-      res.status(200).send(data);
+      res.status(200).send(data.rows);
     })
     .catch((err) => {
       res.send(err);
