@@ -2,6 +2,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AccountSelection from '../components/home/AccountSelection';
@@ -53,6 +54,7 @@ function Home({ createAccount }) {
             display: 'flex', flexDirection: 'column', textAlign: 'center', maxWidth: 200, mr: 'auto', ml: 'auto',
           }}
           >
+            <TextField id="job-title" label="Job Title or Keyword" />
             <Typography sx={{ fontWeight: 700, mt: 3 }}>Connecting people with jobs and jobs with people.</Typography>
             <CustomButton sx={{ mt: 3, mb: 3 }} text="Get Started" />
             <Typography variant="subtitle2" sx={{ mb: 3 }}>Looking for work? Find jobs in your area and apply in one click! Spend more time interviewing, less time searching.</Typography>
@@ -88,7 +90,7 @@ function Home({ createAccount }) {
       </Grid>
 
       <Grid xs={4} item container>
-        <Grid xs={12} sx={centerStyle}>
+        <Grid item xs={12} sx={centerStyle}>
           <Typography variant="h4" sx={{ m: 3 }}>
             How
             {' '}
