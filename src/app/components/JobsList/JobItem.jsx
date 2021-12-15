@@ -9,19 +9,19 @@ import Typography from '@mui/material/Typography';
 
 
 const JobItem = (props) => {
-  const [displayToggle, setToggle] = useState(true);
+  const [displayToggle, setDisplayToggle] = useState(true);
 
   const jobSelect = (selectedJob) => {
     props.handleFocus(selectedJob)
-    console.log('what is up yall', selectedJob);
+
   }
-  useEffect(() => {
-    console.log('useEffect in jobItem');
-    if (displayToggle) {
-      props.handleFocus(props.job);
-      setToggle(false);
-    }
-  }, []);
+
+  // useEffect(() => {
+  //   if (displayToggle) {
+  //     props.handleFocus(props.job);
+  //     setDisplayToggle(false);
+  //   }
+  // }, []);
 
   return (
     <Card >
@@ -43,6 +43,7 @@ const JobItem = (props) => {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={(e) => { jobSelect(props.job) }}>Learn More</Button>
+        <Button size="small" onClick={(e) => {  }}>Save Job</Button>
       </CardActions>
     </Card>
   )
