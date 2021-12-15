@@ -5,15 +5,16 @@ import PrimaryButton from '../PrimaryButton';
 const SaveJobButton = ({job}) => {
   const getUser = () => {
     const curPort = location.port;
-    Axios({
+    axios({
       method: 'GET',
       withCredentials: true,
       url: `http://localhost:${curPort}/user`,
     }).then((res) => {
-      axios.post('/savejob', {
+      axios.post('/saveJob', {
         data: {
           job: job,
-          user: res.data,
+          user: res.data
+        }
       })
     });
   };
