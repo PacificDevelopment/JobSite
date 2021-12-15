@@ -42,9 +42,12 @@ function Home({ createAccount }) {
         display: 'flex', flexDirection: 'column', textAlign: 'center', alignItems: 'center',
       }}
       >
-        <Box sx={{
-          width: '100%', backgroundColor: '#EDFEFF', p: 3, boxShadow: 1,
-        }}
+        <Paper
+          elevation={5}
+          square
+          sx={{
+            width: '100%', backgroundColor: '#EDFEFF', p: 3, zIndex: -1,
+          }}
         >
           <Box sx={{
             display: 'flex', flexDirection: 'column', textAlign: 'center', maxWidth: 200, mr: 'auto', ml: 'auto',
@@ -55,12 +58,12 @@ function Home({ createAccount }) {
             <Typography variant="subtitle2" sx={{ mb: 3 }}>Looking for work? Find jobs in your area and apply in one click! Spend more time interviewing, less time searching.</Typography>
             <Typography variant="subtitle2">Organize your search, filter starred jobs, keep track of upcoming interviews, and much more. Let’s get to work.</Typography>
           </Box>
-        </Box>
+        </Paper>
 
         <Typography variant="h5" sx={{ fontWeight: 700, m: 3, mt: 5 }}>How It Works</Typography>
 
         {buttons.map((buttonData, index) => (
-          <Paper sx={paperStyles} key={`buttonData-${index + 1}`}>
+          <Paper elevation={3} sx={paperStyles} key={`buttonData-${index + 1}`}>
             <Typography sx={{ fontWeight: 700, mb: 1 }}>{buttonData[0]}</Typography>
             <Typography variant="caption">{buttonData[2]}</Typography>
           </Paper>
