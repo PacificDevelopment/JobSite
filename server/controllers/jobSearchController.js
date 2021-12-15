@@ -54,7 +54,7 @@ exports.jobSearch = (req, res) => {
     // eslint-disable-next-line prefer-const
     employmentType, // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
     // eslint-disable-next-line prefer-const
-    experienceLevel, //String ('Entry', 'Mid', 'Senior', 'Executive')
+    experienceLevel, // String ('Entry', 'Mid', 'Senior', 'Executive')
     worksite, // String ('remote', 'onsite', 'mixed')
 
   } = req.query;
@@ -69,9 +69,6 @@ exports.jobSearch = (req, res) => {
   }
 
   keywords = worksite === 'remote' && `Remote ${keywords}`;
-
-
-
 
   pagesize = parseInt(pagesize, 10);
   radius = parseInt(radius, 10);
@@ -96,34 +93,13 @@ exports.jobSearch = (req, res) => {
     .then((data) => {
       const results = data.data;
       if (results.jobs) {
-      for (let i = 0; i < results.jobs.length; i++) {
-        results.jobs[i].employmentType = employmentType;
-        results.jobs[i].experienceLevel = experienceLevel || randomExperienceLevel();
-        results.jobs[i].worksite = worksite || randomWorksite();
-      }}
-      res.send(results)
+        for (let i = 0; i < results.jobs.length; i += 1) {
+          results.jobs[i].employmentType = employmentType;
+          results.jobs[i].experienceLevel = experienceLevel || randomExperienceLevel();
+          results.jobs[i].worksite = worksite || randomWorksite();
+        }
+      }
+      res.send(results);
     })
     .catch((err) => console.log(err));
 };
-
-exports.googleJobsSearch = (req, res) => {
-  const SerpApi = require('google-search-results-nodejs');
-  const search = new SerpApi.GoogleSearch(process.env.serpAPI);
-
-  const params = {
-    engine: "google_jobs",
-    google_domain: "google.com",
-    q: "Software Developer",
-    hl: "en",
-    gl: "us",
-    location: "89436, Nevada, United States"
-  };
-
-  const callback = function(data) {
-    console.log(data);
-    res.send(data);
-  };
-
-  // Show result as JSON
-  search.json(params, callback);
-  };

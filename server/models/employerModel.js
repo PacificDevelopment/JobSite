@@ -27,18 +27,15 @@ exports.insertEmployer = (
     phone_number = null,
     date_created = Date.now(),
   },
-  callback,
 ) => {
+  let id;
   pool.query(
     `INSERT INTO Employers (logo_url, street_address, city, state, zip, phone_number, name, date_created)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    RETURNING id`,
     [logo_url, street_address, city, state, zip, phone_number, name, date_created],
-    (err) => {
-      if (!err) {
-        callback(null, 'success');
-        return;
-      }
-      callback(err);
-    },
-  );
+  )
+    .then((employer_id) => { id = employer_id; })
+    .catch((err) => console.log(err));
+  return id;
 };
