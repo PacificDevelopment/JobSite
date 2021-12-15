@@ -8,15 +8,14 @@ import Typography from '@mui/material/Typography';
 
 
 
-const SavedJobItem = (props) => {
+const UserJobItem = (props) => {
   const [displayToggle, setToggle] = useState(true);
 
   const jobSelect = (selectedJob) => {
     props.handleFocus(selectedJob)
-    console.log('what is up yall', selectedJob);
-  }
+    }
   useEffect(() => {
-    console.log('useEffect in SavedjobItem');
+    console.log('useEffect in userjobItem');
     if (displayToggle) {
       props.handleFocus(props.job);
       setToggle(false);
@@ -48,4 +47,4 @@ const SavedJobItem = (props) => {
   )
 }
 
-export default SavedJobItem;
+export default UserJobItem;
