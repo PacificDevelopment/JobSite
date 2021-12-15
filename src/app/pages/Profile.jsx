@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Theme from '../Theme';
+import FileViewAndUpload from '../components/FileUpload/FileViewAndUpload';
 
 function Profile() {
   return (
@@ -17,7 +18,6 @@ function Profile() {
         <Button variant="outlined" style={Theme.palette.independence}>Edit</Button>
         <span>My Resume</span>
         <span>Updated [date]</span>
-        <Button variant="outlined" style={Theme.palette.independence}>Download .doc</Button>
         <Button variant="outlined" style={Theme.palette.independence}>Download .pdf</Button>
       </Box>
       <Box>
@@ -25,7 +25,7 @@ function Profile() {
         <Button variant="outlined" style={Theme.palette.independence}>Edit</Button>
         <span>My Resume</span>
         <span>Updated [date]</span>
-        <Button variant="outlined" style={Theme.palette.independence}>Download .doc</Button>
+        <FileViewAndUpload />
         <Button variant="outlined" style={Theme.palette.independence}>Download .pdf</Button>
       </Box>
       <Box>
