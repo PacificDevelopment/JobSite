@@ -35,7 +35,6 @@ export const LocationSearch = () => {
         id="location"
         onFocus={() => setAnywhere(false)}
         onChange={handleLocationInput}
-        // onChange={(e) => setLocation(`location=${e.target.value}`)}
         endAdornment={[<LocationSearchIcon />]}
       />
     </FormControl>
@@ -73,11 +72,12 @@ export const KeywordSearch = () => {
   );
 };
 
-const JobSearchBars = () => (
-  <>
+const JobSearchBars = (props) => (
+  <Stack>
     <KeywordSearch />
     <LocationSearch />
-  </>
+    {props.children}
+  </Stack>
 );
 
 export default JobSearchBars;

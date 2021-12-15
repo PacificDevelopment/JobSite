@@ -10,7 +10,6 @@ function Jobs() {
     <Box>
       <Stack sx={{m:3}}>
         <JobSearch />
-
       </Stack>
       <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
         <h1>My Jobs</h1>

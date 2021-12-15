@@ -9,13 +9,10 @@ import SubmitSearchButton from './SubmitSearchButton';
 const JobSearch = () => {
   return (
     <JobSearchProvider>
-      <Box sx={{ minWidth: 300, m: 2 }}>
-        <Stack>
-          <JobSearchBars />
-        </Stack>
-        <JobSearchDrawer />
+      <JobSearchBars>
         <SubmitSearchButton />
-      </Box>
+      <JobSearchDrawer />
+      </JobSearchBars>
     </JobSearchProvider>
   );
 };

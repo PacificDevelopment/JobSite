@@ -14,7 +14,7 @@ const JobSearchDrawer = () => {
       open={drawer}
       onClose={toggleDrawer}
     >
-      <Box sx={{ minWidth: 350, m: 1 }}>
+      <Box sx={{ minWidth: 250, m: 3 }}>
         <Typography variant={'h5'}>Filters</Typography>
         <JobSearchParams />
       </Box>

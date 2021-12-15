@@ -37,7 +37,7 @@ function SubmitSearchButton(props) {
 
   return (
     <CustomButton
-      fullWidth
+      fullWidth={true}
       onClick={submitSearch}
       text='Find Jobs'
     >

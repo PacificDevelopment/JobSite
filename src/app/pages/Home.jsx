@@ -8,6 +8,7 @@ import Glass from '../assets/magnifying-glass.png';
 import Checklist from '../assets/checklist.png';
 import Click from '../assets/click 1.png';
 import Job from '../assets/job 1.png';
+import JobSearch from '../components/JobSearch/JobSearch'
 
 const centerStyle = {
   display: 'flex',

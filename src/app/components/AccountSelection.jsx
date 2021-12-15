@@ -20,18 +20,9 @@ function AccountSelection({ createAccount }) {
       );
     }
     return (
-      <Box style={{
-        display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
-      }}
-      >
-        <Box>
-          <TextField id="job-title" label="Job Title or Keyword" />
-          <TextField id="location" label="Search by Location" />
-        </Box>
 
-        <CustomButton text="Find Jobs" />
-
-        <Link style={{ textDecoration: 'none', color: 'black' }} to="/LogIn">Been here before?</Link>
+      <Box>
+        <JobSearch />
       </Box>
     );
   }
