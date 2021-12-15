@@ -33,9 +33,9 @@ module.exports = function () {
     // keywords : '', //  Keywords to search in job offers. Example: 'java manager'. Default: none (Returns all offers from default country)
     // location : '', //  Location to search job offers in. Examples: 'London', 'Paris'. Default: none (Returns all offers from default country)
     sort: 'relevance', // Type of sort. Available values are 'relevance' (default), 'date', and 'salary'.
-    start_num : 1, //  Num of first offer returned in entire result space should be >= 1 and <= Number of hits. Default: 1
-    pagesize: 20, // Number of offers returned in one call. Default: 20. Max: 99.
-    // page: 1, // Current page number (should be >=1). If set, will override start_num. The maxumum number of page is given by $result->pages
+    // start_num : 1, //  Num of first offer returned in entire result space should be >= 1 and <= Number of hits. Default: 1
+    pagesize: 10, // Number of offers returned in one call. Default: 10. Max: 99.
+    page: 1, // Current page number (should be >=1). If set, will override start_num. The maxumum number of page is given by $result->pages
     contracttype: 'Default', // Character code for contract types:<br>
     // *    'p'    - permanent job<br>
     // *    'c'    - contract<br>
@@ -50,18 +50,19 @@ module.exports = function () {
   };
 
   this.employmentType = function (type) {
+    console.log('type', type);
     switch (type) {
-      case 'Full Time':
-        query.contractperiod = 'f';
+      case 'f':
+        query.contractperiod = 'Full Time';
         break;
-      case 'Part Time':
-        query.contractperiod = 'p';
+      case 'p':
+        query.contractperiod = 'Part Time';
         break;
-      case 'Temporary':
-        query.contracttype = 't';
+      case 't':
+        query.contracttype = 'Temporary';
         break;
-      case 'Internship':
-        query.contracttype = 'i';
+      case 'i':
+        query.contracttype = 'Internship';
     }
     return this;
   };
@@ -77,6 +78,7 @@ module.exports = function () {
   };
 
   this.location = function (location) {
+    console.log('location', location);
     if (typeof location === 'string') {
       query.location = location;
     } else {
@@ -128,6 +130,7 @@ module.exports = function () {
   };
 
   this.query = function (resolved, rejected) {
+    console.log('query', query);
     if (validateRequiredFields()) {
       // request.get(url, { qs: query }, (err, response, body) => {
       //   if (err) { return rejected(err); }
