@@ -35,7 +35,7 @@ exports.saveJob = async (req, res) => {
   await jobPostModel.insertJobPost(req.body)
     .then((data) => { job_post_id = data.rows[0].id; })
     .catch((err) => console.log(err));
-
+  debugger;
   savedJobModels.saveJob(req.user.id, interest_level, job_post_id)
     .then((data) => {
       res.status(200).send(data);
