@@ -13,7 +13,7 @@ export const LocationSearch = () => {
   const label = anywhere ? 'Anywhere' : 'Search Location';
 
   const LocationSearchIcon = () => {
-    const icon = anywhere ? <LocationOff /> : ['...Search Anywhere?', <LocationOn sx={{ color: 'red' }} />];
+    const icon = anywhere ? <LocationOff /> : <LocationOn sx={{ color: 'red' }} />;
 
     return (
       <InputAdornment
