@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useContext } from 'react';
 import { Slider, Typography } from '@mui/material';
 import { JobSearchContext } from './JobSearchContext';

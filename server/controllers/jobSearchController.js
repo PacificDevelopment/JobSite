@@ -48,28 +48,28 @@ exports.jobSearch = (req, res) => {
     keywords, // String
     // eslint-disable-next-line prefer-const
     sort, // String ('relevance', 'data', 'salary')
-    pagesize, // Integer
+    pagesize = 10, // Integer
     radius, // Integer (5, 10, 50, 100)
-    page, // Integer
+    page = 1, // Integer
     // eslint-disable-next-line prefer-const
     employmentType, // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
+    // eslint-disable-next-line prefer-const
     experienceLevel, //String ('Entry', 'Mid', 'Senior', 'Executive')
     worksite, // String ('remote', 'onsite', 'mixed')
 
   } = req.query;
 
   keywords = experienceLevel && `${experienceLevel} ${keywords}`;
-  // if (experienceLevel) {
-  //   keywords = `${experienceLevel} ${keywords}`;
-  // }
 
   // careerjet api does not support "remote" location
   // add remote to search
-  if (location.match(/remote/i) || location.match(/anywhere/i) || worksite === 'remote') {
-    keywords = `${location} ${keywords}`;
+  if (location.match(/remote/i) || location.match(/anywhere/i)) {
     location = '';
-    worksite = 'Remote';
+    worksite = 'remote';
   }
+
+  keywords = worksite === 'remote' && `Remote ${keywords}`;
+
 
 
 

@@ -51,9 +51,6 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
-    "google-search-results-nodejs": "^2.0.1",
-    "request": "^2.88.2",
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -62,6 +59,7 @@
     "@mui/material": "^5.2.3",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
+    "cheerio": "^1.0.0-rc.10",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",

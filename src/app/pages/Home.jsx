@@ -1,10 +1,21 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import AccountSelection from '../components/AccountSelection';
 import { useWindowSize } from '../utils/customHooks';
+import Hero from '../assets/hero.png';
+import Glass from '../assets/magnifying-glass.png';
+import Checklist from '../assets/checklist.png';
+import Click from '../assets/click 1.png';
+import Job from '../assets/job 1.png';
 
-const Home = function ({ createAccount }) {
+const centerStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+
+function Home({ createAccount }) {
   const { width } = useWindowSize();
   if (width < 800) { // mobile rendering
     return (
@@ -16,20 +27,67 @@ const Home = function ({ createAccount }) {
     );
   } // desktop rendering
   return (
-    <div>
-      <div className="hero" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Grid container item xs={10} direction="column">
+      <Grid
+        item
+        xs={8}
+        className="hero"
+        style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(${Hero})`, backgroundSize: 'cover', p: 0,
+        }}
+      >
         <AccountSelection createAccount={createAccount} />
-      </div>
+      </Grid>
 
-      <Box>
-        <h1>How JobSite Works</h1>
-        <Button variant="contained">Find Jobs</Button>
-        <Button variant="contained">Organize Your Search</Button>
-        <Button variant="contained">Apply In One Click</Button>
-        <Button variant="contained">Keep Track Of Interviews</Button>
-      </Box>
-    </div>
+      <Grid xs={4} item container>
+        <Grid xs={12} sx={centerStyle}>
+          <Typography variant="h4">
+            How
+            {' '}
+            <Typography display="inline" variant="h4" color="secondary" sx={{ fontWeight: 'bold' }}>JobSite</Typography>
+            {' '}
+            Works
+          </Typography>
+        </Grid>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
+          }]}
+        >
+          <img src={Glass} alt="Find Jobs" width={75} />
+          <Typography variant="h5">Find Jobs</Typography>
+        </Grid>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
+          }]}
+        >
+          <img src={Checklist} alt="Organize Your Search" width={75} />
+          <Typography variant="h5">Organize Your Search</Typography>
+        </Grid>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
+          }]}
+        >
+          <img src={Click} alt="Apply In One Click" width={75} />
+          <Typography variant="h5">Apply In One Click</Typography>
+        </Grid>
+        <Grid
+          xs={3}
+          sx={[centerStyle, {
+            flexDirection: 'column', justifyContent: 'start', padding: 0,
+          }]}
+        >
+          <img src={Job} alt="Keep Track Of Interviews" width={75} />
+          <Typography variant="h5">Keep Track Of Interviews</Typography>
+        </Grid>
+      </Grid>
+    </Grid>
   );
-};
+}
 
 export default Home;

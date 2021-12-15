@@ -1,23 +1,22 @@
 import React from 'react';
-import { Stack, Button, Container } from '@mui/material';
+import { Stack, Container } from '@mui/material';
 import {
-  SortBy, Range, Experience, EmploymentType,
-} from './RadioGroups.jsx';
-import SalarySlider from './SalarySlider.jsx';
+  Sort, Range, Experience, EmploymentType, WorkSite,
+} from './RadioGroups';
+import SalarySlider from './SalarySlider';
 
-const JobSearchParams = () => {
-  return (
-    <Container>
-      <Stack>
-        <SortBy />
-        <Range />
-        <Experience />
-        <EmploymentType />
-        <SalarySlider />
-        <Button onClick="" label="Apply Filters" />
-      </Stack>
-    </Container>
-  );
-};
+// eslint-disable-next-line react/function-component-definition
+const JobSearchParams = () => (
+  <Container>
+    <Stack>
+      <Sort />
+      <Range />
+      <Experience />
+      <EmploymentType />
+      <SalarySlider />
+      <WorkSite />
+    </Stack>
+  </Container>
+);
 
 export default JobSearchParams;
