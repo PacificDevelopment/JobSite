@@ -13,7 +13,7 @@ export const LocationSearch = () => {
   const label = anywhere ? 'Anywhere' : 'Search Location';
 
   const LocationSearchIcon = () => {
-    const icon = anywhere ? <LocationOff /> : <LocationOn sx={{ color: 'red' }} />;
+    const icon = anywhere ? <LocationOff /> : <LocationOn sx={{color: '#85CDD2'}} />;
 
     return (
       <InputAdornment
@@ -73,7 +73,7 @@ export const KeywordSearch = () => {
 };
 
 const JobSearchBars = (props) => (
-  <Stack>
+  <Stack sx={{m:1, p:1}}>
     <KeywordSearch />
     <LocationSearch />
     {props.children}

@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 export default function CustomButton({
-  text, onClick, styleOverride, textStyleOverride, fullWidth
+  text, onClick, styleOverride, textStyleOverride, fullWidth,
 }) {
   return (
     <Button

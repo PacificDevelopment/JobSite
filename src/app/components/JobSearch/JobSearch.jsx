@@ -11,7 +11,7 @@ const JobSearch = () => {
     <JobSearchProvider>
       <JobSearchBars>
         <SubmitSearchButton />
-      <JobSearchDrawer />
+        <JobSearchDrawer />
       </JobSearchBars>
     </JobSearchProvider>
   );

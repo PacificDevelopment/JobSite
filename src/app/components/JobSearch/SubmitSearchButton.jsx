@@ -1,21 +1,21 @@
 /* eslint-disable */
 import { useSearchParams, useLocation } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
 import React, { useContext } from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
 import { parseSearchInput } from '../../utils/searchUtils';
-import CustomButton from '../CustomButton'
 
 function SubmitSearchButton(props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const {
     range,
     sort,
-    location,
     keywords,
-    employmentType,
+    location,
     experience,
+    employmentType,
   } = useContext(JobSearchContext);
 
   const submitSearch = () => {
@@ -36,13 +36,40 @@ function SubmitSearchButton(props) {
   };
 
   return (
-    <CustomButton
-      fullWidth={true}
+    <Button
+      fullWidth
+      variant='contained'
+      sx={{ mt: 2, p: 1 }}
       onClick={submitSearch}
       text='Find Jobs'
     >
-    </CustomButton>
+      <Typography sx={{ fontWeight: 'bold' }}>
+        Find Jobs
+      </Typography>
+    </Button>
   );
 }
 
 export default SubmitSearchButton;
+
+
+
+
+
+// export default function CustomButton({
+//   text, onClick, styleOverride, textStyleOverride, fullWidth,
+// }) {
+//   return (
+//     <Button
+//       fullWidth={fullWidth}
+//       variant="contained"
+//       color="secondary"
+//       onClick={onClick}
+//       sx={[{
+//         textTransform: 'none', p: 1, pr: 5, pl: 5, m: 2,
+//       }, styleOverride]}
+//     >
+//       <Typography sx={[textStyleOverride]}>{text}</Typography>
+//     </Button>
+//   );
+// }

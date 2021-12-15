@@ -5,7 +5,9 @@ import {
 } from '@mui/material';
 import { JobSearchContext } from './JobSearchContext';
 
-export function Sort() {
+export const CustomRadio = () => <Radio sx={{}} />
+
+export const Sort = () => {
   const { sort, setSort } = useContext(JobSearchContext);
 
   return (
@@ -26,7 +28,7 @@ export function Sort() {
   );
 }
 
-export function Range() {
+export const Range = () => {
   const { range, setRange } = useContext(JobSearchContext);
 
   return (
@@ -48,9 +50,8 @@ export function Range() {
   );
 }
 
-export function Experience() {
+export const Experience = () => {
   const { experience, setExperience } = useContext(JobSearchContext);
-  // Non-functional - Responses will have to be filtered server-side
 
   return (
     <FormControl fullWidth>
@@ -71,7 +72,7 @@ export function Experience() {
   );
 }
 
-export function EmploymentType() {
+export const EmploymentType = () => {
   const { employmentType, setEmploymentType } = useContext(JobSearchContext);
 
   return (
@@ -92,7 +93,7 @@ export function EmploymentType() {
   );
 }
 
-export function WorkSite() {
+export const WorkSite = () => {
   const { workSite, setWorkSite } = useContext(JobSearchContext);
 
   return (
