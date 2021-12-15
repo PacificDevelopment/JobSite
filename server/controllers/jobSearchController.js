@@ -59,7 +59,6 @@ exports.jobSearch = (req, res) => {
 
   } = req.query;
 
-  debugger;
   //Add the input experience level to keywords
   //keywords = experienceLevel && `${experienceLevel} ${keywords}`;
   keywords = `${experienceLevel} ${keywords}`;

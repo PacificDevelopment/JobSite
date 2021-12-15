@@ -1,5 +1,6 @@
 import *  as React from 'react';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -10,11 +11,13 @@ import JobSearch from "../jobs/JobSearch.jsx";
 
 const Main = ({ jobsData }) => {
   // const [jobsState, setJobs] = useState(jobsData.jobs);
-  const [jobFocusState, setItem] = useState({})
+  const [jobFocusState, setItem] = useState(jobsData[0])
 
 
   const mainFocusFunction = (targetJobItem) => {
-    setItem(targetJobItem);
+
+      setItem(targetJobItem);
+
     // console.log('targetJobItem from main', targetJobItem)
     // console.log('state from main', jobFocusState)
   }

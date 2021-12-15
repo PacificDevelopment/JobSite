@@ -15,12 +15,13 @@ const JobItem = (props) => {
     props.handleFocus(selectedJob)
 
   }
-  useEffect(() => {
-    if (displayToggle) {
-      props.handleFocus(props.job);
-      setDisplayToggle(false);
-    }
-  }, []);
+
+  // useEffect(() => {
+  //   if (displayToggle) {
+  //     props.handleFocus(props.job);
+  //     setDisplayToggle(false);
+  //   }
+  // }, []);
 
   return (
     <Card >
