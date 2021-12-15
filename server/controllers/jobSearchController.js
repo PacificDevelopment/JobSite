@@ -55,7 +55,7 @@ exports.jobSearch = (req, res) => {
     employmentType = '', // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
     // eslint-disable-next-line prefer-const
     experienceLevel = '', // String ('Entry', 'Mid', 'Senior', 'Executive')
-    worksite = 'mixed', // String ('remote', 'onsite', 'mixed')
+    worksite = 'Mixed', // String ('remote', 'onsite', 'mixed')
 
   } = req.query;
 
