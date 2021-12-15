@@ -9,6 +9,7 @@ exports.saveJob = async (session_id, interest_level, job_post_id) => {
 exports.getSavedJobs = async (session_id) => {
   const user = await pool.query('SELECT id FROM Users WHERE session_id = $1', [session_id]);
 
-  const response = pool.query('SELECT * FROM Saved_Jobs WHERE user_id = $1', [user]);
+  const response = pool.query('SELECT job_post_id FROM Saved_Jobs WHERE user_id = $1', [user]);
   return response;
+  //SELECT * FROM Job_Posts WHERE id = any of the job_post_id's that are in response
 };
