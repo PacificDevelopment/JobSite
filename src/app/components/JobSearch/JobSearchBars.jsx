@@ -13,7 +13,7 @@ export const LocationSearch = () => {
   const label = anywhere ? 'Anywhere' : 'Search Location';
 
   const LocationSearchIcon = () => {
-    const icon = anywhere ? <LocationOff /> : ['...Search Anywhere?', <LocationOn sx={{ color: 'red' }} />];
+    const icon = anywhere ? <LocationOff /> : <LocationOn sx={{color: '#85CDD2'}} />;
 
     return (
       <InputAdornment
@@ -35,7 +35,6 @@ export const LocationSearch = () => {
         id="location"
         onFocus={() => setAnywhere(false)}
         onChange={handleLocationInput}
-        // onChange={(e) => setLocation(`location=${e.target.value}`)}
         endAdornment={[<LocationSearchIcon />]}
       />
     </FormControl>
@@ -73,11 +72,12 @@ export const KeywordSearch = () => {
   );
 };
 
-const JobSearchBars = () => (
-  <>
+const JobSearchBars = (props) => (
+  <Stack sx={{m:1, p:1}}>
     <KeywordSearch />
     <LocationSearch />
-  </>
+    {props.children}
+  </Stack>
 );
 
 export default JobSearchBars;
