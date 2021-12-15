@@ -15,7 +15,6 @@ module.exports = {
     User.findOne({ username: req.body.username }, async (err, doc) => {
       if (err) throw err;
       if (doc.rows.length > 0) {
-        // console.log('d', doc);
         res.send('User Already Exists');
       }
       if (doc.rows.length === 0) {
@@ -40,7 +39,6 @@ module.exports = {
         req.logIn(user, (err) => {
           if (err) throw err;
           res.send('Successfully Authenticated');
-          // console.log(req.user);
         });
       }
     })(req, res, next);

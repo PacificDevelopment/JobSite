@@ -5,6 +5,7 @@ function SignUp() {
   const [registerUsername, setRegisterUsername] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const register = () => {
+    const curPort = location.port;
     Axios({
       method: 'POST',
       data: {
@@ -13,7 +14,7 @@ function SignUp() {
       },
       withCredentials: true,
       url: 'http://localhost:3000/register',
-    }).then((res) => console.log(res));
+    });
   };
   return (
     <div>
