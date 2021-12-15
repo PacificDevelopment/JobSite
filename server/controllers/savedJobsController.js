@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-const savedJobModels = require('../models/savedJobModel.js');
+const savedJobModels = require('../models/savedJobModel');
 const employerModel = require('../models/employerModel');
 const jobPostModel = require('../models/jobPostModel');
 
@@ -36,8 +36,7 @@ exports.saveJob = async (req, res) => {
     .then((data) => { job_post_id = data.rows[0].id; })
     .catch((err) => console.log(err));
 
-
-  savedJobModels.saveJob(session_id, interest_level, job_post_id)
+  savedJobModels.saveJob(req.user.id, interest_level, job_post_id)
     .then((data) => {
       res.status(200).send(data);
     })
