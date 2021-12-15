@@ -33,7 +33,10 @@ function SubmitSearchButton(props) {
     const queryString = query.join('&');
     console.log(queryString);
 
-    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`);
+    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
+      .then((results) => {
+        props.setSearchResults(results.data);
+      });
   };
 
   return (
