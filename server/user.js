@@ -2,13 +2,13 @@ const pool = require('./models/db/index');
 
 const user = {
   findOne: async (username, cb) => {
-    const user = await pool.pool.query('SELECT id FROM Users WHERE email = $1', [username.username]);
+    const user = await pool.pool.query('SELECT * FROM Users WHERE email = $1', [username.username]);
     console.log('findOne', user);
     console.log('findOne', user.rows);
     cb(null, user);
   },
   findById: async (id, cb) => {
-    const user = await pool.pool.query('SELECT id FROM Users WHERE id = $1', [id]);
+    const user = await pool.pool.query('SELECT * FROM Users WHERE id = $1', [id]);
     console.log('findById', user);
     cb(null, user);
   },

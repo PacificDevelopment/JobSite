@@ -8,7 +8,8 @@ module.exports = function (passport) {
       User.findOne({ username }, (err, user) => {
         if (err) throw err;
         if (!user) return done(null, false);
-        bcrypt.compare(password, user.password, (err, result) => {
+        bcrypt.compare(password, user.rows[0].hash, (err, result) => {
+          console.log('b', user.rows[0].hash, password, err, result);
           if (err) throw err;
           if (result === true) {
             return done(null, user);
@@ -20,10 +21,12 @@ module.exports = function (passport) {
   );
 
   passport.serializeUser((user, cb) => {
-    cb(null, user.id);
+    console.log('s', user);
+    cb(null, user.rows[0].id);
   });
   passport.deserializeUser((id, cb) => {
     User.findById({ id }, (err, user) => {
+      console.log('fbid', user);
       const userInformation = {
         username: user.username,
       };
