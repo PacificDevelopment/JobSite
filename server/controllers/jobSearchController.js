@@ -44,18 +44,18 @@ exports.scrapeDescription = (req, res) => {
 
 exports.jobSearch = (req, res) => {
   let {
-    location, // String
+    location = 'us', // String
     keywords, // String
     // eslint-disable-next-line prefer-const
-    sort, // String ('relevance', 'data', 'salary')
+    sort = 'relevance', // String ('relevance', 'data', 'salary')
     pagesize = 10, // Integer
-    radius, // Integer (5, 10, 50, 100)
+    radius = 10, // Integer (5, 10, 50, 100)
     page = 1, // Integer
     // eslint-disable-next-line prefer-const
-    employmentType, // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
+    employmentType = '', // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
     // eslint-disable-next-line prefer-const
-    experienceLevel, // String ('Entry', 'Mid', 'Senior', 'Executive')
-    worksite, // String ('remote', 'onsite', 'mixed')
+    experienceLevel = '', // String ('Entry', 'Mid', 'Senior', 'Executive')
+    worksite = 'mixed', // String ('remote', 'onsite', 'mixed')
 
   } = req.query;
 
@@ -67,8 +67,10 @@ exports.jobSearch = (req, res) => {
     location = '';
     worksite = 'remote';
   }
-
-  keywords = worksite === 'remote' && `Remote ${keywords}`;
+  if (worksite === 'remote') {
+    keywords = `Remote ${keywords}`;
+  }
+  // keywords = worksite === 'remote' && `Remote ${keywords}`;
 
   pagesize = parseInt(pagesize, 10);
   radius = parseInt(radius, 10);
