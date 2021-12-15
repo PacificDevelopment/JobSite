@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 require('dotenv').config();
 
-const CareerJet = require('../careerJet');
+const CareerJet = require('../models/API/careerJet');
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -29,27 +29,48 @@ const randomWorksite = () => {
   return random ? 'On-Site' : 'Mixed';
 };
 
+exports.scrapeDescription = (req, res) => {
+  const { url } = req.query;
+  axios.get(url)
+    .then((response) => {
+      const html = response.data;
+
+      const $ = cheerio.load(html);
+      const description = $('.content');
+      res.send(description.html());
+    })
+    .catch((err) => res.send(err));
+};
+
 exports.jobSearch = (req, res) => {
   let {
-    location,
-    keywords,
+    location = 'us', // String
+    keywords, // String
     // eslint-disable-next-line prefer-const
-    sortBy,
-    pagesize,
-    radius,
-    page,
+    sort = 'relevance', // String ('relevance', 'data', 'salary')
+    pagesize = 10, // Integer
+    radius = 10, // Integer (5, 10, 50, 100)
+    page = 1, // Integer
     // eslint-disable-next-line prefer-const
-    employmentType,
+    employmentType = '', // String ('Full Time', 'Part Time', 'Temporary', 'Internship')
+    // eslint-disable-next-line prefer-const
+    experienceLevel = '', // String ('Entry', 'Mid', 'Senior', 'Executive')
+    worksite = 'Mixed', // String ('remote', 'onsite', 'mixed')
+
   } = req.query;
+
+  keywords = experienceLevel && `${experienceLevel} ${keywords}`;
 
   // careerjet api does not support "remote" location
   // add remote to search
-  let worksite;
   if (location.match(/remote/i) || location.match(/anywhere/i)) {
-    keywords = `${location} ${keywords}`;
     location = '';
-    worksite = 'Remote';
+    worksite = 'remote';
   }
+  if (worksite === 'remote') {
+    keywords = `Remote ${keywords}`;
+  }
+  // keywords = worksite === 'remote' && `Remote ${keywords}`;
 
   pagesize = parseInt(pagesize, 10);
   radius = parseInt(radius, 10);
@@ -62,12 +83,10 @@ exports.jobSearch = (req, res) => {
     user_agent: 'JobSite',
   });
 
-  console.log(careerjetAPI);
-
   careerjetAPI
     .location(location)
     .keywords(keywords)
-    .sortBy(sortBy)
+    .sortBy(sort)
     .pagesize(pagesize)
     .radius(radius)
     .page(page)
@@ -75,46 +94,14 @@ exports.jobSearch = (req, res) => {
     .query()
     .then((data) => {
       const results = data.data;
-
-      results.employmentType = employmentType;
-      // web scrape each returned url to get full description and external application url
-      Promise.all(results.jobs.map(async (job, index) => {
-        await axios.get(job.url)
-          .then((response) => {
-            const html = response.data;
-            const $ = cheerio.load(html);
-            const description = $('.content');
-            // const companyURL = $('.source').children('a').attr('href');
-            results.jobs[index].description = description.html();
-            results.jobs[index].experienceLevel = randomExperienceLevel();
-            results.jobs[index].worksite = worksite || randomWorksite();
-            // possible use regex to change /n in description to <br/>
-            // results.jobs[index].applyExternal = 'careerjet.com' + companyURL;
-          });
-      }))
-        .then(() => res.send(results.jobs));
+      if (results.jobs) {
+        for (let i = 0; i < results.jobs.length; i += 1) {
+          results.jobs[i].employmentType = employmentType;
+          results.jobs[i].experienceLevel = experienceLevel || randomExperienceLevel();
+          results.jobs[i].worksite = worksite || randomWorksite();
+        }
+      }
+      res.send(results);
     })
     .catch((err) => console.log(err));
 };
-
-exports.googleJobsSearch = (req, res) => {
-  const SerpApi = require('google-search-results-nodejs');
-  const search = new SerpApi.GoogleSearch(process.env.serpAPI);
-
-  const params = {
-    engine: "google_jobs",
-    google_domain: "google.com",
-    q: "Software Developer",
-    hl: "en",
-    gl: "us",
-    location: "89436, Nevada, United States"
-  };
-
-  const callback = function(data) {
-    console.log(data);
-    res.send(data);
-  };
-
-  // Show result as JSON
-  search.json(params, callback);
-  };

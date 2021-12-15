@@ -17,7 +17,7 @@ function App() {
     <div data-testid="app">
       <CssBaseline />
       <ThemeProvider theme={Theme}>
-        <Grid container direction="column" sx={{ width: '100vw', height: '100vh' }}>
+        <Grid container direction="column" sx={{ width: '100vw', minHeight: '100vh' }}>
           <NavBar />
 
           <Routes>
