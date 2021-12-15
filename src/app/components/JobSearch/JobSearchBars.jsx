@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import {
   Box, Stack, FormControl, InputLabel, Input, InputAdornment,
 } from '@mui/material';
-import { parseSearchInput } from '../../../utils/searchUtils'
+import { parseSearchInput } from '../../utils/searchUtils'
 import { LocationOn, LocationOff, Tune } from '@mui/icons-material';
 import { JobSearchContext } from './JobSearchContext';
 
