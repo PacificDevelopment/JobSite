@@ -13,7 +13,7 @@ const jobSearch = require('./controllers/jobSearchController');
 
 const applications = require('./controllers/applicationsController');
 const savedJobs = require('./controllers/savedJobsController');
-const User = require('./models/userModel');
+const authorization = require('./controllers/authController');
 
 // ----------------------------------------- END OF IMPORTS-----------------------------------------
 
@@ -49,55 +49,14 @@ app.get('/', (req, res) => {
   res.send('Hello Job Seekers!');
 });
 
-app.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err) throw err;
-    if (!user) res.send('No User Exists');
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send('Successfully Authenticated');
-        // console.log(req.user);
-      });
-    }
-  })(req, res, next);
-});
-app.post('/register', (req, res) => {
-  User.findOne({ username: req.body.username }, async (err, doc) => {
-    if (err) throw err;
-    if (doc.rows.length > 0) {
-      // console.log('d', doc);
-      res.send('User Already Exists');
-    }
-    if (doc.rows.length === 0) {
-      const salt = 10;
-      const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-      const newUser = {
-        username: req.body.username,
-        password: hashedPassword,
-      };
-      await User.insert(newUser.username, newUser.password, salt);
-      res.send('User Created');
-    }
-  });
-});
+app.post('/login', authorization.login);
+app.post('/register', authorization.register);
 app.get('/user', (req, res) => {
-  console.log('u', req);
-  console.log('u', req.user);
+  // console.log('u', req);
+  // console.log('u', req.user);
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside it.
 });
 
-// app.get('/job_listings', (req, res) => {
-//   console.log('express get request');
-//   db.getJobListingss(req.query.product_id)
-//     .then((data) => {
-//       res.status(200).send(data.data);
-//     })
-//     .catch((err) => {
-//       res.status(404).send(err);
-//     });
-// });
 app.get('/data/jobsearch', jobSearch.jobSearch);
 
 app.get('/data/jobsearchdescription', jobSearch.scrapeDescription);

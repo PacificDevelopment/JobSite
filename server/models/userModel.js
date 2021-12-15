@@ -9,7 +9,7 @@ const user = {
   },
   findById: async (id, cb) => {
     const fUser = await pool.query('SELECT * FROM Users WHERE id = $1', [id]);
-    console.log('findById', fUser);
+    // console.log('findById', fUser);
     cb(null, fUser);
   },
   insert: async (username, hashPass, salt) => {
