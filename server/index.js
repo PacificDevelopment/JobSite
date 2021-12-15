@@ -67,7 +67,7 @@ app.post('/appliedJobs', applications.oneClickApply);
 
 app.get('/appliedJobs', applications.getAppliedJobs);
 
-app.post('/savedJobs', savedJobs.saveJob);
+app.post('/saveJob', savedJobs.saveJob);
 
 app.get('/savedJobs', savedJobs.getSavedJobs);
 

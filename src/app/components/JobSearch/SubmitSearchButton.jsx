@@ -6,7 +6,7 @@ import { Grid, Button } from '@mui/material';
 import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
 import { parseSearchInput } from '../../utils/searchUtils';
-import CustomButton from '../CustomButton';
+import PrimaryButton from '../PrimaryButton';
 
 function SubmitSearchButton(props) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,7 +37,7 @@ function SubmitSearchButton(props) {
   };
 
   return (
-    <CustomButton
+    <PrimaryButton
       onClick={submitSearch}
       text="Find Jobs"
     />
@@ -50,7 +50,7 @@ export default SubmitSearchButton;
 
 
 
-// export default function CustomButton({
+// export default function PrimaryButton({
 //   text, onClick, styleOverride, textStyleOverride, fullWidth,
 // }) {
 //   return (
