@@ -6,7 +6,7 @@ const jobPostModel = require('../models/jobPostModel');
 
 exports.saveJob = async (req, res) => {
   if (req.user === undefined) {
-    res.status(401).send("Please Login to your JobSite account");
+    res.status(401).send('Please Login to your JobSite account');
   }
   console.log('Current User', req.user);
   const {

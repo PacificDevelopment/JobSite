@@ -2,29 +2,28 @@ import { useState, useEffect } from 'react';
 import * as React from 'react';
 import axios from 'axios';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 function JobFocusItem({ job }) {
   const [description, setDescription] = useState(job.description);
 
+  // When we polish Description to show HTML please remove the template literals in this useEffect.
   useEffect(() => {
+    setDescription(`${job.description} Loading Full Job Description, Please Wait`);
     axios.get('/data/jobsearchdescription', {
       params: {
         url: job.url,
       },
     })
       .then((results) => {
-        // setDescription(results.data);
+        setDescription(results.data);
+      })
+      .catch((error) => {
+        console.log('Failed to retreive full job description, falling back to snippet', error);
+        setDescription(`${job.description} Full Job Description unavailable for this job at this time`);
       });
-  });
-
-  console.log(job.company);
-  console.log(job.title);
-  console.log(job.locations);
-  console.log(description);
-  console.log(job.date);
+  }, [job.description, job.url]);
 
   if (job) {
     return (
