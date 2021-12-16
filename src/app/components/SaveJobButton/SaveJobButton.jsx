@@ -20,7 +20,15 @@ const SaveJobButton = ({job}) => {
   };
 
   const handleSaveJobClick = (e) => {
-    getUser();
+    axios({
+      method: 'POST',
+      url: '/saveJob',
+      withCredentials:true,
+      data: {
+        job: job,
+        //user: res.data,
+      },
+    })
   }
 
   return(

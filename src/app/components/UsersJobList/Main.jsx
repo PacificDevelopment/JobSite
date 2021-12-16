@@ -6,35 +6,20 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import UserJobsList from './UserJobsList.jsx';
 
-function Main() {
-  const [jobsState, setJobs] = useState({});
-
-  useEffect(() => {
-    getSavedJobs();
-
-  }, []);
-
-  const getSavedJobs = () => {
-    axios.get('/savedJobs')
-      .then((results) => {
-        setJobs(results.data);
-        //this returns a list of ALL saved jobs for ALL interest levels
-        console.log('hopefully a saved jobs list', results.data);
-      })
-      .catch((err) => {
-        console.log('get request failed');
-      });
-  };
+function Main({ interestLevel, savedJobsList }) {
+  const [jobsState, setJobs] = useState(savedJobsList);
 
   if (jobsState !== {}) {
     console.log('this is jobs state', jobsState);
-    return (<div>Nothing here until get request returns data</div>);
+    return (
+      <div>Visit the job search page to save and apply for jobs!</div>
+    );
   }
 
   return (
     <Container sx={{ display: 'flex' }}>
       <Box>
-        <UsersJobsList listOfJobs={jobsState} />
+        <UsersJobsList listOfJobs={jobsState} interestLevel={interestLevel} />
       </Box>
     </Container>
   );
