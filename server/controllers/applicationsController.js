@@ -9,12 +9,17 @@ exports.oneClickApply = (req, res) => {
 }
 
 exports.getAppliedJobs = (req, res) => {
+  console.log('req.user', req.user)
   if (req.user === undefined) {
     res.status(401).send('Please login to your JobSite account')
+  } else {
+    oneClickModels.getAppliedJobs(req.user.id)
+      .then((data) => {
+        res.status(200).send(data)
+      })
+      .catch((err) => {
+        console.log(err.message)
+        res.send(err)
+      })
   }
-  oneClickModels.getAppliedJobs(req.user.id)
-    .then((data) => {
-      res.status(200).send(data)
-    })
-    .catch((err) => res.send(err))
 }

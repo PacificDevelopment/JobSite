@@ -17,11 +17,7 @@ exports.quickApply = async (session_id, job_post_id) => {
   return response;
 };
 
-exports.getAppliedJobs = async (session_id) => {
-  const user = await pool.query('SELECT id FROM Users WHERE session_id = $1', [session_id]);
-
-  const response = await pool.query(
-    'SELECT * from Applications WHERE user_id = $1', [user]
-  )
-  return response;
+exports.getAppliedJobs = async (user_id) => {
+  return pool.query(
+    'SELECT * from Applications WHERE user_id = $1', [user_id])
 }
