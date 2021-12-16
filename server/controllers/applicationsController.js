@@ -9,8 +9,10 @@ exports.oneClickApply = (req, res) => {
 }
 
 exports.getAppliedJobs = (req, res) => {
-  const user_id = req.body.user_id //change this to the correct name
-  oneClickModels.getAppliedJobs(user_id)
+  if (req.user === undefined) {
+    res.status(401).send('Please login to your JobSite account')
+  }
+  oneClickModels.getAppliedJobs(req.user.id)
     .then((data) => {
       res.status(200).send(data)
     })
