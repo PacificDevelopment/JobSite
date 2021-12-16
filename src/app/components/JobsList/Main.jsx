@@ -22,7 +22,10 @@ function Main({ jobsData }) {
 
   return (
 
-    <Container sx={{ display: 'flex' }}>
+    <Box sx={{
+      display: 'flex', maxWidth: 1400, mr: 'auto', ml: 'auto',
+    }}
+    >
       <Box sx={{
         overflowY: 'auto', maxHeight: 700, width: 600, m: 2, mr: 4,
       }}
@@ -30,7 +33,7 @@ function Main({ jobsData }) {
         {jobsData.map((job, index) => <JobItem key={`job-${index + 1}`} handleFocus={mainFocusFunction} job={job} />)}
       </Box>
       <JobFocusItem job={jobFocusState} />
-    </Container>
+    </Box>
 
   );
 }
