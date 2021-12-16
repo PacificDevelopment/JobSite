@@ -8,7 +8,7 @@ import { JobSearchContext } from './JobSearchContext';
 import { parseSearchInput } from '../../utils/searchUtils';
 import PrimaryButton from '../PrimaryButton';
 
-function SubmitSearchButton(props) {
+function SubmitSearchButton({setSearchResults}) {
   const [searchParams, setSearchParams] = useSearchParams();
   const {
     range,
@@ -35,7 +35,7 @@ function SubmitSearchButton(props) {
 
     axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
       .then((results) => {
-        props.setSearchResults(results.data);
+        setSearchResults(results.data);
       });
   };
 
