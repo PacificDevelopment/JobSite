@@ -61,7 +61,7 @@ app.get('/user', (req, res) => {
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside it.
 });
 
-//app.post('/data/upload', user.insertPDF);
+app.post('/data/upload', user.insertPDF);
 
 app.get('/data/jobsearch', jobSearch.jobSearch);
 
