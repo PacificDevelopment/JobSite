@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Box from '@mui/material/Box';
 import PrimaryButton from '../PrimaryButton';
 import SecondaryButton from '../SecondaryButton';
 
@@ -23,18 +24,18 @@ function SaveJobButton({ job }) {
   };
 
   return (
-    <div>
+    <Box>
       { saveStarted
         ? (
-          <div>
+          <Box>
             <SecondaryButton text="Interested" onClick={handleInterestLevelClick} />
             <SecondaryButton text="Very Interested" onClick={handleInterestLevelClick} />
             <SecondaryButton text="Extremely Interested" onClick={handleInterestLevelClick} />
-          </div>
+          </Box>
         )
         : null}
       <PrimaryButton text="Save Job" onClick={handleSaveJobClick} />
-    </div>
+    </Box>
   );
 }
 
