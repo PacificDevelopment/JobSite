@@ -7,6 +7,7 @@ const EditableInput = (props) => {
   return (
     <Input
       margin='dense'
+      fullWidth
       sx={props.sx}
       type={props.type || 'text'}
       color="secondary"
@@ -48,8 +49,8 @@ const ProfileTextForm = (props) => {
     setStreet,
     city,
     setCity,
-    state,
-    setState,
+    homeState,
+    setHomeState,
     zip,
     setZip,
     phone_number,
@@ -61,8 +62,18 @@ const ProfileTextForm = (props) => {
   return (
     <FormControl disabled={disabled}>
       <Stack direction='row' sx={{ width: '100%' }}>
-        <EditableInput label='First Name' id='first_name' value={first_name} {...{ disabled }} />
-        <EditableInput label='Last Name' id='last_name' value={last_name} {...{ disabled }} />
+        <EditableInput
+          label='First Name'
+          id='first_name'
+          value={first_name}
+          {...{ disabled }}
+        />
+        <EditableInput
+          label='Last Name'
+          id='last_name'
+          value={last_name}
+          {...{ disabled }}
+        />
       </Stack>
       <EditableInput
         label='Email'
@@ -80,9 +91,24 @@ const ProfileTextForm = (props) => {
         {...{ disabled }}
       />
       <Stack direction='row'>
-        <EditableInput label='City' id='city' {...{ disabled }} />
-        <StateSelector label='State' id='state' onChange={setState} value={(e) => setState(e.target.value)} {...{ disabled }} />
-        <EditableInput label='Zip' id='zip' value={zip} {...{ disabled }} />
+        <EditableInput
+          label='City'
+          id='city'
+          {...{ disabled }}
+        />
+        <StateSelector
+          label='State'
+          id='state'
+          onChange={setHomeState}
+          value={homeState}
+          {...{ disabled }}
+        />
+        <EditableInput
+          label='Zip'
+          id='zip'
+          value={zip}
+          {...{ disabled }}
+        />
       </Stack>
       <EditableInput label='Phone' id='phone_number' value={'(123)456 - 7890'} {...{ disabled }} />
     </FormControl>
