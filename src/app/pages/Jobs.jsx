@@ -4,64 +4,63 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import Theme from '../Theme';
+import Typography from '@mui/material/Typography';
 import JobSearch from '../components/JobSearch/JobSearch';
 import Main from '../components/UsersJobList/Main';
 
 function Jobs() {
-  const [savedJobsList, setJobs] = useState({});
+  const [savedJobsList, setJobs] = useState([]);
   const [interestLevel, setInterest] = useState('');
 
-  // this is breaking
   const getSavedJobs = (interestParam) => {
     axios.get('/savedJobs')
-    // results = array of objects, each object is a "job post", with the same data
-    // shape as the API data (also the same as what Job List uses)
-      .then((results) => {
-        setJobs(results.data);
-        setInterest(interestParam);
-        // this returns a list of ALL saved jobs for ALL interest levels
-        console.log('hopefully a saved jobs list', results.data);
-      })
-      .catch((err) => {
-        console.log('get request failed');
-      });
+    .then((results) => {
+      setJobs(results.data);
+      setInterest(interestParam);
+    })
+    .catch((err) => {
+      console.log('get request to /savedJobs failed');
+    });
   };
 
   useEffect(() => {
     getSavedJobs();
   }, []);
 
+  // this is breaking
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
       .then((results) => {
         setJobs(results.data);
         setInterest(interestParam);
-        console.log('hopefully a saved jobs list', results.data);
+        console.log('got applied jobs', results.data)
       })
       .catch((err) => {
-        console.log('get request failed');
+        console.log('get request to /appliedJobs failed', err);
+        // setJobs({});
+        setInterest(interestParam);
       });
   };
 
   const selectJobList = (event) => {
-    const interestLevel = event.target.innerText;
-    switch (event.target.innerText) {
-      case 'APPLIED':
-        getAppliedJobs(interestLevel);
+    const buttonName = event.target.value;
+    switch (buttonName) {
+      case 'Applied':
+        getAppliedJobs(buttonName);
         break;
-      case 'EXTREMELY INTERESTED':
-        getSavedJobs(interestLevel);
+      case 'Extremely Interested':
+        getSavedJobs(buttonName);
         break;
-      case 'VERY INTERESTED':
-        getSavedJobs(interestLevel);
+      case 'Very Interested':
+        getSavedJobs(buttonName);
         break;
-      case 'INTERESTED':
-        getSavedJobs(interestLevel);
+      case 'Interested':
+        getSavedJobs(buttonName);
         break;
       default:
         break;
     }
-    getSavedJobs(interestLevel);
+    getSavedJobs(buttonName);
   };
   return (
     <Box>
@@ -69,11 +68,12 @@ function Jobs() {
         <JobSearch />
       </Stack>
       <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-        <h1>My Jobs</h1>
+        <Typography>My Jobs</Typography>
         <Button
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value='Applied'
         >
           Applied
         </Button>
@@ -81,6 +81,8 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value='Extremely Interested'
+
         >
           Extremely Interested
         </Button>
@@ -88,6 +90,8 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value='Very Interested'
+
         >
           Very Interested
         </Button>
@@ -95,6 +99,8 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value='Interested'
+
         >
           Interested
         </Button>
