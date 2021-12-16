@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, Button, Input } from '@mui/material';
+import { Box, Button, Input, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Theme from '../Theme';
-import FileViewAndUpload from '../components/FileUpload/FileUpload';
+import FileViewAndUpload from '../components/FileUpload/FileViewAndUpload';
 
 function Profile() {
   return (
@@ -13,17 +13,17 @@ function Profile() {
         <span>City, State</span>
         <Button variant="outlined" style={Theme.palette.independence}>Edit</Button>
       </Box>
+      <hr />
       <Box>
-        <h1>Resume</h1>
+        <Typography variant='h5'>Resume</Typography>
         <FileViewAndUpload fileUse='resume'/>
       </Box>
-
-
+      <hr/>
       <Box>
-        <h1>Cover Letter</h1>
+        <Typography variant='h5'>Cover Letter</Typography>
         <FileViewAndUpload fileUse='cover_letter'/>
       </Box>
-
+      <hr/>
       <Box>
         <h1>Contact Information Placeholder</h1>
         <Button variant="outlined" style={Theme.palette.independence}>Edit</Button>

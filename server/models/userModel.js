@@ -17,6 +17,11 @@ const user = {
       [username, hashPass, salt, 'NOW()', false],
     );
   },
+  uploadPDF: async (url, fileUse, id) => {
+    return pool.query(`UPDATE Users SET ${fileUse}_pdf_url = $1
+      WHERE id=$2;`,
+    [url, id])
+  },
 };
 
 module.exports = user;

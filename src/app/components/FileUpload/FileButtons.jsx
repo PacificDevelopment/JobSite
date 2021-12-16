@@ -8,8 +8,8 @@ export const PDFUploadButton = (props) => {
   return (
     <PrimaryButton
       component='span'
-      // onClick={() => uploadPDF(url, fileUse, userId, callback)}
-      text={'UPLOAD ' + props.label}
+      onChange={props.upload}
+      text={'Upload ' + props.label}
     />
   )
 }
@@ -17,9 +17,9 @@ export const PDFUploadButton = (props) => {
 export const PDFDownloadButton = (props) => {
   return (
     <SecondaryButton
-      component='a'
+      onChange={props.onChange}
       href={props.url}
       text={'Download ' + props.label}
     />
   )
-}
+};
