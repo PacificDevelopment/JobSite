@@ -20,12 +20,6 @@ function JobFocusItem({ job }) {
       });
   });
 
-  console.log(job.company);
-  console.log(job.title);
-  console.log(job.locations);
-  console.log(description);
-  console.log(job.date);
-
   if (job) {
     return (
       <Card sx={{ justifyContent: 'center' }}>
