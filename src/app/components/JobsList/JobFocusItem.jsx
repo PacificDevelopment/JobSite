@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import * as React from 'react';
 import axios from 'axios';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
@@ -16,7 +15,11 @@ function JobFocusItem({ job }) {
       },
     })
       .then((results) => {
-        // setDescription(results.data);
+        setDescription(results.data);
+      })
+      .catch((error) => {
+        console.log('Failed to retreive job description, falling back to snippet', error);
+        setDescription(job.description);
       });
   });
 
