@@ -1,43 +1,42 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Box from '@mui/material/Box';
 import PrimaryButton from '../PrimaryButton';
 import SecondaryButton from '../SecondaryButton';
 
-const SaveJobButton = ({job}) => {
+function SaveJobButton({ job }) {
   const [saveStarted, setSaveStarted] = useState(false);
 
-  const handleSaveJobClick = (e) => {
+  const handleSaveJobClick = () => {
     setSaveStarted(true);
-  }
+  };
 
   const handleInterestLevelClick = (e) => {
-    job.interest_level = e.target.textContent;
+    const data = { job };
+    data.job.interest_level = e.target.textContent;
     axios({
       method: 'POST',
       url: '/saveJob',
-      withCredentials:true,
-      data: {
-        job: job,
-      },
-    })
+      withCredentials: true,
+      data,
+    });
     setSaveStarted(false);
-  }
+  };
 
   return (
-    <div>
+    <Box>
       { saveStarted
         ? (
-            <div>
-              <SecondaryButton text={'Interested'} onClick={handleInterestLevelClick} />
-              <SecondaryButton text={'Very Interested'} onClick={handleInterestLevelClick} />
-              <SecondaryButton text={'Extremely Interested'} onClick={handleInterestLevelClick} />
-            </div>
-          )
-        : null
-      }
-      <PrimaryButton text={'Save Job'} onClick={handleSaveJobClick} />
-    </div>
+          <Box>
+            <SecondaryButton text="Interested" onClick={handleInterestLevelClick} />
+            <SecondaryButton text="Very Interested" onClick={handleInterestLevelClick} />
+            <SecondaryButton text="Extremely Interested" onClick={handleInterestLevelClick} />
+          </Box>
+        )
+        : null}
+      <PrimaryButton text="Save Job" onClick={handleSaveJobClick} />
+    </Box>
   );
-};
+}
 
 export default SaveJobButton;
