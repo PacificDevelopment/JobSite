@@ -27,7 +27,6 @@ exports.insertEmployer = ({
   phone_number = null,
   date_created = new Date(),
 }) => {
-  debugger;
   return pool.query(
     `WITH input_rows(logo_url, street_address, city, state, zip, phone_number, name, date_created) AS (
       VALUES
