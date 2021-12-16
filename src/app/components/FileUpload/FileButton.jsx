@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material'
 
-export const PDFButton = ({ url, label, component, fullWidth, visible }) => {
+export const FileButton = ({ url, label, component, fullWidth, visible }) => {
 
   return (
     <Button

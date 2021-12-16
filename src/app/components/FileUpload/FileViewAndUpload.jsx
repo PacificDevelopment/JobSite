@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { Stack, Divider, Typography, Input, Box, Button } from '@mui/material';
-import { PDFButton } from './FileButton';
+import { FileButton } from './FileButton';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import firebaseConfig from './firebaseConfig.js'
@@ -66,7 +66,7 @@ export const FileViewAndUpload = (props) => {
           onChange={fileSelect}
           sx={{ display: 'none' }}
         />
-        <PDFButton
+        <FileButton
           component='a'
           label={'Upload ' + label}
           fullWidth={true}
@@ -78,7 +78,7 @@ export const FileViewAndUpload = (props) => {
             src={`${downloadURL}#&embedded=true&toolbar=0&navpanes=0`}
             style={{ width: 250, height: 323, border: 0 }}
           />
-          <PDFButton
+          <FileButton
             fullWidth={true}
             component='a'
             url={downloadURL}
