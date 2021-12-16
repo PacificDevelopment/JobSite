@@ -73,7 +73,7 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
-          value={'Applied'}
+          value='Applied'
         >
           Applied
         </Button>
@@ -81,7 +81,7 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
-          value={'Extremely Interested'}
+          value='Extremely Interested'
 
         >
           Extremely Interested
@@ -90,7 +90,7 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
-          value={'Very Interested'}
+          value='Very Interested'
 
         >
           Very Interested
@@ -99,7 +99,7 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
-          value={'Interested'}
+          value='Interested'
 
         >
           Interested

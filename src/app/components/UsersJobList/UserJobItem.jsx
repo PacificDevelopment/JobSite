@@ -7,28 +7,26 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import PrimaryButton from '../PrimaryButton';
 
-
-
-const UserJobItem = (props) => {
+const UserJobItem = ({job}) => {
   return (
     <Card >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {props.job.company}
+          {job.company}
         </Typography>
         <Typography variant="h5" component="div">
-          {props.job.title}
+          {job.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props.job.locations}
+          {job.locations}
         </Typography>
         <Typography sx={{ mb: 2.0 }} color="text.secondary">
-          {props.job.interest_level}
+          {job.interest_level}
         </Typography>
         <Typography variant="body2">
-          {props.job.description}
+          {job.description}
           <br />
-          {props.job.date}
+          {job.date}
         </Typography>
       </CardContent>
       <CardActions>
