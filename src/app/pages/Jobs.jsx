@@ -8,19 +8,22 @@ import JobSearch from '../components/JobSearch/JobSearch';
 import Main from '../components/UsersJobList/Main';
 
 function Jobs() {
-  const [savedJobsList, setJobs] = useState({});
+  const [savedJobsList, setJobs] = useState([]);
   const [interestLevel, setInterest] = useState('');
 
   // this is breaking
   const getSavedJobs = (interestParam) => {
     axios.get('/savedJobs')
-    // results = array of objects, each object is a "job post", with the same data
-    // shape as the API data (also the same as what Job List uses)
+      // results = array of objects, each object is a "job post", with the same data
+      // shape as the API data (also the same as what Job List uses)
       .then((results) => {
         setJobs(results.data);
         setInterest(interestParam);
         // this returns a list of ALL saved jobs for ALL interest levels
-        console.log('hopefully a saved jobs list', results.data);
+      })
+      .then(() => {
+        console.log('saved jobs list from get request', savedJobsList);
+
       })
       .catch((err) => {
         console.log('get request failed');

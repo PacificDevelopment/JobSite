@@ -7,19 +7,23 @@ import axios from 'axios';
 import UserJobsList from './UserJobsList.jsx';
 
 function Main({ interestLevel, savedJobsList }) {
-  const [jobsState, setJobs] = useState(savedJobsList);
+  // const [jobsState, setJobs] = useState(savedJobsList);
+console.log('saved jobs list from main', savedJobsList)
+// if (jobsState !== {}) {
+  //   console.log('this is jobs state', jobsState);
+  //   return (
+    //     <div>Visit the job search page to save and apply for jobs!</div>
+    //   );
+    // }
+    // useEffect(() => {
+    //   setJobs(savedJobsList);
+    //   console.log('state of mah jerb', jobsState);
+    // }, []);
 
-  if (jobsState !== {}) {
-    console.log('this is jobs state', jobsState);
     return (
-      <div>Visit the job search page to save and apply for jobs!</div>
-    );
-  }
-
-  return (
     <Container sx={{ display: 'flex' }}>
       <Box>
-        <UsersJobsList listOfJobs={jobsState} interestLevel={interestLevel} />
+        <UserJobsList listOfJobs={savedJobsList} interestLevel={interestLevel} />
       </Box>
     </Container>
   );
