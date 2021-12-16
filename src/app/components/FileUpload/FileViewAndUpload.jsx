@@ -1,34 +1,33 @@
 
 import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
-import { Stack } from '@mui/material';
-import { PDFUploadButton, PDFDownloadButton } from './FileButtons';
+import { Stack, Grid, Divider, Typography, Input, Button } from '@mui/material';
+import { PDFButton } from './FileButtons';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import firebaseConfig from './firebaseConfig.js'
 import axios from 'axios';
 
-const Input = styled('input')({
-  // display: 'none',
-});
 
 export const FileView = (props) => {
-  let label = props.fileUse === 'resume' ? 'Resume' : 'Cover Letter';
 
   return (
-    <Stack>
-      <iframe src={`${props.url}&embedded=true`} width="250" height="350" frameBorder="0" />
-      <PDFDownloadButton
-        fullWidth={false}
-        fileUse={props.fileUse}
+    <Stack >
+      <iframe
+        src={`${props.url}#&embedded=true&toolbar=0&navpanes=0`}
+        style={{ width: 250, height: 323, border: 0 }}
+      />
+      <PDFButton
+        fullWidth={true}
+        component='a'
         url={props.url}
-        label={label}
+        label={'Download ' + props.label}
       />
     </Stack>
   )
 }
 
-const FileViewAndUpload = (props) => {
+export const FileViewAndUpload = (props) => {
   let { fileUse } = props;
 
   const [file, setFile] = useState(null);
@@ -76,11 +75,53 @@ const FileViewAndUpload = (props) => {
 
   return (
 
-    <form>
-      <Input id='file-upload' accept='.pdf' type='file' onChange={fileSelect} />
-      {downloadURL && <FileView url={downloadURL} {...{ fileUse }} />}
-    </form>
+    <Stack>
+      <Typography variant='h5'>{label}</Typography>
+      <label htmlFor={'file-upload' + fileUse}>
+        <Input
+          id={'file-upload' + fileUse}
+          accept='.pdf'
+          type='file'
+          onChange={fileSelect}
+          sx={{ display: 'none' }}
+        />
+        <PDFButton
+          component='a'
+          label={'Upload ' + label}
+          fullWidth={true}
+        />
+      </label>
+      {downloadURL
+        &&
+        <>
+        <iframe
+          src={`${downloadURL}#&embedded=true&toolbar=0&navpanes=0`}
+          style={{ width: 250, height: 323, border: 0 }}
+        />
+        <PDFButton
+          fullWidth={true}
+          component='a'
+          url={downloadURL}
+          label={'Download ' + label}
+        />
+        </>
+      }
+
+    </Stack >
   )
 }
 
-export default FileViewAndUpload;
+const ResumeAndCoverLetter = () => {
+  return (
+    <Stack
+      direction='row'
+      justifyContent="space-evenly"
+    >
+      <FileViewAndUpload fileUse='resume' />
+      <Divider orientation='vertical' />
+      <FileViewAndUpload fileUse='cover_letter' />
+    </Stack>
+  )
+};
+
+export default ResumeAndCoverLetter;

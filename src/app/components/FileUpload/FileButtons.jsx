@@ -1,25 +1,19 @@
 /* eslint-disable */
 import React from 'react';
-import PrimaryButton from '../PrimaryButton';
-import SecondaryButton from '../SecondaryButton';
+import { Button, Typography } from '@mui/material'
 
-export const PDFUploadButton = (props) => {
-  let {url, fileUse, userId, callback} = props;
+export const PDFButton = ({ url, label, component, fullWidth }) => {
   return (
-    <PrimaryButton
-      component='span'
-      onChange={props.upload}
-      text={'Upload ' + props.label}
-    />
-  )
-}
-
-export const PDFDownloadButton = (props) => {
-  return (
-    <SecondaryButton
-      onChange={props.onChange}
-      href={props.url}
-      text={'Download ' + props.label}
-    />
+    <Button
+      {...{ fullWidth, component }}
+      variant='contained'
+      color='secondary'
+      href={url}
+      sx={{ textTransform: 'none', p: 1, pr: 5, pl: 5, mt: 2, mb: 2, }}
+    >
+      <Typography>
+        {label}
+      </Typography>
+    </Button>
   )
 };
