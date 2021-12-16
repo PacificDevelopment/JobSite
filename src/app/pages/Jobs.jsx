@@ -2,35 +2,34 @@ import React, { useState, useEffect } from 'react';
 import {
   Box, Stack, Button,
 } from '@mui/material';
+import axios from 'axios';
 import Theme from '../Theme';
 import JobSearch from '../components/JobSearch/JobSearch';
-import Main from '../components/UsersJobList/Main.jsx';
-import axios from 'axios';
+import Main from '../components/UsersJobList/Main';
 
-
-
-const Jobs = () => {
-  const [savedJobsList, setJobs] = useState({})
+function Jobs() {
+  const [savedJobsList, setJobs] = useState({});
   const [interestLevel, setInterest] = useState('');
 
-  useEffect(() => {
-    getSavedJobs();
-  }, []);
-
-//this is breaking
+  // this is breaking
   const getSavedJobs = (interestParam) => {
     axios.get('/savedJobs')
-    //results = array of objects, each object is a "job post", with the same data shape as the API data (also the same as what Job List uses)
+    // results = array of objects, each object is a "job post", with the same data
+    // shape as the API data (also the same as what Job List uses)
       .then((results) => {
         setJobs(results.data);
         setInterest(interestParam);
-        //this returns a list of ALL saved jobs for ALL interest levels
+        // this returns a list of ALL saved jobs for ALL interest levels
         console.log('hopefully a saved jobs list', results.data);
       })
       .catch((err) => {
         console.log('get request failed');
       });
   };
+
+  useEffect(() => {
+    getSavedJobs();
+  }, []);
 
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
@@ -42,26 +41,28 @@ const Jobs = () => {
       .catch((err) => {
         console.log('get request failed');
       });
-  }
+  };
 
   const selectJobList = (event) => {
     const interestLevel = event.target.innerText;
     switch (event.target.innerText) {
-      case "APPLIED":
+      case 'APPLIED':
         getAppliedJobs(interestLevel);
         break;
-      case "EXTREMELY INTERESTED":
+      case 'EXTREMELY INTERESTED':
         getSavedJobs(interestLevel);
         break;
-      case "VERY INTERESTED":
+      case 'VERY INTERESTED':
         getSavedJobs(interestLevel);
         break;
-      case "INTERESTED":
+      case 'INTERESTED':
         getSavedJobs(interestLevel);
+        break;
+      default:
         break;
     }
     getSavedJobs(interestLevel);
-  }
+  };
   return (
     <Box>
       <Stack sx={{ m: 3 }}>
@@ -73,13 +74,30 @@ const Jobs = () => {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
-        >Applied</Button>
-        <Button variant="outline" style={Theme.palette.independence} onClick={selectJobList}
-        >Extremely Interested</Button>
-        <Button variant="outline" style={Theme.palette.independence} onClick={selectJobList}
-        >Very Interested</Button>
-        <Button variant="outline" style={Theme.palette.independence} onClick={(event) => selectJobList}
-        >Interested</Button>
+        >
+          Applied
+        </Button>
+        <Button
+          variant="outline"
+          style={Theme.palette.independence}
+          onClick={selectJobList}
+        >
+          Extremely Interested
+        </Button>
+        <Button
+          variant="outline"
+          style={Theme.palette.independence}
+          onClick={selectJobList}
+        >
+          Very Interested
+        </Button>
+        <Button
+          variant="outline"
+          style={Theme.palette.independence}
+          onClick={selectJobList}
+        >
+          Interested
+        </Button>
       </Box>
       <Main interestLevel={interestLevel} savedJobsList={savedJobsList} />
     </Box>

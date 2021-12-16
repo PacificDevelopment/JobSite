@@ -16,9 +16,15 @@ function JobFocusItem({ job }) {
       },
     })
       .then((results) => {
-        setDescription(results.data);
+        // setDescription(results.data);
       });
   });
+
+  console.log(job.company);
+  console.log(job.title);
+  console.log(job.locations);
+  console.log(description);
+  console.log(job.date);
 
   if (job) {
     return (
@@ -35,16 +41,15 @@ function JobFocusItem({ job }) {
           </Typography>
           <Typography variant="body2">
             {description}
-            <br />
+          </Typography>
+          <Typography variant="body2">
             {job.date}
           </Typography>
         </CardContent>
       </Card>
     );
   }
-  return (
-    <div>Hello</div>
-  );
+  return null;
 }
 
 export default JobFocusItem;

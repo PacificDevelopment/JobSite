@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {
-  Grid, Paper, TextField, Typography, Box,
+  Grid, Paper, Typography, Box,
 } from '@mui/material';
 import AccountSelection from '../components/home/AccountSelection';
 import { useWindowSize } from '../utils/customHooks';
@@ -98,7 +98,7 @@ function Home({ createAccount }) {
         <AccountSelection createAccount={createAccount} />
       </Grid>
 
-      <Grid xs={4} item container>
+      <Grid xs={4} item container sx={[centerStyle, { justifyContent: 'space-evenly' }]}>
         <Grid item xs={12} sx={centerStyle}>
           <Typography variant="h4" sx={{ m: 3 }}>
             How
@@ -109,7 +109,9 @@ function Home({ createAccount }) {
           </Typography>
         </Grid>
         {buttons.map((buttonData, index) => (
-          <CustomCard key={`Custom-card-${index + 1}`} buttonData={buttonData} centerStyle={centerStyle} />
+          <Grid item m={4} s={6} key={`Custom-card-${index + 1}`}>
+            <CustomCard buttonData={buttonData} centerStyle={centerStyle} />
+          </Grid>
         ))}
       </Grid>
     </Grid>
