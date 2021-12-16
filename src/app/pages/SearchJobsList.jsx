@@ -12,12 +12,8 @@ function SearchJobsList() {
 
   return (
     <Box sx={{ flexDirection: 'column' }}>
-      <Box>
-        <JobSearch setSearchResults={setSearchResults} />
-      </Box>
-      <Box>
-        <Main jobsData={searchResults.jobs} focusItem={searchResults.jobs[0]} />
-      </Box>
+      <JobSearch setSearchResults={setSearchResults} />
+      <Main jobsData={searchResults.jobs} focusItem={searchResults.jobs[0]} />
     </Box>
   );
 }
