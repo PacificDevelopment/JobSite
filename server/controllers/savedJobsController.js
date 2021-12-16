@@ -5,7 +5,7 @@ const employerModel = require('../models/employerModel');
 const jobPostModel = require('../models/jobPostModel');
 
 exports.saveJob = async (req, res) => {
-  //debugger;
+  debugger;
   req.user = req.body.data.user;
 
   //console.log(req.user.id);
