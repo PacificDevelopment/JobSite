@@ -71,7 +71,7 @@ app.get('/data/employers', employers.retrieveEmployerData);
 
 app.post('/appliedJobs', applications.oneClickApply);
 
-app.get('/appliedJobs', applications.getAppliedJobs);
+app.get('/appliedJx`obs', applications.getAppliedJobs);
 
 app.post('/saveJob', savedJobs.saveJob);
 
