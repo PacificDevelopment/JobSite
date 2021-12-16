@@ -17,18 +17,16 @@ exports.getSingleEmployerData = (employerId, callback) => {
   );
 };
 
-exports.insertEmployer = (
-  {
-    name,
-    logo_url = null,
-    street_address = null,
-    city = null,
-    state = null,
-    zip = null,
-    phone_number = null,
-    date_created = new Date(),
-  },
-) => {
+exports.insertEmployer = ({
+  name,
+  logo_url = null,
+  street_address = null,
+  city = null,
+  state = null,
+  zip = null,
+  phone_number = null,
+  date_created = new Date(),
+}) => {
   return pool.query(
     `WITH input_rows(logo_url, street_address, city, state, zip, phone_number, name, date_created) AS (
       VALUES

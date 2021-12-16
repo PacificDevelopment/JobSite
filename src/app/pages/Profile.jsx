@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Button, Input, Typography } from '@mui/material';
+import {
+  Box, Button,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 import Theme from '../Theme';
 import ResumeAndCoverLetter from '../components/FileUpload/FileViewAndUpload';

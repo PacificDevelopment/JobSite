@@ -52,7 +52,7 @@ function AccountSelection({ createAccount }) {
       );
     }
     return (
-      <JobSearch />
+      <JobSearch context="Home" />
     );
   }
   return (
@@ -101,6 +101,7 @@ function AccountSelection({ createAccount }) {
           <Paper sx={{ mt: 1 }}>
             <TextField
               label="Email address"
+              sx={{ '&.Mui-focused': { color: '#4A485B', fontWeight: 700 } }}
               fullWidth
               onChange={createAccount
                 ? (e) => setRegisterUsername(e.target.value)
@@ -111,6 +112,7 @@ function AccountSelection({ createAccount }) {
             <TextField
               label="Enter password"
               fullWidth
+              sx={{ '&.Mui-focused': { color: '#4A485B', fontWeight: 700 } }}
               onChange={createAccount
                 ? (e) => setRegisterPassword(e.target.value)
                 : (e) => setLoginPassword(e.target.value)}
