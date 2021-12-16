@@ -42,7 +42,11 @@ function App() {
             <Route path="/signup" element={width < 800 ? <SignUp /> : <Home createAccount />} exact />
             <Route path="/login" element={width < 800 ? <LogIn /> : <Home newLogIn={newLogIn} />} exact />
             <Route path="/dashboard" element={<Dashboard />} exact />
-            <Route path="/profile" element={<Profile />} exact />
+            <Route
+              path="/profile"
+              element={loggedIn ? <Profile /> : <Home newLogIn={newLogIn} />}
+              exact
+            />
             <Route
               path="/jobs"
               element={
