@@ -37,9 +37,9 @@ exports.scrapeDescription = (req, res) => {
 
       const $ = cheerio.load(html);
       const description = $('.content');
-      res.send(description.html());
+      res.status(200).send(description.html());
     })
-    .catch((err) => res.send(err));
+    .catch((err) => res.status(404).send(err));
 };
 
 exports.jobSearch = (req, res) => {

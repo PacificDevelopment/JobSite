@@ -4,7 +4,11 @@ import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
+<<<<<<< HEAD
   Home, Dashboard, LogIn, SignUp, Jobs, Profile, SearchJobsList,
+=======
+  Home, Dashboard, LogIn, SignUp, Jobs, Profile,
+>>>>>>> c247267c7eb7a935c4e14742fe51db411a511fc7
 } from './pages';
 import { useWindowSize } from './utils/customHooks';
 import Theme from './Theme';
@@ -50,7 +54,6 @@ function App() {
             }
               exact
             />
-            <Route path="/search" element={<SearchJobsList />} exact />
           </Routes>
         </Grid>
       </ThemeProvider>

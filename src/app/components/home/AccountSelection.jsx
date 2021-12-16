@@ -137,12 +137,12 @@ function AccountSelection({ createAccount, newLogIn }) {
           {createAccount ? null
             : (
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Link style={{ textDecoration: 'none', color: 'black' }} to="/SignUp">
+                <Link style={{ textDecoration: 'none', color: 'black' }} to="/signup">
                   <Typography variant="caption">
                     Don&apos;t have an account yet? Sign up.
                   </Typography>
                 </Link>
-                <Link style={{ textDecoration: 'none', color: 'black' }} to="/SignUp">
+                <Link style={{ textDecoration: 'none', color: 'black' }} to="/signup">
                   <Typography variant="caption">
                     Forgot password?
                   </Typography>
@@ -157,7 +157,7 @@ function AccountSelection({ createAccount, newLogIn }) {
             style={{
               textDecoration: 'none', color: 'black', textAlign: 'center',
             }}
-            to="/LogIn"
+            to="/login"
           >
             <Typography>Already have an account? Sign-In</Typography>
           </Link>
