@@ -5,19 +5,23 @@ import Button from '@mui/material/Button';
 // Secondary button for dashboard pages
 
 export default function SecondaryButton({
-  text, onClick, sx, textStyleOverride, fullWidth,
+  text, onClick, sx, textStyleOverride, fullWidth, selected,
 }) {
+  const selectedStyles = selected ? {
+    borderBottom: 3,
+    borderColor: '#85CDD2',
+  } : {};
   return (
     <Button
       fullWidth={fullWidth}
-      variant="contained"
+      variant="text"
       color="secondary"
       onClick={onClick}
       sx={[{
-        textTransform: 'none', p: 1, pr: 5, pl: 5, mt: 2, mb: 2,
-      }, sx]}
+        textTransform: 'none', p: 1, ml: 2, mr: 2, borderRadius: 0,
+      }, selectedStyles, sx]}
     >
-      <Typography sx={[textStyleOverride]}>{text}</Typography>
+      <Typography sx={[{ fontWeight: 700, color: '#0F060A' }, textStyleOverride]}>{text}</Typography>
     </Button>
   );
 }

@@ -98,7 +98,7 @@ function Home({ createAccount }) {
         <AccountSelection createAccount={createAccount} />
       </Grid>
 
-      <Grid xs={4} item container sx={[centerStyle, { justifyContent: 'space-evenly' }]}>
+      <Grid xs={4} item container sx={[centerStyle]}>
         <Grid item xs={12} sx={centerStyle}>
           <Typography variant="h4" sx={{ m: 3 }}>
             How
@@ -108,11 +108,13 @@ function Home({ createAccount }) {
             Works
           </Typography>
         </Grid>
-        {buttons.map((buttonData, index) => (
-          <Grid item m={4} s={6} key={`Custom-card-${index + 1}`}>
-            <CustomCard buttonData={buttonData} centerStyle={centerStyle} />
-          </Grid>
-        ))}
+        <Grid item container xs={12} sx={[centerStyle]}>
+          {buttons.map((buttonData, index) => (
+            <Grid item m={4} s={6} key={`Custom-card-${index + 1}`}>
+              <CustomCard buttonData={buttonData} centerStyle={centerStyle} />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   );

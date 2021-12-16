@@ -6,7 +6,7 @@ import JobSearchProvider from './JobSearchContext';
 import JobSearchBars from './JobSearchBars';
 import SubmitSearchButton from './SubmitSearchButton';
 
-const JobSearch = ({setSearchResults, context}) => {
+const JobSearch = ({setSearchResults, context, layout}) => {
 
   return (
     <JobSearchProvider>
