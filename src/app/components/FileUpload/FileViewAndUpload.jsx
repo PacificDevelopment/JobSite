@@ -54,7 +54,7 @@ const FileViewAndUpload = (props) => {
               headers: { 'Content-Type': 'application/json' },
               data: {
                 pdfURL,
-                fileUse: props.fileUse,
+                fileUse,
                 userId: props.userId
               },
             })
@@ -69,7 +69,7 @@ const FileViewAndUpload = (props) => {
 
 
   const fileSelect = async (e) => {
-    setFile(e.target.files[0])
+    setFile(e.target.files?.[0])
   };
 
   let label = fileUse === 'resume' ? 'Resume' : 'Cover Letter';
