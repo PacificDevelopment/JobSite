@@ -39,7 +39,7 @@ function SubmitSearchButton({ setSearchResults, context }) {
           if (setSearchResults) setSearchResults(results.data);
         });
     } else {
-      navigate(`/search?${queryString}`);
+      navigate(`/dashboard?${queryString}`);
     }
   };
 
