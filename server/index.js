@@ -8,7 +8,6 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 
-
 // ----------------------------------------- END OF IMPORTS-----------------------------------------
 
 const app = express();
@@ -21,12 +20,12 @@ app.use(
     origin: 'http://localhost:3000', // <-- location of the react app were connecting to
     credentials: true,
   }),
-  );
-  app.use(
-    session({
-      secret: 'secretcode',
-      resave: true,
-      saveUninitialized: true,
+);
+app.use(
+  session({
+    secret: 'secretcode',
+    resave: true,
+    saveUninitialized: true,
   }),
 );
 app.use(cookieParser('secretcode'));
@@ -44,7 +43,6 @@ const applications = require('./controllers/applicationsController');
 const savedJobs = require('./controllers/savedJobsController');
 const authorization = require('./controllers/authController');
 // -------------------------------------- END OF MIDDLEWARE-----------------------------------------
-
 
 app.get('/', (req, res) => {
   res.send('Hello Job Seekers!');
