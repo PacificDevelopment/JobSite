@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import JobsList from './JobsList.jsx';
-import JobFocusItem from './JobFocusItem.jsx';
-// import JobSearch from "../jobs/JobSearch.jsx";
+import JobItem from './JobItem';
+import JobFocusItem from './JobFocusItem';
 
 function Main({ jobsData }) {
   // const [jobsState, setJobs] = useState(jobsData.jobs);
@@ -26,9 +23,11 @@ function Main({ jobsData }) {
   return (
 
     <Container sx={{ display: 'flex' }}>
-
-      <Box>
-        <JobsList mainFocusFunction={mainFocusFunction} listOfJobs={jobsData} />
+      <Box sx={{
+        overflowY: 'auto', maxHeight: 700, width: 600, m: 2, mr: 4,
+      }}
+      >
+        {jobsData.map((job, index) => <JobItem key={`job-${index + 1}`} handleFocus={mainFocusFunction} job={job} />)}
       </Box>
       <JobFocusItem job={jobFocusState} />
     </Container>

@@ -27,7 +27,10 @@ function JobFocusItem({ job }) {
 
   if (job) {
     return (
-      <Card sx={{ justifyContent: 'center' }}>
+      <Card sx={{
+        justifyContent: 'center', width: 800, mt: 2, p: 2,
+      }}
+      >
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {job.company}
