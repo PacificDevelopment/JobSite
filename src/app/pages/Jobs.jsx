@@ -12,25 +12,22 @@ function Jobs() {
   const [savedJobsList, setJobs] = useState([]);
   const [interestLevel, setInterest] = useState('');
 
-  // this is breaking
   const getSavedJobs = (interestParam) => {
     axios.get('/savedJobs')
-      // results = array of objects, each object is a "job post", with the same data
-      // shape as the API data (also the same as what Job List uses)
-      .then((results) => {
-        setJobs(results.data);
-        setInterest(interestParam);
-        // this returns a list of ALL saved jobs for ALL interest levels
-      })
-      .catch((err) => {
-        console.log('get request failed');
-      });
+    .then((results) => {
+      setJobs(results.data);
+      setInterest(interestParam);
+    })
+    .catch((err) => {
+      console.log('get request to /savedJobs failed');
+    });
   };
 
   useEffect(() => {
     getSavedJobs();
   }, []);
 
+  // this is breaking
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
       .then((results) => {
@@ -39,29 +36,31 @@ function Jobs() {
         console.log('got applied jobs', results.data)
       })
       .catch((err) => {
-        console.log('get request to /appliedJobs failed');
+        console.log('get request to /appliedJobs failed', err);
+        // setJobs({});
+        setInterest(interestParam);
       });
   };
 
   const selectJobList = (event) => {
-    const interestLevel = event.target.value;
-    switch (event.target.value) {
+    const buttonName = event.target.value;
+    switch (buttonName) {
       case 'Applied':
-        getAppliedJobs(interestLevel);
+        getAppliedJobs(buttonName);
         break;
       case 'Extremely Interested':
-        getSavedJobs(interestLevel);
+        getSavedJobs(buttonName);
         break;
       case 'Very Interested':
-        getSavedJobs(interestLevel);
+        getSavedJobs(buttonName);
         break;
       case 'Interested':
-        getSavedJobs(interestLevel);
+        getSavedJobs(buttonName);
         break;
       default:
         break;
     }
-    getSavedJobs(interestLevel);
+    getSavedJobs(buttonName);
   };
   return (
     <Box>

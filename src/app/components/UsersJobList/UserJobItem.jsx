@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import PrimaryButton from '../PrimaryButton';
 
 
 
@@ -31,7 +32,7 @@ const UserJobItem = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={(e) => {console.log('e', e)}}>Apply</Button>
+        <Button size="small" >Apply</Button>
       </CardActions>
     </Card>
   )

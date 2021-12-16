@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import UserJobsList from './UserJobsList.jsx';
@@ -18,7 +19,14 @@ function Main({ interestLevel, savedJobsList }) {
     //   setJobs(savedJobsList);
     //   console.log('state of mah jerb', jobsState);
     // }, []);
-
+    if (interestLevel === 'Applied') {
+      return (
+      <Container sx={{ display: 'flex' }}>
+      <Typography>
+        Currently building applied jobs
+      </Typography>
+    </Container>)
+    } else {
     return (
     <Container sx={{ display: 'flex' }}>
       <Box>
@@ -26,6 +34,7 @@ function Main({ interestLevel, savedJobsList }) {
       </Box>
     </Container>
   );
+    }
 }
 
 export default Main;
