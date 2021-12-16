@@ -50,7 +50,6 @@ exports.getSavedJobs = (req, res) => {
   if (!req.user) {
     res.status(401).send('Please login to your JobSite account')
   } else {
-    console.log(req.user)
     savedJobModels.getSavedJobs(req.user.id)
       .then((data) => {
         res.status(200).send(data.rows);

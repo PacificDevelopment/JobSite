@@ -4,8 +4,6 @@ import UserJobItem from "./UserJobItem.jsx";
 import Container from '@mui/material/Container';
 
 const UserJobsList = ({ listOfJobs, interestLevel }) => {
-  console.log(listOfJobs);
-
   const newBucket = listOfJobs.filter(job => {
     if(interestLevel === 'Applied') {
       return job;
@@ -13,8 +11,11 @@ const UserJobsList = ({ listOfJobs, interestLevel }) => {
       return job;
     }
   })
+  //this console.log is being called TWICE whenever I click a Job List button
+  //when I click Applied, it first logs a curious messed-up array that might actually represent an Applied Job, but is currently in the wrong format
+  //but, the second time it logs an array of all saved jobs, so that's what is rendered on the page. This is incorrect! When I click Applied, I should see NO saved jobs.
+  console.log(interestLevel, newBucket)
 
-  console.log('list of jobs', listOfJobs)
   return (
     <Container >
       {newBucket.map(job => <UserJobItem key={job.url} job={job} />)}
