@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import PrimaryButton from '../PrimaryButton';
 import SecondaryButton from '../SecondaryButton';
 
-function SaveJobButton({ job }) {
+function SaveJobButton({ job, sx }) {
   const [saveStarted, setSaveStarted] = useState(false);
 
   const handleSaveJobClick = () => {
@@ -28,13 +28,13 @@ function SaveJobButton({ job }) {
       { saveStarted
         ? (
           <Box>
-            <SecondaryButton text="Interested" onClick={handleInterestLevelClick} />
-            <SecondaryButton text="Very Interested" onClick={handleInterestLevelClick} />
-            <SecondaryButton text="Extremely Interested" onClick={handleInterestLevelClick} />
+            <SecondaryButton text="Interested" sx={sx} onClick={handleInterestLevelClick} />
+            <SecondaryButton text="Very Interested" sx={sx} onClick={handleInterestLevelClick} />
+            <SecondaryButton text="Extremely Interested" sx={sx} onClick={handleInterestLevelClick} />
           </Box>
         )
         : null}
-      <PrimaryButton text="Save Job" onClick={handleSaveJobClick} />
+      <PrimaryButton text="Save Job" sx={sx} onClick={handleSaveJobClick} />
     </Box>
   );
 }
