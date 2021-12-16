@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import { Stack, Divider, Typography, Input, Button } from '@mui/material';
+import { Stack, Divider, Typography, Input, Box, Button } from '@mui/material';
 import { PDFButton } from './FileButton';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -72,34 +72,35 @@ export const FileViewAndUpload = (props) => {
           fullWidth={true}
         />
       </label>
-      {downloadURL
-        &&
+      {downloadURL ?
         <>
-        <iframe
-          src={`${downloadURL}#&embedded=true&toolbar=0&navpanes=0`}
-          style={{ width: 250, height: 323, border: 0 }}
-        />
-        <PDFButton
-          fullWidth={true}
-          component='a'
-          url={downloadURL}
-          label={'Download ' + label}
-        />
-        </>
+          <iframe
+            src={`${downloadURL}#&embedded=true&toolbar=0&navpanes=0`}
+            style={{ width: 250, height: 323, border: 0 }}
+          />
+          <PDFButton
+            fullWidth={true}
+            component='a'
+            url={downloadURL}
+            label={'Download ' + label}
+          />
+        </> :
+        <Box sx={{ height: 400, width: 250 }} />
       }
-
     </Stack >
   )
 }
 
-const ResumeAndCoverLetter = () => {
+const ResumeAndCoverLetter = (props) => {
+  let { orientation = 'vertical', direction = 'row' } = props;
+
   return (
     <Stack
-      direction='row'
+      {...{direction}}
       justifyContent="space-evenly"
     >
       <FileViewAndUpload fileUse='resume' />
-      <Divider orientation='vertical' />
+      <Divider {...{orientation}} />
       <FileViewAndUpload fileUse='cover_letter' />
     </Stack>
   )

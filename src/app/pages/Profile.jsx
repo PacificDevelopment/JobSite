@@ -17,7 +17,10 @@ function Profile() {
       </Box>
       <hr />
       <Box>
-        <ResumeAndCoverLetter />
+        <ResumeAndCoverLetter
+          orientation={'vertical'}
+          direction='row'
+        />
       </Box>
       <Box>
         <h1>Contact Information Placeholder</h1>
