@@ -10,7 +10,7 @@ import JobSearch from '../JobSearch/JobSearch';
 
 import PrimaryButton from '../PrimaryButton';
 
-function AccountSelection({ createAccount }) {
+function AccountSelection({ createAccount, newLogIn }) {
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [registerUsername, setRegisterUsername] = useState('');
@@ -39,7 +39,7 @@ function AccountSelection({ createAccount }) {
       },
       withCredentials: true,
       url: 'http://localhost:3000/login',
-    });
+    }).then(() => newLogIn());
   };
 
   function header() {
