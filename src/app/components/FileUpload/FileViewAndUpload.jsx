@@ -1,31 +1,12 @@
-
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import { Stack, Grid, Divider, Typography, Input, Button } from '@mui/material';
-import { PDFButton } from './FileButtons';
+import { Stack, Divider, Typography, Input, Button } from '@mui/material';
+import { PDFButton } from './FileButton';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import firebaseConfig from './firebaseConfig.js'
 import axios from 'axios';
 
-
-export const FileView = (props) => {
-
-  return (
-    <Stack >
-      <iframe
-        src={`${props.url}#&embedded=true&toolbar=0&navpanes=0`}
-        style={{ width: 250, height: 323, border: 0 }}
-      />
-      <PDFButton
-        fullWidth={true}
-        component='a'
-        url={props.url}
-        label={'Download ' + props.label}
-      />
-    </Stack>
-  )
-}
 
 export const FileViewAndUpload = (props) => {
   let { fileUse } = props;
