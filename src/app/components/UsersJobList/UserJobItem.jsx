@@ -9,13 +9,6 @@ import Typography from '@mui/material/Typography';
 
 
 const UserJobItem = (props) => {
-  const [displayToggle, setToggle] = useState(true);
-
-  useEffect(() => {
-    console.log('useEffect in userjobItem');
-
-  }, []);
-
   return (
     <Card >
       <CardContent>
@@ -28,6 +21,9 @@ const UserJobItem = (props) => {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {props.job.locations}
         </Typography>
+        <Typography sx={{ mb: 2.0 }} color="text.secondary">
+          {props.job.interest_level}
+        </Typography>
         <Typography variant="body2">
           {props.job.description}
           <br />
@@ -35,7 +31,7 @@ const UserJobItem = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={(e) => {console.log('e', e)}}>Learn More</Button>
+        <Button size="small" onClick={(e) => {console.log('e', e)}}>Apply</Button>
       </CardActions>
     </Card>
   )

@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 
 const UserJobsList = ({ listOfJobs, interestLevel }) => {
   const conditionalRender = listOfJobs.map(job => {
-    if (job.interestLevel === interestLevel) {
+    if (job.interest_level === interestLevel) {
       return (
         <UserJobItem
           key={job.url}

@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import Theme from '../Theme';
+import Typography from '@mui/material/Typography';
 import JobSearch from '../components/JobSearch/JobSearch';
 import Main from '../components/UsersJobList/Main';
 
@@ -21,10 +22,6 @@ function Jobs() {
         setInterest(interestParam);
         // this returns a list of ALL saved jobs for ALL interest levels
       })
-      .then(() => {
-        console.log('saved jobs list from get request', savedJobsList);
-
-      })
       .catch((err) => {
         console.log('get request failed');
       });
@@ -39,26 +36,26 @@ function Jobs() {
       .then((results) => {
         setJobs(results.data);
         setInterest(interestParam);
-        console.log('hopefully a saved jobs list', results.data);
+        console.log('got applied jobs', results.data)
       })
       .catch((err) => {
-        console.log('get request failed');
+        console.log('get request to /appliedJobs failed');
       });
   };
 
   const selectJobList = (event) => {
-    const interestLevel = event.target.innerText;
-    switch (event.target.innerText) {
-      case 'APPLIED':
+    const interestLevel = event.target.value;
+    switch (event.target.value) {
+      case 'Applied':
         getAppliedJobs(interestLevel);
         break;
-      case 'EXTREMELY INTERESTED':
+      case 'Extremely Interested':
         getSavedJobs(interestLevel);
         break;
-      case 'VERY INTERESTED':
+      case 'Very Interested':
         getSavedJobs(interestLevel);
         break;
-      case 'INTERESTED':
+      case 'Interested':
         getSavedJobs(interestLevel);
         break;
       default:
@@ -72,11 +69,12 @@ function Jobs() {
         <JobSearch />
       </Stack>
       <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-        <h1>My Jobs</h1>
+        <Typography>My Jobs</Typography>
         <Button
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value={'Applied'}
         >
           Applied
         </Button>
@@ -84,6 +82,8 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value={'Extremely Interested'}
+
         >
           Extremely Interested
         </Button>
@@ -91,6 +91,8 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value={'Very Interested'}
+
         >
           Very Interested
         </Button>
@@ -98,6 +100,8 @@ function Jobs() {
           variant="outline"
           style={Theme.palette.independence}
           onClick={selectJobList}
+          value={'Interested'}
+
         >
           Interested
         </Button>

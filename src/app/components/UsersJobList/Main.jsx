@@ -8,7 +8,6 @@ import UserJobsList from './UserJobsList.jsx';
 
 function Main({ interestLevel, savedJobsList }) {
   // const [jobsState, setJobs] = useState(savedJobsList);
-console.log('saved jobs list from main', savedJobsList)
 // if (jobsState !== {}) {
   //   console.log('this is jobs state', jobsState);
   //   return (
