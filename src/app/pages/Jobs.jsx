@@ -17,8 +17,10 @@ const Jobs = () => {
     getSavedJobs();
   }, []);
 
+//this is breaking
   const getSavedJobs = (interestParam) => {
     axios.get('/savedJobs')
+    //results = array of objects, each object is a "job post", with the same data shape as the API data (also the same as what Job List uses)
       .then((results) => {
         setJobs(results.data);
         setInterest(interestParam);
