@@ -35,7 +35,7 @@ function SubmitSearchButton({setSearchResults}) {
 
     const queryString = query.join('&');
     navigate(`${locationHook.pathname}?${queryString}`)
-    axios.get(`http://localhost:3000/data/jobsearch${locationHook.search}`)
+    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
       .then((results) => {
         setSearchResults(results.data);
       });
