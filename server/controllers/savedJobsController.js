@@ -6,9 +6,9 @@ const jobPostModel = require('../models/jobPostModel');
 
 exports.saveJob = async (req, res) => {
   //debugger;
-  req.user = req.body.data.user;
+  //req.user = req.body.data.user;
 
-  //console.log(req.user.id);
+  console.log(req.user);
   const {
     salary_min,
     locations,
@@ -26,7 +26,7 @@ exports.saveJob = async (req, res) => {
     experienceLevel,
     worksite,
     interest_level,
-  } = req.body.data.job;
+  } = req.body.data;
 
   await employerModel.insertEmployer({ name: company })
     .then((data) => {

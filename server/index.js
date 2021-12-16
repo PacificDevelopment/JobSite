@@ -8,12 +8,6 @@ const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 
-const employers = require('./controllers/employersController');
-const jobSearch = require('./controllers/jobSearchController');
-
-const applications = require('./controllers/applicationsController');
-const savedJobs = require('./controllers/savedJobsController');
-const authorization = require('./controllers/authController');
 
 // ----------------------------------------- END OF IMPORTS-----------------------------------------
 
@@ -27,12 +21,12 @@ app.use(
     origin: 'http://localhost:3000', // <-- location of the react app were connecting to
     credentials: true,
   }),
-);
-app.use(
-  session({
-    secret: 'secretcode',
-    resave: true,
-    saveUninitialized: true,
+  );
+  app.use(
+    session({
+      secret: 'secretcode',
+      resave: true,
+      saveUninitialized: true,
   }),
 );
 app.use(cookieParser('secretcode'));
@@ -40,10 +34,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('dist'));
 app.use(express.json());
+app.use(express.urlencoded());
 require('./passportConfig')(passport);
 
+const employers = require('./controllers/employersController');
+const jobSearch = require('./controllers/jobSearchController');
+const user = require('./controllers/usersController');
+const applications = require('./controllers/applicationsController');
+const savedJobs = require('./controllers/savedJobsController');
+const authorization = require('./controllers/authController');
 // -------------------------------------- END OF MIDDLEWARE-----------------------------------------
-app.use(express.urlencoded());
+
 
 app.get('/', (req, res) => {
   res.send('Hello Job Seekers!');
@@ -59,6 +60,8 @@ app.get('/user', (req, res) => {
   }
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside it.
 });
+
+app.post('/data/upload', user.insertPDF);
 
 app.get('/data/jobsearch', jobSearch.jobSearch);
 
