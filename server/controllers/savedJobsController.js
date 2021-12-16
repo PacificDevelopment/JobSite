@@ -8,7 +8,6 @@ exports.saveJob = async (req, res) => {
   if (req.user === undefined) {
     res.status(401).send('Please Login to your JobSite account');
   }
-  console.log('Current User', req.user);
   const {
     salary_min,
     locations,
