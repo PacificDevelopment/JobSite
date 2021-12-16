@@ -1,15 +1,13 @@
-/* eslint-disable */
+/* eslint-disable no-unused-expressions */
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import React, { useContext, useEffect } from 'react';
-import { Grid, Button } from '@mui/material';
 import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
 import { parseSearchInput } from '../../utils/searchUtils';
 import PrimaryButton from '../PrimaryButton';
 
-
-function SubmitSearchButton({setSearchResults}) {
+function SubmitSearchButton({ setSearchResults, context }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const locationHook = useLocation();
@@ -34,19 +32,25 @@ function SubmitSearchButton({setSearchResults}) {
     (employmentType) && (query.push(employmentType));
 
     const queryString = query.join('&');
-    navigate(`${locationHook.pathname}?${queryString}`)
-    axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
-      .then((results) => {
-        setSearchResults(results.data);
-      });
+    if (context === 'jobsearch') {
+      navigate(`${locationHook.pathname}?${queryString}`);
+      axios.get(`http://localhost:3000/data/jobsearch?${queryString}`)
+        .then((results) => {
+          if (setSearchResults) setSearchResults(results.data);
+        });
+    } else {
+      navigate(`/search?${queryString}`);
+    }
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/data/jobsearch${locationHook.search}`)
-      .then((results) => {
-        setSearchResults(results.data);
-      });
-  }, [])
+    if (context === 'jobsearch') {
+      axios.get(`http://localhost:3000/data/jobsearch${locationHook.search}`)
+        .then((results) => {
+          setSearchResults(results.data);
+        });
+    }
+  }, []);
 
   return (
     <PrimaryButton
@@ -57,25 +61,3 @@ function SubmitSearchButton({setSearchResults}) {
 }
 
 export default SubmitSearchButton;
-
-
-
-
-
-// export default function PrimaryButton({
-//   text, onClick, styleOverride, textStyleOverride, fullWidth,
-// }) {
-//   return (
-//     <Button
-//       fullWidth={fullWidth}
-//       variant="contained"
-//       color="secondary"
-//       onClick={onClick}
-//       sx={[{
-//         textTransform: 'none', p: 1, pr: 5, pl: 5, m: 2,
-//       }, styleOverride]}
-//     >
-//       <Typography sx={[textStyleOverride]}>{text}</Typography>
-//     </Button>
-//   );
-// }
