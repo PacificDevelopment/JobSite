@@ -13,7 +13,7 @@ import PrimaryButton from './PrimaryButton';
 import ResumeIcon from '../assets/cv.svg';
 import Profile from '../assets/profile.svg';
 
-function NavBar() {
+function NavBar({ loggedIn }) {
   const { width } = useWindowSize();
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ function NavBar() {
   };
 
   function displayPopover() {
-    if (AUTHCHECK) {
+    if (loggedIn) {
       return (
         <Box sx={{
           border: 1, p: 1, bgcolor: '#4A485B', display: 'flex', flexDirection: 'column',
