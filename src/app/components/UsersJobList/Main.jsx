@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import UserJobsList from './UserJobsList';
 
-function Main({ interestLevel, savedJobsList }) {
+function Main({ interestLevel, savedJobsList, refreshJobs }) {
   // const [jobsState, setJobs] = useState(savedJobsList);
   // if (jobsState !== {}) {
   //   console.log('this is jobs state', jobsState);
@@ -31,7 +31,7 @@ function Main({ interestLevel, savedJobsList }) {
       display: 'flex', alignItems: 'center', justifyContent: 'center',
     }}
     >
-      <UserJobsList listOfJobs={savedJobsList} interestLevel={interestLevel} />
+      <UserJobsList listOfJobs={savedJobsList} interestLevel={interestLevel} refreshJobs={refreshJobs}/>
     </Box>
   );
 }
