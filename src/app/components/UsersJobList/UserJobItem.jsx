@@ -24,9 +24,6 @@ function UserJobItem({ job, refreshJobs, interestLevel }) {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {job.locations}
         </Typography>
-        {/* <Typography sx={{ mb: 2.0 }} color="text.secondary">
-          {job.interest_level}
-        </Typography> */}
         <Typography variant="body2">
           <Interweave content={job.description} />
         </Typography>
@@ -36,7 +33,7 @@ function UserJobItem({ job, refreshJobs, interestLevel }) {
       </CardContent>
       {interestLevel !== 'Applied' && (
         <CardActions>
-          <OneClickApplyButton job={job} refreshJobs={refreshJobs}/>
+          <OneClickApplyButton job={job} refreshJobs={refreshJobs} />
         </CardActions>
       )}
     </Card>
