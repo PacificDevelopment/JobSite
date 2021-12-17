@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Box, Typography } from '@mui/material';
+import {
+  Card, Box, Typography,
+} from '@mui/material';
 import Interweave from 'interweave';
 import ta from 'time-ago';
 import SaveJobButton from '../SaveJobButton/SaveJobButton';
 import PrimaryButton from '../PrimaryButton';
 
-function JobItem({ handleFocus, job, selected }) {
-  const [displayToggle, setDisplayToggle] = useState(true);
-
+function JobItem({
+  handleFocus, job, selected, index,
+}) {
   const jobSelect = (selectedJob) => {
     handleFocus(selectedJob);
   };
-
-  useEffect(() => {
-    console.log('selected', selected);
-  }, []);
 
   return (
     <Card
@@ -43,7 +41,14 @@ function JobItem({ handleFocus, job, selected }) {
           {ta.ago(job.date)}
         </Typography>
         <PrimaryButton sx={{ mb: 0, mt: 0 }} text="Learn More" onClick={(e) => { jobSelect(job); }} />
-        <SaveJobButton sx={{ mb: 0, mt: 0 }} job={job} />
+        <SaveJobButton
+          sx={{ mb: 0, mt: 0 }}
+          index={index}
+          job={job}
+          boxXs={{
+            border: 1, p: 1, bgcolor: '#4A485B', display: 'flex', flexDirection: 'column',
+          }}
+        />
       </Box>
     </Card>
   );

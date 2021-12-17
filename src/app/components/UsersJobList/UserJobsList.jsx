@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
+import React from 'react';
 import Container from '@mui/material/Container';
 import UserJobItem from './UserJobItem';
 
@@ -10,15 +9,24 @@ function UserJobsList({ listOfJobs, interestLevel, refreshJobs }) {
     } if (job.interest_level === interestLevel) {
       return job;
     }
+    return null;
   });
   // this console.log is being called TWICE whenever I click a Job List button
-  // when I click Applied, it first logs a curious messed-up array that might actually represent an Applied Job, but is currently in the wrong format
-  // but, the second time it logs an array of all saved jobs, so that's what is rendered on the page. This is incorrect! When I click Applied, I should see NO saved jobs.
-  console.log(interestLevel, newBucket);
+  // when I click Applied, it first logs a curious messed-up array
+  // that might actually represent an Applied Job, but is currently in the wrong format
+  // but, the second time it logs an array of all saved jobs, so that's what is
+  // rendered on the page. This is incorrect! When I click Applied, I should see NO saved jobs.
 
   return (
     <Container>
-      {newBucket.map((job) => <UserJobItem key={job.id} job={job} refreshJobs={refreshJobs}/>)}
+      {newBucket.map((job) => (
+        <UserJobItem
+          key={job.id}
+          job={job}
+          refreshJobs={refreshJobs}
+          interestLevel={interestLevel}
+        />
+      ))}
     </Container>
   );
 }

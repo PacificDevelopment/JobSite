@@ -31,7 +31,11 @@ function Main({ interestLevel, savedJobsList, refreshJobs }) {
       display: 'flex', alignItems: 'center', justifyContent: 'center',
     }}
     >
-      <UserJobsList listOfJobs={savedJobsList} interestLevel={interestLevel} refreshJobs={refreshJobs}/>
+      <UserJobsList
+        listOfJobs={savedJobsList}
+        interestLevel={interestLevel}
+        refreshJobs={refreshJobs}
+      />
     </Box>
   );
 }

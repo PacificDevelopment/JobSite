@@ -6,7 +6,7 @@ import ta from 'time-ago';
 import Interweave from 'interweave';
 import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 
-function UserJobItem({ job, refreshJobs }) {
+function UserJobItem({ job, refreshJobs, interestLevel }) {
   return (
     <Card
       elevation={9}
@@ -24,9 +24,6 @@ function UserJobItem({ job, refreshJobs }) {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {job.locations}
         </Typography>
-        {/* <Typography sx={{ mb: 2.0 }} color="text.secondary">
-          {job.interest_level}
-        </Typography> */}
         <Typography variant="body2">
           <Interweave content={job.description} />
         </Typography>
@@ -34,9 +31,11 @@ function UserJobItem({ job, refreshJobs }) {
           {ta.ago(job.date)}
         </Typography>
       </CardContent>
-      <CardActions>
-        <OneClickApplyButton job={job} refreshJobs={refreshJobs}/>
-      </CardActions>
+      {interestLevel !== 'Applied' && (
+        <CardActions>
+          <OneClickApplyButton job={job} refreshJobs={refreshJobs} />
+        </CardActions>
+      )}
     </Card>
   );
 }
