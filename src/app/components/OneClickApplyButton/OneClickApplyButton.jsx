@@ -7,7 +7,7 @@ function OneClickApplyButton({ job, refreshJobs }) {
 
   const handleOneClick = () => {
     // check if resume exists
-    axios.get('/data/getPDF/resume')
+    axios.get('/data/getPDF/resume_pdf')
       .then((result) => {
         if (result.data === '') {
           // Send Alert (Need to upload resume, can only save jobs for now)
@@ -20,6 +20,7 @@ function OneClickApplyButton({ job, refreshJobs }) {
 
   useEffect(() => {
     const applyToJob = () => {
+      // Insert here Zach
       const data = { job };
       axios({
         method: 'POST',
