@@ -32,10 +32,9 @@ exports.oneClickApply = async (req, res) => {
   // Get Resume to attach
   // in the future deal with case where user is logged in but has no resume
   let resume_attach_url;
-  await userModel.getPDF(req.user.id)
-    .then((data) => { resume_attach_url = data.rows[0].id; })
+  await userModel.getPDF('resume', req.user.id)
+    .then((data) => { resume_attach_url = data.rows[0].resume_pdf_url; })
     .catch((err) => console.log(err));
-
   // Make application row with - Similar to Save Jobs Row
   // Job post ID, user id, resume URL
   applicationModel.applyForJob(
@@ -44,8 +43,8 @@ exports.oneClickApply = async (req, res) => {
     job_post_id,
     resume_attach_url,
   )
-    .then((data) => {
-      res.status(201).send(data);
+    .then(() => {
+      res.status(201);
     })
     .catch((err) => {
       res.status(500).send(err);
