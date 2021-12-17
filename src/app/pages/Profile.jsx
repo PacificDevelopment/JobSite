@@ -17,7 +17,7 @@ function Profile() {
       </Box>
       <hr />
       <Box>
-        <ResumeAndCoverLetter />
+        <ResumeAndCoverLetter fileUse="resume" />
       </Box>
       <Box>
         <h1>Contact Information Placeholder</h1>
