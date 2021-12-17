@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import PrimaryButton from '../PrimaryButton';
 import SecondaryButton from '../SecondaryButton';
+import authUtils from '../../utils/authUtils';
 
 function SaveJobButton({ job, sx }) {
   const [saveStarted, setSaveStarted] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSaveJobClick = () => {
-    setSaveStarted(true);
+  const handleSaveJobClick = async () => {
+    let isLoggedIn = false;
+    await authUtils.getUser().then((res) => {
+      isLoggedIn = res.data.loggedIn;
+    });
+    if (isLoggedIn) {
+      setSaveStarted(true);
+    } else {
+      alert('You must be logged in to save jobs!');
+      navigate('/');
+    }
   };
 
   const handleInterestLevelClick = (e) => {
