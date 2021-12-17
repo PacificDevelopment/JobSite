@@ -13,6 +13,7 @@ const EditableInput = (props) => {
       sx={props.sx}
       type={props.type || 'text'}
       color="secondary"
+      onChange={props.onChange}
       label={props.label}
       disabled={disabled}
       placeholder={props.label}
@@ -20,7 +21,7 @@ const EditableInput = (props) => {
   )
 }
 
-const StateSelector = () => {
+const StateSelector = (props) => {
   let { disabled, setDisabled } = useContext(ProfileContext)
   return (
     <Select
@@ -28,7 +29,8 @@ const StateSelector = () => {
       disablePortal
       label='State'
       id="state"
-      // defaultValue={null}
+      onChange={props.onChange}
+      // value={null}
       defaultValue={USStates[0].label}
       disabled={disabled}
       children={USStates.map(({ label }) =>
@@ -72,11 +74,13 @@ const ProfileTextForm = (props) => {
           label='First Name'
           id='first_name'
           value={first_name}
+          onChange={e => setFirst(e.target.value)}
         />
         <EditableInput
           label='Last Name'
           id='last_name'
-          defaultValue={last_name}
+          value={last_name}
+          onChange={e => setLast(e.target.value)}
         />
       </Stack>
       <EditableInput
@@ -84,36 +88,39 @@ const ProfileTextForm = (props) => {
         type='email'
         id='email'
         onChange={(e) => setEmail(e.target.value)}
-        defaultValue={email}
+        value={email}
       />
       <EditableInput
         label='Street Address'
         id='street_address'
-        onChange={e => setStreet(street_address = e.target.value)}
+        onChange={e => setStreet(e.target.value)}
         value={street_address}
-      />
+        />
       <Stack direction='row'>
         <EditableInput
           label='City'
           id='city'
           value={city}
+          onChange={e => setCity(e.target.value)}
         />
         <StateSelector
           label='State'
           id='state'
-          onChange={e => {setHomeState(e.target.value); console.log(e)}}
+          onChange={e => setHomeState(e.target.value)}
           value={homeState}
-        />
+          />
         <EditableInput
           label='Zip'
           id='zip'
           value={zip}
-        />
+          onChange={(e) => setZip(e.target.value)}
+          />
       </Stack>
       <EditableInput
         label='Phone'
         id='phone_number'
         value={phone_number}
+        onChange={e => setPhone(e.target.value)}
       />
     </FormControl>
   )
