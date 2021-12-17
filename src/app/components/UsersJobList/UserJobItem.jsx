@@ -5,6 +5,7 @@ import {
 import ta from 'time-ago';
 import Interweave from 'interweave';
 import PrimaryButton from '../PrimaryButton';
+import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 
 function UserJobItem({ job }) {
   return (
@@ -35,7 +36,7 @@ function UserJobItem({ job }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <PrimaryButton text="Apply" />
+        <OneClickApplyButton job={job} />
       </CardActions>
     </Card>
   );
