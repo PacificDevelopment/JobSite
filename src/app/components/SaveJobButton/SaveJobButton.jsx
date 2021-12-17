@@ -15,9 +15,12 @@ function SaveJobButton({ job, sx }) {
     await authUtils.getUser().then((res) => {
       isLoggedIn = res.data.loggedIn;
     });
-    isLoggedIn ? setSaveStarted(true)
-      : alert('You must be logged in to save jobs!'),
-    navigate('/');
+    if (isLoggedIn) {
+      setSaveStarted(true);
+    } else {
+      alert('You must be logged in to save jobs!');
+      navigate('/');
+    }
   };
 
   const handleInterestLevelClick = (e) => {
