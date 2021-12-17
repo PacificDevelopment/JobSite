@@ -89,7 +89,7 @@ function Jobs() {
           />
         ))}
       </Box>
-      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} refreshJobs={getSavedJobs}/>
+      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} refreshJobs={getSavedJobs} />
     </Box>
   );
 }
