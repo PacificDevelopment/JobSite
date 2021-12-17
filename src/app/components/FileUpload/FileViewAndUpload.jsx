@@ -98,9 +98,9 @@ export const FileViewAndUpload = (props) => {
 
     <Stack>
       <Typography variant='h5'>{label}</Typography>
-      <label htmlFor={'file-upload' + fileUse}>
+      <label htmlFor={'file_upload_' + fileUse}>
         <Input
-          id={'file-upload' + fileUse}
+          id={'file_upload_' + fileUse}
           accept='.pdf'
           type='file'
           onChange={fileSelect}
