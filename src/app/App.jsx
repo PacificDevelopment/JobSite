@@ -48,7 +48,7 @@ function App() {
       <ThemeProvider theme={Theme}>
         <ProfileProvider>
           <Grid container direction="column" sx={{ width: '100vw', minHeight: '100vh' }}>
-            <NavBar />
+            <NavBar loggedIn={loggedIn} />
 
             <Routes>
               <Route path="/" element={<Home newLogIn={newLogIn} nav={nav} />} exact />
