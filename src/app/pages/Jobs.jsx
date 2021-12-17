@@ -24,9 +24,9 @@ function Jobs() {
       });
   };
 
-  useEffect(() => {
-    getSavedJobs();
-  }, []);
+  // useEffect(() => {
+  //   getSavedJobs();
+  // }, []);
 
   // this is breaking
   const getAppliedJobs = (interestParam) => {
@@ -60,7 +60,7 @@ function Jobs() {
       default:
         break;
     }
-    getSavedJobs(buttonName);
+    // getSavedJobs(buttonName);
   };
   return (
     <Box sx={{ flexDirection: 'column' }}>
