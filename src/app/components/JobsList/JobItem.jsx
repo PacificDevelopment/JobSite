@@ -3,7 +3,6 @@ import { Card, Box, Typography } from '@mui/material';
 import Interweave from 'interweave';
 import ta from 'time-ago';
 import SaveJobButton from '../SaveJobButton/SaveJobButton';
-import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 import PrimaryButton from '../PrimaryButton';
 
 function JobItem({ handleFocus, job, selected }) {

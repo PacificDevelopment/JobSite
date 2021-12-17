@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import Box from '@mui/material/Box';
 import PrimaryButton from '../PrimaryButton';
 
 function OneClickApplyButton({ job }) {
