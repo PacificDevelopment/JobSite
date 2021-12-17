@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Box, Stack, Button,
+  Box, Paper, Typography,
 } from '@mui/material';
 import axios from 'axios';
 import Theme from '../Theme';
-import Typography from '@mui/material/Typography';
 import JobSearch from '../components/JobSearch/JobSearch';
 import Main from '../components/UsersJobList/Main';
+import SecondaryButton from '../components/SecondaryButton';
 
 function Jobs() {
   const [savedJobsList, setJobs] = useState([]);
   const [interestLevel, setInterest] = useState('');
+  const sections = ['Applied', 'Extremely Interested', 'Very Interested', 'Interested'];
 
   const getSavedJobs = (interestParam) => {
     axios.get('/savedJobs')
@@ -23,15 +24,15 @@ function Jobs() {
       });
   };
 
-  useEffect(() => {
-    getSavedJobs();
-  }, []);
+  // useEffect(() => {
+  //   getSavedJobs();
+  // }, []);
 
   // this is breaking
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
       .then((results) => {
-        setJobs(results.data.fields);
+        setJobs(results.data);
         setInterest(interestParam);
       })
       .catch((err) => {
@@ -42,7 +43,7 @@ function Jobs() {
   };
 
   const selectJobList = (event) => {
-    const buttonName = event.target.value;
+    const buttonName = event.target.innerText;
     switch (buttonName) {
       case 'Applied':
         getAppliedJobs(buttonName);
@@ -59,52 +60,36 @@ function Jobs() {
       default:
         break;
     }
-    getSavedJobs(buttonName);
+    // getSavedJobs(buttonName);
   };
   return (
-    <Box>
-      <Stack sx={{ m: 3 }}>
-        <JobSearch />
-      </Stack>
-      <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-        <Typography>My Jobs</Typography>
-        <Button
-          variant="outline"
-          style={Theme.palette.independence}
-          onClick={selectJobList}
-          value='Applied'
-        >
-          Applied
-        </Button>
-        <Button
-          variant="outline"
-          style={Theme.palette.independence}
-          onClick={selectJobList}
-          value='Extremely Interested'
-
-        >
-          Extremely Interested
-        </Button>
-        <Button
-          variant="outline"
-          style={Theme.palette.independence}
-          onClick={selectJobList}
-          value='Very Interested'
-
-        >
-          Very Interested
-        </Button>
-        <Button
-          variant="outline"
-          style={Theme.palette.independence}
-          onClick={selectJobList}
-          value='Interested'
-
-        >
-          Interested
-        </Button>
+    <Box sx={{ flexDirection: 'column' }}>
+      <Paper
+        elevation={2}
+        square
+        sx={{
+          width: '100%', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#EDFEFF', p: 1, mb: 2,
+        }}
+      >
+        <Box sx={{ maxWidth: '50%', width: 1000 }}>
+          <JobSearch />
+        </Box>
+      </Paper>
+      <Box sx={{
+        display: 'flex', justifyContent: 'center', width: '100%',
+      }}
+      >
+        <Typography variant="h3" sx={{ fontWeight: 700, mr: 2 }}>My Jobs</Typography>
+        {sections.map((section) => (
+          <SecondaryButton
+            onClick={(e) => selectJobList(e)}
+            value={section}
+            text={section}
+            selected={section === interestLevel}
+          />
+        ))}
       </Box>
-      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} />
+      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} refreshJobs={getSavedJobs}/>
     </Box>
   );
 }

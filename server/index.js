@@ -69,7 +69,7 @@ app.get('/data/jobsearchdescription', jobSearch.scrapeDescription);
 
 app.get('/data/employers', employers.retrieveEmployerData);
 
-app.post('/appliedJobs', applications.oneClickApply);
+app.post('/applyToJob', applications.oneClickApply);
 
 app.get('/appliedJobs', applications.getAppliedJobs);
 

@@ -1,21 +1,32 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Grid from '@mui/material/Grid';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
+import {
+  AppBar, Button, Toolbar, Grid, Popper, Box, Divider, Typography,
+} from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import TextLogo from '../assets/TextLogo.png';
 import MobileLogo from '../assets/MobileLogo.png';
 import { useWindowSize } from '../utils/customHooks';
 import MobilePopout from './home/MobilePopout';
 import Theme from '../Theme';
 import SecondaryButton from './SecondaryButton';
+import PrimaryButton from './PrimaryButton';
+import ResumeIcon from '../assets/cv.svg';
+import Profile from '../assets/profile.svg';
 
 function NavBar() {
   const { width } = useWindowSize();
   const location = useLocation();
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const AUTHCHECK = false;
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'profile-popper' : undefined;
 
   const ovalStyle = {
     position: 'absolute',
@@ -26,6 +37,63 @@ function NavBar() {
     height: 250,
     backgroundColor: '#4A485B',
   };
+
+  function displayPopover() {
+    if (AUTHCHECK) {
+      return (
+        <Box sx={{
+          border: 1, p: 1, bgcolor: '#4A485B', display: 'flex', flexDirection: 'column',
+        }}
+        >
+          <Button
+            onClick={() => {
+              handleClick();
+              navigate('/profile');
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            Profile
+          </Button>
+          <Divider sx={{ backgroundColor: 'white' }} />
+          <Button
+            onClick={() => {
+              handleClick();
+              navigate('/jobs');
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            View Saved Jobs
+          </Button>
+          <Divider sx={{ backgroundColor: 'white' }} />
+          <Button
+            onClick={() => {
+              handleClick();
+              navigate('/profile');
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            View Your Resume
+          </Button>
+        </Box>
+      );
+    }
+    return (
+      <Box sx={{
+        border: 1, p: 1, bgcolor: '#4A485B', display: 'flex', flexDirection: 'column',
+      }}
+      >
+        <Button
+          onClick={() => {
+            handleClick();
+            navigate('/');
+          }}
+          sx={{ textTransform: 'none' }}
+        >
+          Sign in to View Profile
+        </Button>
+      </Box>
+    );
+  }
 
   function createNavElements() {
     if (location.pathname === '/dashboard' || location.pathname === '/jobs') {
@@ -64,19 +132,27 @@ function NavBar() {
       <AppBar position="static" elevation={location.pathname === '/dashboard' || location.pathname === '/jobs' ? 0 : 3} style={{ height: '100%' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex' }}>
-            <img alt="JobSite" src={TextLogo} height="100" />
+            <Button onClick={() => navigate('/')}>
+              <img alt="JobSite" src={TextLogo} height="100" />
+            </Button>
             {createNavElements()}
           </Box>
+
           <Box>
-            <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDeoration: 'none', color: 'white' }} to="/">Home</Link></Button>
-            <Button color="inherit" style={Theme.palette.independence}>
-              {' '}
-              <Link style={{ textDecoration: 'none', color: 'white' }} to="/signup">Sign Up</Link>
+            <Button aria-describedby={id} onClick={handleClick}>
+              <img src={Profile} alt="Profile" width="50" />
             </Button>
-            <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/login">Log In</Link></Button>
-            <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">Dashboard</Link></Button>
-            <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/profile">Profile</Link></Button>
-            <Button color="inherit" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/jobs">Jobs</Link></Button>
+
+            <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 3 }}>
+              {displayPopover()}
+            </Popper>
+
+            <Button onClick={() => navigate('/profile')}>
+              <img src={ResumeIcon} alt="Resume" width="50" />
+            </Button>
+
+            <PrimaryButton text="Employers / Post a Job" sx={{ pl: 2, pr: 2, ml: 2 }} />
+
           </Box>
         </Toolbar>
       </AppBar>
