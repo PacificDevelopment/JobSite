@@ -1,7 +1,6 @@
 const user = require('../models/userModel');
 
 module.exports.insertPDF = (req, res) => {
-  console.log(req);
   // eslint-disable-next-line prefer-const
   let { pdfURL, fileUse, userId } = req.body;
   userId = req.user.id || userId;
@@ -12,8 +11,11 @@ module.exports.insertPDF = (req, res) => {
 
 module.exports.getPDF = (req, res) => {
   const { fileUse } = req.params;
-  const userId = req.user.id;
+  if (!req.user?.id) {
+    return res.status(404).redirect('/login');
+  }
+  const userId = req.user.id
   user.getPDF(fileUse, userId)
-    .then((data) => res.send(data.rows[0][`${fileUse}_pdf_url`]))
+    .then((data) => res.send(data.rows[0][`${fileUse}_url`]))
     .catch((err) => res.status(500).send(err));
 };

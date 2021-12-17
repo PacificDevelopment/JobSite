@@ -16,12 +16,12 @@ const user = {
     );
   },
   uploadPDF: async (url, fileUse, id) => {
-    return pool.query(`UPDATE Users SET ${fileUse}_pdf_url = $1
+    return pool.query(`UPDATE Users SET ${fileUse}_url = $1
       WHERE id=$2;`,
     [url, id])
   },
   getPDF: (fileUse, id) => {
-    return pool.query(`SELECT ${fileUse}_pdf_url FROM Users WHERE id=$1`, [id]);
+    return pool.query(`SELECT ${fileUse}_url FROM Users WHERE id=$1`, [id]);
   },
 };
 

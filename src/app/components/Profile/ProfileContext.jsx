@@ -6,7 +6,6 @@ export const ProfileContext = createContext(null)
 
 const ProfileProvider = (props) => {
   let [disabled, setDisabled] = useState(true);
-
   let [first_name, setFirst] = useState('')
   let [last_name, setLast] = useState('')
   let [email, setEmail] = useState('')
@@ -15,9 +14,12 @@ const ProfileProvider = (props) => {
   let [homeState, setHomeState] = useState('')
   let [zip, setZip] = useState('')
   let [phone_number, setPhone] = useState('')
+  let [avatarURL, setAvatarURL] = useState('')
 
   return (
     <ProfileContext.Provider value={{
+      avatarURL,
+      setAvatarURL,
       disabled,
       setDisabled,
       first_name,
