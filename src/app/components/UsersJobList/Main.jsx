@@ -9,32 +9,34 @@ import UserJobsList from './UserJobsList.jsx';
 
 function Main({ interestLevel, savedJobsList }) {
   // const [jobsState, setJobs] = useState(savedJobsList);
-// if (jobsState !== {}) {
+  // if (jobsState !== {}) {
   //   console.log('this is jobs state', jobsState);
   //   return (
-    //     <div>Visit the job search page to save and apply for jobs!</div>
-    //   );
-    // }
-    // useEffect(() => {
-    //   setJobs(savedJobsList);
-    //   console.log('state of mah jerb', jobsState);
-    // }, []);
-    if (interestLevel === 'Applied') {
-      return (
-      <Container sx={{ display: 'flex' }}>
-      <Typography>
-        Currently building applied jobs
-      </Typography>
-    </Container>)
-    } else {
+  //     <div>Visit the job search page to save and apply for jobs!</div>
+  //   );
+  // }
+  useEffect(() => {
+    // setJobs(savedJobsList);
+    // console.log('state of mah jerb', jobsState);
+  }, []);
+
+  if (Array.isArray(savedJobsList) && savedJobsList === []) {
     return (
+    <Container sx={{ display: 'flex' }}>
+    <Typography>
+      Currently building applied jobs
+    </Typography>
+  </Container>)
+  } else {
+  return (
     <Container sx={{ display: 'flex' }}>
       <Box>
         <UserJobsList listOfJobs={savedJobsList} interestLevel={interestLevel} />
       </Box>
     </Container>
   );
-    }
+  }
+
 }
 
 export default Main;
