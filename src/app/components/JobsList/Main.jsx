@@ -10,7 +10,7 @@ function Main({ jobsData }) {
 
   const mainFocusFunction = (targetJobItem) => {
     setItem(targetJobItem);
-
+    console.log('job', targetJobItem);
     // console.log('targetJobItem from main', targetJobItem)
     // console.log('state from main', jobFocusState)
   };
@@ -29,7 +29,12 @@ function Main({ jobsData }) {
         overflowY: 'auto', maxHeight: 700, width: 600, m: 2, mr: 4,
       }}
       >
-        {jobsData.map((job, index) => <JobItem key={`job-${index + 1}`} handleFocus={mainFocusFunction} job={job} />)}
+        {jobsData.map((job, index) => {
+          console.log(jobFocusState.url)
+          return job.url === jobFocusState.url ?
+          <JobItem key={`job-${index + 1}`} selected={true} handleFocus={mainFocusFunction} job={job} /> :
+          <JobItem key={`job-${index + 1}`} handleFocus={mainFocusFunction} job={job} />
+        })}
       </Box>
       <JobFocusItem job={jobFocusState} />
     </Box>
