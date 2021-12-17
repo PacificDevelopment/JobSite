@@ -11,7 +11,7 @@ import JobSearch from '../JobSearch/JobSearch';
 
 import PrimaryButton from '../PrimaryButton';
 
-function AccountSelection({ createAccount, newLogIn }) {
+function AccountSelection({ createAccount, newLogIn, nav }) {
   const [userField, setUserField] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const navigate = useNavigate();
@@ -33,9 +33,9 @@ function AccountSelection({ createAccount, newLogIn }) {
     setUserPassword('');
   };
 
-  const login = () => {
+  const login = async (cb) => {
     const curPort = location.port;
-    Axios({
+    await Axios({
       method: 'POST',
       data: {
         username: userField,
@@ -43,7 +43,14 @@ function AccountSelection({ createAccount, newLogIn }) {
       },
       withCredentials: true,
       url: 'http://localhost:3000/login',
-    }).then(() => newLogIn());
+    })
+      .then(() => {
+        if (typeof (cb) === 'function') {
+          newLogIn(cb);
+        } else {
+          newLogIn();
+        }
+      });
   };
 
   function header() {
@@ -122,7 +129,13 @@ function AccountSelection({ createAccount, newLogIn }) {
           </Paper>
           <PrimaryButton
             text="Continue with Email"
-            onClick={createAccount ? register : login}
+            onClick={createAccount ? register : () => {
+              if (typeof (nav) === 'function') {
+                login(nav);
+              } else {
+                login();
+              }
+            }}
             sx={{
               width: 300,
               m: 0,

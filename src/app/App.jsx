@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +16,7 @@ import authUtils from './utils/authUtils';
 function App() {
   const { width } = useWindowSize();
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     authUtils.getUser().then((res) => {
@@ -23,10 +24,22 @@ function App() {
     });
   }, []);
 
-  const newLogIn = () => {
-    authUtils.getUser().then((res) => {
-      setLoggedIn(res.data.loggedIn);
-    });
+  const newLogIn = (cb) => {
+    authUtils.getUser()
+      .then((res) => {
+        setLoggedIn(res.data.loggedIn);
+        if (!res.data.loggedIn) {
+          alert('Invalid username or password');
+        } else if (typeof (cb) === 'function') {
+          cb(res.data.loggedIn);
+        }
+      });
+  };
+
+  const nav = (val) => {
+    if (val) {
+      navigate('/dashboard');
+    }
   };
 
   return (
@@ -38,7 +51,7 @@ function App() {
             <NavBar />
 
             <Routes>
-              <Route path="/" element={<Home newLogIn={newLogIn} />} exact />
+              <Route path="/" element={<Home newLogIn={newLogIn} nav={nav} />} exact />
               <Route path="/signup" element={width < 800 ? <SignUp /> : <Home createAccount />} exact />
               <Route path="/login" element={width < 800 ? <LogIn /> : <Home newLogIn={newLogIn} />} exact />
               <Route path="/dashboard" element={<Dashboard />} exact />
