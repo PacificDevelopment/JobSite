@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useContext } from 'react';
 import UploadAvatar from './UploadAvatar'
 import ProfileTextForm from './ProfileTextForm'
@@ -7,7 +8,7 @@ import {ProfileContext} from './ProfileContext'
 
 const ProfileCard = (props) => {
   let { disabled, setDisabled } = useContext(ProfileContext);
-  
+
   return (
     <Card sx={{ m: 3, p: 3 }}>
       <Stack direction='row'>
@@ -30,7 +31,6 @@ const ProfileCard = (props) => {
         />
       </CardActions>
     </Card>
-
   )
 }
 

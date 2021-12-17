@@ -1,9 +1,11 @@
+/* eslint-disable */
 import React, { useState, useContext } from 'react';
 import { Button, Typography, Input, TextField, MenuItem, InputLabel, FormHelperText, FormControl, Select, Autocomplete, useFormControl, Stack } from '@mui/material'
 import { ProfileContext } from './ProfileContext'
 import { USStates } from '../../utils/USStates';
 
 const EditableInput = (props) => {
+  let { disabled, setDisabled } = useContext(ProfileContext)
   return (
     <Input
       margin='dense'
@@ -12,7 +14,7 @@ const EditableInput = (props) => {
       type={props.type || 'text'}
       color="secondary"
       label={props.label}
-      disabled={props.disabled}
+      disabled={disabled}
       placeholder={props.label}
     />
   )
@@ -55,24 +57,22 @@ const ProfileTextForm = (props) => {
     setZip,
     phone_number,
     setPhone,
-  } = useContext(ProfileContext)
+  } = useContext(ProfileContext);
 
 
 
   return (
-    <FormControl disabled={disabled}>
+    <FormControl {...disabled}>
       <Stack direction='row' sx={{ width: '100%' }}>
         <EditableInput
           label='First Name'
           id='first_name'
           value={first_name}
-          {...{ disabled }}
         />
         <EditableInput
           label='Last Name'
           id='last_name'
           value={last_name}
-          {...{ disabled }}
         />
       </Stack>
       <EditableInput
@@ -80,37 +80,36 @@ const ProfileTextForm = (props) => {
         type='email'
         id='email'
         onChange={(e) => setEmail(e.target.value)}
-        defaultValue={'email'}
-        {...{ disabled }}
+        defaultValue={email}
       />
       <EditableInput
         label='Street Address'
         id='street_address'
-        onChange={e => setStreet(e.target.value)}
+        onChange={e => setStreet(street_address = e.target.value)}
         value={street_address}
-        {...{ disabled }}
       />
       <Stack direction='row'>
         <EditableInput
           label='City'
           id='city'
-          {...{ disabled }}
         />
         <StateSelector
           label='State'
           id='state'
           onChange={setHomeState}
           value={homeState}
-          {...{ disabled }}
         />
         <EditableInput
           label='Zip'
           id='zip'
           value={zip}
-          {...{ disabled }}
         />
       </Stack>
-      <EditableInput label='Phone' id='phone_number' value={'(123)456 - 7890'} {...{ disabled }} />
+      <EditableInput
+        label='Phone'
+        id='phone_number'
+        value={phone_number}
+      />
     </FormControl>
   )
 }

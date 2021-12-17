@@ -2,10 +2,10 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { ThemeProvider } from '@mui/material/styles';
-import ProfileProvider from './components/Profile/ProfileContext';
 import CssBaseline from '@mui/material/CssBaseline';
+import ProfileProvider from './components/Profile/ProfileContext';
 import {
-  Home, Dashboard, LogIn, SignUp, Jobs, Profile, SearchJobsList
+  Home, Dashboard, LogIn, SignUp, Jobs, Profile, SearchJobsList,
 } from './pages';
 import { useWindowSize } from './utils/customHooks';
 import Theme from './Theme';
