@@ -6,7 +6,6 @@ export const ProfileContext = createContext(null)
 
 const ProfileProvider = (props) => {
   let [disabled, setDisabled] = useState(true);
-  let [PDFFile, setPDFFile] = useState({});
   let [first_name, setFirst] = useState('')
   let [last_name, setLast] = useState('')
   let [email, setEmail] = useState('')
@@ -19,8 +18,6 @@ const ProfileProvider = (props) => {
 
   return (
     <ProfileContext.Provider value={{
-      PDFFile,
-      setPDFFile,
       avatarURL,
       setAvatarURL,
       disabled,

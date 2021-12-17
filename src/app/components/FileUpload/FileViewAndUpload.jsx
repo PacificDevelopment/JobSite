@@ -12,7 +12,6 @@ import {ProfileContext} from '../Profile/ProfileContext'
 
 export const FileViewAndUpload = (props) => {
   let { fileUse } = props;
-  let {PDFFile, setPDFFile} = useContext(ProfileContext);
   let [file, setFile] = useState(null);
   let [downloadURL, setDownloadURL] = useState(null);
 
@@ -30,7 +29,6 @@ export const FileViewAndUpload = (props) => {
         getDownloadURL(fileRef)
           .then((pdfURL) => {
             setDownloadURL(pdfURL)
-            setPDFFile(PDFFile => PDFFile[fileUse] = pdfURL)
             axios({
               url: 'http://localhost:3000/data/upload',
               method: 'post',
@@ -50,13 +48,13 @@ export const FileViewAndUpload = (props) => {
       .catch((err) => console.log(err));
   }, [file]);
 
-  useEffect(() => {
+  useEffect(async () => {
     axios.get(`/data/getPDF/${fileUse}`)
       .then((data) => {
-        setDownloadURL(data.data)
+        setDownloadURL(data.data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [downloadURL]);
 
   const fileSelect = async (e) => {
     setFile(e.target.files?.[0])
