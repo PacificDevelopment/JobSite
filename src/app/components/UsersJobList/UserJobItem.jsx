@@ -6,7 +6,7 @@ import ta from 'time-ago';
 import Interweave from 'interweave';
 import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 
-function UserJobItem({ job }) {
+function UserJobItem({ job, refreshJobs }) {
   return (
     <Card
       elevation={9}
@@ -35,7 +35,7 @@ function UserJobItem({ job }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <OneClickApplyButton job={job} />
+        <OneClickApplyButton job={job} refreshJobs={refreshJobs}/>
       </CardActions>
     </Card>
   );

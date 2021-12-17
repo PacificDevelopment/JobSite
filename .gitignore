@@ -108,3 +108,6 @@ scrap.sql
 
 firebaseConfig.js
 .DS_Store
+
+#Deployment cert
+JobSite.cer
