@@ -1,14 +1,12 @@
 # JobSite
 ## Find your new career
-##### A mobile-first React web app for job seekers and employers alike. <br/>
-
-###### *F E A T U R E S*
+#### A mobile-first React web app for job seekers and employers alike. <br/>
+###### F E A T U R E S
 
 * Create an account and save to PostgreSQL 
 * Upload your resume, cover letter, and avatar
 * Search for Jobs and One-Click-Apply
 * Filter search results from the CareerJet API with custom filters
-* 
 
 <hr/>
 
@@ -72,9 +70,32 @@ Then, visit [http://localhost:3000]. The page will need to be reloaded as change
 > ```npm run debug```
 
 
-#### POSTGRESQL configuration
+#### PostgreSQL Database Configuration:
+
+1. Create a database in PostgreSQL
+
+2. Run the *init.sql* file from the terminal 
+
+3. Update the `.env.example` file to `.env` and add your credentials.
+
+``` bash
+[sudo] psql -U [username] -f ./init.sql
+```
 
 ---
+
+#### Firebase Configuration:
+
+1. Create an account with [Firebase](https://console.firebase.google.com/)
+2. Create a `firebaseConfig.js` file and include in the *FileUpload* folder. Make sure the name matches that included in the `.gitignore`
+3. Enter your credentials provided by firebase in to the *config* file
+4. Export the config object so it can be used in the `FileUpload.jsx` and `UploadAvatar.jsx` files
+
+---
+
+#### CareerJetAPI Configuration:
+
+1. Create a partners account [here](https://www.careerjet.com/partners/signup.html) and enter your new AFFID in the `.env` file
 
 ### 🧑‍🤝‍🧑  Collaboration
 
