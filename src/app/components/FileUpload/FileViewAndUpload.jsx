@@ -88,7 +88,6 @@ export const FileViewAndUpload = (props) => {
   }, [file]);
 
   useEffect(() => {
-    console.log('getting!!!')
     axios.get(`/data/getPDF/${fileUse}`)
       .then((data) => {
         setDownloadURL(data.data)
