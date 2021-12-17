@@ -6,7 +6,7 @@ import {
 
 export const JobSearchContext = createContext(null);
 
-const JobSearchProvider = (props) => {
+const JobSearchProvider = ({children}) => {
   const [range, setRange] = useState(null);
   const [drawer, setDrawer] = useState(false);
   const [keywords, setKeywords] = useState('');
@@ -54,7 +54,7 @@ const JobSearchProvider = (props) => {
       setEmploymentType,
     }}
     >
-      {props.children}
+      {children}
     </JobSearchContext.Provider>
   );
 };

@@ -1,3 +1,4 @@
+/*eslint-disable*/
 export const parseSearchInput = (e, key) => {
   if (!e.target.value) {
     return '';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useContext } from 'react';
 import {
   FormControl, FormControlLabel, FormLabel, RadioGroup, Radio,
@@ -7,8 +8,9 @@ import { JobSearchContext } from './JobSearchContext';
 
 const radioStyle = { '&.Mui-checked': { color: '#4A485B' } };
 const labelStyle = { '&.Mui-focused': { color: '#4A485B', fontWeight: 700 } };
+const R = <Radio sx={radioStyle} />
 
-export function Sort() {
+export const Sort = () => {
   const { setSort } = useContext(JobSearchContext);
   const locationHook = useLocation();
   const url = new URLSearchParams(locationHook.search);
@@ -23,15 +25,15 @@ export function Sort() {
         name="sort"
         onChange={(e) => { setSort(e.target.value); }}
       >
-        <FormControlLabel value="sort=relevance" label="Relevance" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="sort=date" label="Date" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="sort=salary" label="Salary" control={<Radio sx={radioStyle} />} />
+        <FormControlLabel value="sort=relevance" label="Relevance" control={R} />
+        <FormControlLabel value="sort=date" label="Date" control={R} />
+        <FormControlLabel value="sort=salary" label="Salary" control={R} />
       </RadioGroup>
     </FormControl>
   );
 }
 
-export function Range() {
+export const Range = () => {
   const { setRange } = useContext(JobSearchContext);
   const locationHook = useLocation();
   const url = new URLSearchParams(locationHook.search);
@@ -45,17 +47,17 @@ export function Range() {
         name="range"
         onChange={(e) => { setRange(e.target.value); }}
       >
-        <FormControlLabel value="radius=5" label="5 miles" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="radius=20" label="20 miles" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="radius=50" label="50 miles" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="radius=100" label="100 miles" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="" label="Anywhere" control={<Radio sx={radioStyle} />} />
+        <FormControlLabel value="radius=5" label="5 miles" control={R} />
+        <FormControlLabel value="radius=20" label="20 miles" control={R} />
+        <FormControlLabel value="radius=50" label="50 miles" control={R} />
+        <FormControlLabel value="radius=100" label="100 miles" control={R} />
+        <FormControlLabel value="" label="Anywhere" control={R} />
       </RadioGroup>
     </FormControl>
   );
 }
 
-export function Experience() {
+export const Experience = () => {
   const { setExperience } = useContext(JobSearchContext);
   const locationHook = useLocation();
   const url = new URLSearchParams(locationHook.search);
@@ -70,16 +72,16 @@ export function Experience() {
         name="experience"
         onChange={(e) => setExperience(e.target.value)}
       >
-        <FormControlLabel value="experienceLevel=entry" label="Entry Level" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="experienceLevel=mid" label="Mid Level" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="experienceLevel=senior" label="Senior Level" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="experienceLevel=executive" label="Executive Level" control={<Radio sx={radioStyle} />} />
+        <FormControlLabel value="experienceLevel=entry" label="Entry Level" control={R} />
+        <FormControlLabel value="experienceLevel=mid" label="Mid Level" control={R} />
+        <FormControlLabel value="experienceLevel=senior" label="Senior Level" control={R} />
+        <FormControlLabel value="experienceLevel=executive" label="Executive Level" control={R} />
       </RadioGroup>
     </FormControl>
   );
 }
 
-export function EmploymentType() {
+export const EmploymentType = () => {
   const { setEmploymentType } = useContext(JobSearchContext);
   const locationHook = useLocation();
   const url = new URLSearchParams(locationHook.search);
@@ -93,16 +95,16 @@ export function EmploymentType() {
         name="employmentType"
         onChange={(e) => setEmploymentType(e.target.value)}
       >
-        <FormControlLabel value="employmentType=Part Time" label="Part Time" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="employmentType=Full Time" label="Full Time" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="employmentType=Temporary" label="Temporary" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="employmentType=Internship" label="Internship" control={<Radio sx={radioStyle} />} />
+        <FormControlLabel value="employmentType=Part Time" label="Part Time" control={R} />
+        <FormControlLabel value="employmentType=Full Time" label="Full Time" control={R} />
+        <FormControlLabel value="employmentType=Temporary" label="Temporary" control={R} />
+        <FormControlLabel value="employmentType=Internship" label="Internship" control={R} />
       </RadioGroup>
     </FormControl>
   );
 }
 
-export function WorkSite() {
+export const WorkSite = () => {
   const { setWorkSite } = useContext(JobSearchContext);
   const locationHook = useLocation();
   const url = new URLSearchParams(locationHook.search);
@@ -117,9 +119,9 @@ export function WorkSite() {
         name="worksite"
         onChange={(e) => setWorkSite(`worksite=${e.target.value}`)}
       >
-        <FormControlLabel value="worksite=remote" label="Remote" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="worksite=onsite" label="On Site" control={<Radio sx={radioStyle} />} />
-        <FormControlLabel value="" label="Mixed" control={<Radio sx={radioStyle} />} />
+        <FormControlLabel value="worksite=remote" label="Remote" control={R} />
+        <FormControlLabel value="worksite=onsite" label="On Site" control={R} />
+        <FormControlLabel value="" label="Mixed" control={R} />
       </RadioGroup>
     </FormControl>
   );
