@@ -3,8 +3,6 @@ const { pool } = require('./db/index');
 const user = {
   findOne: async (username, cb) => {
     const fUser = await pool.query('SELECT * FROM Users WHERE email = $1', [username.username]);
-    // console.log('findOne', user);
-    // console.log('findOne', user.rows);
     cb(null, fUser);
   },
   findById: async (id, cb) => {
@@ -21,6 +19,9 @@ const user = {
     return pool.query(`UPDATE Users SET ${fileUse}_pdf_url = $1
       WHERE id=$2;`,
     [url, id])
+  },
+  getPDF: async (user_id) => {
+    return pool.query('SELECT resume_pdf_url FROM Users WHERE id = $1', [user_id]);
   },
 };
 
