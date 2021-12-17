@@ -4,7 +4,7 @@ import UploadAvatar from './UploadAvatar'
 import ProfileTextForm from './ProfileTextForm'
 import { Card, CardActions, Divider, Typography, Stack } from '@mui/material';
 import SecondaryButton from '../SecondaryButton'
-import {ProfileContext} from './ProfileContext'
+import { ProfileContext } from './ProfileContext'
 
 const ProfileCard = (props) => {
   let { disabled, setDisabled } = useContext(ProfileContext);
@@ -22,14 +22,14 @@ const ProfileCard = (props) => {
         <Divider orientation='vertical' />
         <Stack>
           <ProfileTextForm  {...{ disabled }} />
-        <SecondaryButton
-          fullWidth
-          onClick={() => setDisabled(d => !d)}
-          orientation={{vertical: 'bottom'}}
-          {...{text}}
+          <SecondaryButton
+            fullWidth
+            onClick={() => setDisabled(d => !d)}
+            orientation={{ vertical: 'bottom' }}
+            {...{ text }}
           />
-          </Stack>
-          </Stack>
+        </Stack>
+      </Stack>
     </Card>
   )
 }
