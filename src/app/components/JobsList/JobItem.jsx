@@ -6,6 +6,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import SaveJobButton from '../SaveJobButton/SaveJobButton';
+import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 import PrimaryButton from '../PrimaryButton';
 
 const JobItem = (props) => {
@@ -44,6 +45,7 @@ const JobItem = (props) => {
       <CardActions>
         <PrimaryButton text="Learn More" onClick={(e) => { jobSelect(props.job) }} />
         <SaveJobButton job={props.job} />
+        <OneClickApplyButton job={props.job} />
       </CardActions>
     </Card>
   )
