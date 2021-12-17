@@ -18,7 +18,7 @@ function UserJobsList({ listOfJobs, interestLevel }) {
 
   return (
     <Container>
-      {newBucket.map((job) => <UserJobItem key={job.url} job={job} />)}
+      {newBucket.map((job) => <UserJobItem key={job.id} job={job} />)}
     </Container>
   );
 }
