@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 
-const applicationModel = require('../models/applicationModel.js');
+const applicationModel = require('../models/applicationModel');
 const employerModel = require('../models/employerModel');
 const jobPostModel = require('../models/jobPostModel');
 const userModel = require('../models/userModel');
@@ -44,7 +44,7 @@ exports.oneClickApply = async (req, res) => {
     resume_attach_url,
   )
     .then(() => {
-      res.status(201);
+      res.sendStatus(201);
     })
     .catch((err) => {
       res.status(500).send(err);
