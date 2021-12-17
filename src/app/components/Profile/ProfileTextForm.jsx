@@ -28,8 +28,8 @@ const StateSelector = () => {
       disablePortal
       label='State'
       id="state"
-      defaultValue={null}
-      // defaultValue={USStates[0].label}
+      // defaultValue={null}
+      defaultValue={USStates[0].label}
       disabled={disabled}
       children={USStates.map(({ label }) =>
         <MenuItem value={label}>
@@ -96,11 +96,12 @@ const ProfileTextForm = (props) => {
         <EditableInput
           label='City'
           id='city'
+          value={city}
         />
         <StateSelector
           label='State'
           id='state'
-          onChange={e => setHomeState(e.target.value)}
+          onChange={e => {setHomeState(e.target.value); console.log(e)}}
           value={homeState}
         />
         <EditableInput

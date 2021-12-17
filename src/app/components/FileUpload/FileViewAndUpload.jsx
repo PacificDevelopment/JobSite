@@ -1,58 +1,20 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Stack, Divider, Typography, Input, Box, Button } from '@mui/material';
 import { FileButton } from './FileButton';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import firebaseConfig from './firebaseConfig.js'
 import axios from 'axios';
+import {ProfileContext} from '../Profile/ProfileContext'
 
-export const handleUpload = () => {
-  const firebaseApp = initializeApp(firebaseConfig);
-  const storage = getStorage(firebaseApp);
-
-  useEffect(async () => {
-    if (!file) return;
-    console.log('file: ', file, file.type);
-    const fileRef = ref(storage, `resumes/${file.name}`);
-    console.log('fileref: ', fileRef)
-
-    uploadBytes(fileRef, file)
-      .then((snapshot) => {
-        getDownloadURL(fileRef)
-          .then((pdfURL) => {
-            setDownloadURL(pdfURL)
-            axios({
-              url: 'http://localhost:3000/data/upload',
-              method: 'post',
-              headers: { 'Content-Type': 'application/json' },
-              data: {
-                pdfURL,
-                fileUse,
-                userId: props.userId
-              },
-            })
-              .then(console.log)
-              .catch(err => console.error(err))
-          })
-          .then(console.log)
-          .catch(err => console.error(err))
-      })
-      .catch((err) => console.log(err));
-  }, [file]);
-
-
-  const fileSelect = async (e) => {
-    setFile(e.target.files?.[0])
-  };
-}
 
 
 export const FileViewAndUpload = (props) => {
   let { fileUse } = props;
-
-  const [file, setFile] = useState(null);
-  const [downloadURL, setDownloadURL] = useState(null);
+  let {PDFFile, setPDFFile} = useContext(ProfileContext);
+  let [file, setFile] = useState(null);
+  let [downloadURL, setDownloadURL] = useState(null);
 
   const firebaseApp = initializeApp(firebaseConfig);
   const storage = getStorage(firebaseApp);
@@ -68,6 +30,7 @@ export const FileViewAndUpload = (props) => {
         getDownloadURL(fileRef)
           .then((pdfURL) => {
             setDownloadURL(pdfURL)
+            setPDFFile(PDFFile => PDFFile[fileUse] = pdfURL)
             axios({
               url: 'http://localhost:3000/data/upload',
               method: 'post',
@@ -92,14 +55,14 @@ export const FileViewAndUpload = (props) => {
       .then((data) => {
         setDownloadURL(data.data)
       })
-      .catch((err) => console.error(error));
+      .catch((err) => console.error(err));
   }, []);
 
   const fileSelect = async (e) => {
     setFile(e.target.files?.[0])
   };
 
-  let label = fileUse === 'resume' ? 'Resume' : 'Cover Letter';
+  let label = fileUse === 'resume_pdf' ? 'Resume' : 'Cover Letter';
 
   return (
 
@@ -146,9 +109,9 @@ const ResumeAndCoverLetter = (props) => {
       {...{direction}}
       justifyContent="space-evenly"
     >
-      <FileViewAndUpload fileUse='resume' />
+      <FileViewAndUpload fileUse='resume_pdf' />
       <Divider {...orientation} />
-      <FileViewAndUpload fileUse='cover_letter' />
+      <FileViewAndUpload fileUse='cover_letter_pdf' />
     </Stack>
   )
 };
