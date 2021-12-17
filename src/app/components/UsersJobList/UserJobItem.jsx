@@ -20,9 +20,9 @@ const UserJobItem = ({job}) => {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {job.locations}
         </Typography>
-        <Typography sx={{ mb: 2.0 }} color="text.secondary">
+        {/* <Typography sx={{ mb: 2.0 }} color="text.secondary">
           {job.interest_level}
-        </Typography>
+        </Typography> */}
         <Typography variant="body2">
           {job.description}
           <br />
