@@ -4,6 +4,7 @@ const applicationModel = require('../models/applicationModel');
 const employerModel = require('../models/employerModel');
 const jobPostModel = require('../models/jobPostModel');
 const userModel = require('../models/userModel');
+const savedJobModel = require('../models/savedJobModel');
 
 exports.oneClickApply = async (req, res) => {
   if (req.user === undefined) {
@@ -44,7 +45,9 @@ exports.oneClickApply = async (req, res) => {
     resume_attach_url,
   )
     .then(() => {
-      res.sendStatus(201);
+      savedJobModel.deleteSavedJob(req.user.id, job_post_id)
+        .then(() => res.sendStatus(201))
+        .catch((err) => console.error('NOT DELETED: ', err));
     })
     .catch((err) => {
       res.status(500).send(err);
