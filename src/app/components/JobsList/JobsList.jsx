@@ -1,24 +1,25 @@
-import *  as React from 'react';
-import { useState, useEffect} from 'react';
-import { styled } from '@mui/material/styles';
-import JobItem from "./JobItem.jsx";
+import * as React from 'react';
 import Container from '@mui/material/Container';
+import JobItem from './JobItem';
 
-const JobsList = (props) => {
-  let {listOfJobs = []} = props
-
+function JobsList({ mainFocusFunction, listOfJobs = [] }) {
   const handleFocusItem = (targetJobItem) => {
-    props.mainFocusFunction(targetJobItem);
-  }
+    mainFocusFunction(targetJobItem);
+  };
 
   return (
 
-      <Container >
-      {listOfJobs.map((job, index) =>
-        <JobItem  key ={job.url} job={job} handleFocus={handleFocusItem}/>
-      )}
-      </Container>
-  )
+    <Container>
+      {listOfJobs.map((job, index) => (
+        <JobItem
+          key={job.url}
+          job={job}
+          index={index}
+          handleFocus={handleFocusItem}
+        />
+      ))}
+    </Container>
+  );
 }
 
 export default JobsList;

@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import PrimaryButton from '../PrimaryButton';
+import {
+  Box, Button, Popper,
+} from '@mui/material';
 import SecondaryButton from '../SecondaryButton';
 import authUtils from '../../utils/authUtils';
 
-function SaveJobButton({ job, sx }) {
+function SaveJobButton({
+  job, sx, boxXs, index,
+}) {
   const [saveStarted, setSaveStarted] = useState(false);
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleSaveJobClick = async () => {
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? `job-popper-${index}` : undefined;
+
+  const handleSaveJobClick = async (event) => {
     let isLoggedIn = false;
+    handleClick(event);
+
     await authUtils.getUser().then((res) => {
       isLoggedIn = res.data.loggedIn;
     });
@@ -35,18 +48,32 @@ function SaveJobButton({ job, sx }) {
     setSaveStarted(false);
   };
 
+  function displayPopper() {
+    return (
+      <Box xs={boxXs}>
+        <SecondaryButton text="Interested" sx={sx} onClick={handleInterestLevelClick} />
+        <SecondaryButton text="Very Interested" sx={sx} onClick={handleInterestLevelClick} />
+        <SecondaryButton text="Extremely Interested" sx={sx} onClick={handleInterestLevelClick} />
+      </Box>
+    );
+  }
+
   return (
     <Box>
-      { saveStarted
-        ? (
-          <Box>
-            <SecondaryButton text="Interested" sx={sx} onClick={handleInterestLevelClick} />
-            <SecondaryButton text="Very Interested" sx={sx} onClick={handleInterestLevelClick} />
-            <SecondaryButton text="Extremely Interested" sx={sx} onClick={handleInterestLevelClick} />
-          </Box>
-        )
-        : null}
-      <PrimaryButton text="Save Job" sx={sx} onClick={handleSaveJobClick} />
+      <Button
+        aria-describedby={id}
+        onClick={handleSaveJobClick}
+        variant="contained"
+        color="secondary"
+        sx={[{
+          textTransform: 'none', p: 1, pr: 5, pl: 5, mt: 2, mb: 2,
+        }, sx]}
+      >
+        Save Job
+      </Button>
+      <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 10 }}>
+        {saveStarted ? displayPopper() : null}
+      </Popper>
     </Box>
   );
 }
