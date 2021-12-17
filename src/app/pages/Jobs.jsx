@@ -32,7 +32,7 @@ function Jobs() {
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
       .then((results) => {
-        setJobs(results.data.fields);
+        setJobs(results.data);
         setInterest(interestParam);
       })
       .catch((err) => {
