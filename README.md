@@ -10,7 +10,7 @@
 
 <hr/>
 
-### Stack
+### 💻 Stack
 
 ![img](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![img](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
@@ -69,7 +69,7 @@ Then, visit [http://localhost:3000]. The page will need to be reloaded as change
 
 > ```npm run debug```
 
-
+<hr/>
 #### PostgreSQL Database Configuration:
 
 1. Create a database in PostgreSQL
