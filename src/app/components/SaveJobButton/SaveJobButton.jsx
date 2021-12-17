@@ -13,7 +13,6 @@ function SaveJobButton({ job, sx }) {
   const handleSaveJobClick = async () => {
     let isLoggedIn = false;
     await authUtils.getUser().then((res) => {
-      console.log('hsjk', res.data);
       isLoggedIn = res.data.loggedIn;
     });
     isLoggedIn ? setSaveStarted(true)

@@ -19,14 +19,12 @@ function App() {
 
   useEffect(() => {
     authUtils.getUser().then((res) => {
-      console.log('IU', res.data);
       setLoggedIn(res.data.loggedIn);
     });
   }, []);
 
   const newLogIn = () => {
     authUtils.getUser().then((res) => {
-      console.log('NLI', res.data);
       setLoggedIn(res.data.loggedIn);
     });
   };
