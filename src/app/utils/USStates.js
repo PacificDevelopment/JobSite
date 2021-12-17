@@ -1,4 +1,6 @@
+/* eslint-disable */
 export const USStates = [
+  { label: '  ' },
   { label: 'AL' },
   { label: 'AK' },
   { label: 'AZ' },
@@ -49,4 +51,4 @@ export const USStates = [
   { label: 'WV' },
   { label: 'WI' },
   { label: 'WY' },
-]
+];

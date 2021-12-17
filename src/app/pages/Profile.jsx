@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 import {
-  Box, Button, Typography,
+  Box, Button, Typography, Paper,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Theme from '../Theme';
@@ -11,11 +12,10 @@ import ProfileCard from '../components/Profile/ProfileCard';
 function Profile() {
   return (
     <Box>
-      <Box style={{ borderWidth: 1, borderColor: 'black' }}>
-        <Typography variant='h1'>Your Profile</Typography>
+      <Box>
+
         <ProfileCard />
       </Box>
-      <hr />
       <Box>
         <ResumeAndCoverLetter
           orientation={'vertical'}
@@ -27,6 +27,7 @@ function Profile() {
       <Button variant="outlined" style={Theme.palette.independence}>Calendar</Button>
       <Button variant="outlined" style={Theme.palette.independence}><Link style={{ textDecoration: 'none', color: 'white' }} to="/dashboard">View Jobs</Link></Button>
       <Button variant="outlined" style={Theme.palette.independence}>Reset Password</Button>
+
     </Box>
   );
 }

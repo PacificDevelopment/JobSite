@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useState, createContext } from 'react';
 
 
@@ -6,14 +7,14 @@ export const ProfileContext = createContext(null)
 const ProfileProvider = (props) => {
   let [disabled, setDisabled] = useState(true);
 
-  let [first_name, setFirst] = useState('First')
-  let [last_name, setLast] = useState('Last')
-  let [email, setEmail] = useState('email@example.com')
-  let [street_address, setStreet] = useState('123 Street Rd')
-  let [city, setCity] = useState('San Francisco')
-  let [homeState, setHomeState] = useState('CA')
-  let [zip, setZip] = useState(94102)
-  let [phone_number, setPhone] = useState('(415) 555-1212')
+  let [first_name, setFirst] = useState('')
+  let [last_name, setLast] = useState('')
+  let [email, setEmail] = useState('')
+  let [street_address, setStreet] = useState('')
+  let [city, setCity] = useState('')
+  let [homeState, setHomeState] = useState('')
+  let [zip, setZip] = useState('')
+  let [phone_number, setPhone] = useState('')
 
   return (
     <ProfileContext.Provider value={{

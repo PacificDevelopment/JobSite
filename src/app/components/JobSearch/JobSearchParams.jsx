@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Stack } from '@mui/material';
 import {
@@ -5,7 +6,6 @@ import {
 } from './RadioGroups';
 import SalarySlider from './SalarySlider';
 
-// eslint-disable-next-line react/function-component-definition
 const JobSearchParams = () => (
   <Stack sx={{ m: 2 }}>
     <Sort />

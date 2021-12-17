@@ -21,16 +21,19 @@ const EditableInput = (props) => {
 }
 
 const StateSelector = () => {
+  let { disabled, setDisabled } = useContext(ProfileContext)
   return (
     <Select
       sx={{ width: 70, margin: 0, padding: 0, height: 30, outline: 0 }}
       disablePortal
       label='State'
       id="state"
-      defaultValue='CA'
-      children={USStates.map(state =>
-        <MenuItem value={state.label}>
-          {state.label}
+      defaultValue={null}
+      // defaultValue={USStates[0].label}
+      disabled={disabled}
+      children={USStates.map(({ label }) =>
+        <MenuItem value={label}>
+          {label}
         </MenuItem>
       )}
     />
@@ -38,9 +41,10 @@ const StateSelector = () => {
 }
 
 const ProfileTextForm = (props) => {
-  let { disabled } = props;
 
   let {
+    disabled,
+    setDisabled,
     first_name,
     setFirst,
     last_name,
@@ -62,7 +66,7 @@ const ProfileTextForm = (props) => {
 
 
   return (
-    <FormControl {...disabled}>
+    <FormControl {...disabled} fullWidth>
       <Stack direction='row' sx={{ width: '100%' }}>
         <EditableInput
           label='First Name'
@@ -72,7 +76,7 @@ const ProfileTextForm = (props) => {
         <EditableInput
           label='Last Name'
           id='last_name'
-          value={last_name}
+          defaultValue={last_name}
         />
       </Stack>
       <EditableInput
@@ -96,7 +100,7 @@ const ProfileTextForm = (props) => {
         <StateSelector
           label='State'
           id='state'
-          onChange={setHomeState}
+          onChange={e => setHomeState(e.target.value)}
           value={homeState}
         />
         <EditableInput

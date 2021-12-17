@@ -2,29 +2,23 @@ import { useState, useEffect } from 'react';
 import * as React from 'react';
 import axios from 'axios';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 function JobFocusItem({ job }) {
-  const [description, setDescription] = useState(job.description);
+  const [description, setDescription] = useState(job?.description || '');
 
   useEffect(() => {
     axios.get('/data/jobsearchdescription', {
       params: {
-        url: job.url,
+        url: job?.url,
       },
     })
       .then((results) => {
-        // setDescription(results.data);
-      });
+        setDescription(results?.data || '');
+      })
+      .catch((err) => console.error(err));
   });
-
-  console.log(job.company);
-  console.log(job.title);
-  console.log(job.locations);
-  console.log(description);
-  console.log(job.date);
 
   if (job) {
     return (
