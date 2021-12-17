@@ -45,7 +45,7 @@ exports.scrapeDescription = (req, res) => {
 exports.jobSearch = (req, res) => {
   let {
     location = 'us', // String
-    keywords, // String
+    keywords = '', // String
     // eslint-disable-next-line prefer-const
     sort = 'relevance', // String ('relevance', 'data', 'salary')
     pagesize = 10, // Integer
@@ -59,9 +59,9 @@ exports.jobSearch = (req, res) => {
 
   } = req.query;
 
-  //Add the input experience level to keywords
-  //keywords = experienceLevel && `${experienceLevel} ${keywords}`;
-  keywords = `${experienceLevel} ${keywords}`;
+  if (keywords && experienceLevel) {
+    keywords = `${experienceLevel} ${keywords}`;
+  }
 
   // careerjet api does not support "remote" location
   // add remote to search
@@ -72,7 +72,6 @@ exports.jobSearch = (req, res) => {
   if (worksite === 'remote') {
     keywords = `Remote ${keywords}`;
   }
-  // keywords = worksite === 'remote' && `Remote ${keywords}`;
 
   pagesize = parseInt(pagesize, 10);
   radius = parseInt(radius, 10);

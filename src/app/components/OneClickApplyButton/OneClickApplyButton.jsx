@@ -15,8 +15,7 @@ function OneClickApplyButton({ job, refreshJobs }) {
         } else {
           setSaveToApply(true);
         }
-      })
-      .catch((error) => console.error(error));
+      });
   };
 
   useEffect(() => {
@@ -28,7 +27,11 @@ function OneClickApplyButton({ job, refreshJobs }) {
         withCredentials: true,
         data,
       })
-        .then(() => refreshJobs(data.interest_level));
+        .then(() => {
+          if (refreshJobs) {
+            refreshJobs(data.interest_level);
+          }
+        });
     };
     if (safeToApply) {
       applyToJob();
