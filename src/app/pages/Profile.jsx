@@ -13,7 +13,6 @@ function Profile() {
   return (
     <Box>
       <Box>
-
         <ProfileCard />
       </Box>
       <Box>
