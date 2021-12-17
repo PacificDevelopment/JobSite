@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import UserJobItem from './UserJobItem';
 
-function UserJobsList({ listOfJobs, interestLevel }) {
+function UserJobsList({ listOfJobs, interestLevel, refreshJobs }) {
   const newBucket = listOfJobs.filter((job) => {
     if (interestLevel === 'Applied') {
       return job;
@@ -18,7 +18,7 @@ function UserJobsList({ listOfJobs, interestLevel }) {
 
   return (
     <Container>
-      {newBucket.map((job) => <UserJobItem key={job.url} job={job} />)}
+      {newBucket.map((job) => <UserJobItem key={job.id} job={job} refreshJobs={refreshJobs}/>)}
     </Container>
   );
 }

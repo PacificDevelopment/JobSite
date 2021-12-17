@@ -4,9 +4,9 @@ import {
 } from '@mui/material';
 import ta from 'time-ago';
 import Interweave from 'interweave';
-import PrimaryButton from '../PrimaryButton';
+import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 
-function UserJobItem({ job }) {
+function UserJobItem({ job, refreshJobs }) {
   return (
     <Card
       elevation={9}
@@ -35,7 +35,7 @@ function UserJobItem({ job }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <PrimaryButton text="Apply" />
+        <OneClickApplyButton job={job} refreshJobs={refreshJobs}/>
       </CardActions>
     </Card>
   );

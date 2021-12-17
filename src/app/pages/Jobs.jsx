@@ -24,15 +24,15 @@ function Jobs() {
       });
   };
 
-  useEffect(() => {
-    getSavedJobs();
-  }, []);
+  // useEffect(() => {
+  //   getSavedJobs();
+  // }, []);
 
   // this is breaking
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
       .then((results) => {
-        setJobs(results.data.fields);
+        setJobs(results.data);
         setInterest(interestParam);
       })
       .catch((err) => {
@@ -60,7 +60,7 @@ function Jobs() {
       default:
         break;
     }
-    getSavedJobs(buttonName);
+    // getSavedJobs(buttonName);
   };
   return (
     <Box sx={{ flexDirection: 'column' }}>
@@ -89,7 +89,7 @@ function Jobs() {
           />
         ))}
       </Box>
-      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} />
+      <Main interestLevel={interestLevel} savedJobsList={savedJobsList} refreshJobs={getSavedJobs}/>
     </Box>
   );
 }

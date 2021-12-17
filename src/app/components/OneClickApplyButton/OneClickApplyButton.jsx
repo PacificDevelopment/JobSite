@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PrimaryButton from '../PrimaryButton';
 
-function OneClickApplyButton({ job }) {
+function OneClickApplyButton({ job, refreshJobs }) {
   const handleOneClick = () => {
     const data = { job };
     axios({
@@ -10,7 +10,8 @@ function OneClickApplyButton({ job }) {
       url: '/applyToJob',
       withCredentials: true,
       data,
-    });
+    })
+      .then(() => refreshJobs(data.interest_level));
   };
 
   return (
