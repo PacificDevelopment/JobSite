@@ -61,6 +61,8 @@ app.get('/user', (req, res) => {
 
 app.post('/data/upload', user.insertPDF);
 
+app.get('/data/getPDF/:fileUse', user.getPDF);
+
 app.get('/data/jobsearch', jobSearch.jobSearch);
 
 app.get('/data/jobsearchdescription', jobSearch.scrapeDescription);

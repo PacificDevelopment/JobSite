@@ -22,6 +22,9 @@ const user = {
       WHERE id=$2;`,
     [url, id])
   },
+  getPDF: (fileUse, id) => {
+    return pool.query(`SELECT ${fileUse}_pdf_url FROM Users WHERE id=$1`, [id]);
+  },
 };
 
 module.exports = user;

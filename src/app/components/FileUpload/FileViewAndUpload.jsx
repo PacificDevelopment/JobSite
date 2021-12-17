@@ -87,6 +87,14 @@ export const FileViewAndUpload = (props) => {
       .catch((err) => console.log(err));
   }, [file]);
 
+  useEffect(() => {
+    console.log('getting!!!')
+    axios.get(`/data/getPDF/${fileUse}`)
+      .then((data) => {
+        setDownloadURL(data.data)
+      })
+      .catch((err) => console.error(error));
+  }, []);
 
   const fileSelect = async (e) => {
     setFile(e.target.files?.[0])
