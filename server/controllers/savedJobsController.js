@@ -7,8 +7,8 @@ const jobPostModel = require('../models/jobPostModel');
 exports.saveJob = async (req, res) => {
   if (req.user === undefined) {
     res.status(401).send('Please Login to your JobSite account');
+    return;
   }
-  console.log('Current User', req.user);
   const {
     salary_min,
     locations,
@@ -48,14 +48,15 @@ exports.saveJob = async (req, res) => {
 };
 
 exports.getSavedJobs = (req, res) => {
-  if (req.user === undefined) {
-    res.status(401).send('Please login to your JobSite account')
+  if (!req.user) {
+    res.status(401).send('Please login to your JobSite account');
+  } else {
+    savedJobModels.getSavedJobs(req.user.id)
+      .then((data) => {
+        res.status(200).send(data.rows);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
-  savedJobModels.getSavedJobs(req.user.id)
-    .then((data) => {
-      res.status(200).send(data.rows);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
 };

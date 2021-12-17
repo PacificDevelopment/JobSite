@@ -160,7 +160,7 @@ CREATE TABLE Applications
  user_id                 int NOT NULL,
  date_applied            timestamptz NOT NULL,
  resume_attach_url       varchar(200) NOT NULL,
- cover_letter_attach_url varchar(200) NOT NULL,
+ cover_letter_attach_url varchar(200) NULL,
  CONSTRAINT fk_employer_app FOREIGN KEY ( employer_id ) REFERENCES Employers ( id ),
  CONSTRAINT fk_user_app FOREIGN KEY ( user_id ) REFERENCES Users ( id ),
  CONSTRAINT fk_job_post_app FOREIGN KEY ( job_post_id ) REFERENCES Job_Posts ( id )

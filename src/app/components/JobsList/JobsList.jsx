@@ -10,10 +10,11 @@ const JobsList = (props) => {
   const handleFocusItem = (targetJobItem) => {
     props.mainFocusFunction(targetJobItem);
   }
+
   return (
 
       <Container >
-      {listOfJobs.map((job) =>
+      {listOfJobs.map((job, index) =>
         <JobItem  key ={job.url} job={job} handleFocus={handleFocusItem}/>
       )}
       </Container>

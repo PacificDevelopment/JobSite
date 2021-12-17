@@ -1,15 +1,19 @@
-import { useState, useEffect } from 'react';
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import {
+  Card, CardActions, CardContent, Typography,
+} from '@mui/material';
+import ta from 'time-ago';
+import Interweave from 'interweave';
 import PrimaryButton from '../PrimaryButton';
 
-const UserJobItem = ({job}) => {
+function UserJobItem({ job }) {
   return (
-    <Card >
+    <Card
+      elevation={9}
+      sx={{
+        m: 2, maxWidth: 900, mt: 4, backgroundColor: '#EDFEFF',
+      }}
+    >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {job.company}
@@ -20,20 +24,21 @@ const UserJobItem = ({job}) => {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           {job.locations}
         </Typography>
-        <Typography sx={{ mb: 2.0 }} color="text.secondary">
+        {/* <Typography sx={{ mb: 2.0 }} color="text.secondary">
           {job.interest_level}
+        </Typography> */}
+        <Typography variant="body2">
+          <Interweave content={job.description} />
         </Typography>
         <Typography variant="body2">
-          {job.description}
-          <br />
-          {job.date}
+          {ta.ago(job.date)}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" >Apply</Button>
+        <PrimaryButton text="Apply" />
       </CardActions>
     </Card>
-  )
+  );
 }
 
 export default UserJobItem;
