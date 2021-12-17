@@ -8,7 +8,7 @@ import firebaseConfig from './firebaseConfig.js'
 import axios from 'axios';
 
 export const handleUpload = () => {
-    const firebaseApp = initializeApp(firebaseConfig);
+  const firebaseApp = initializeApp(firebaseConfig);
   const storage = getStorage(firebaseApp);
 
   useEffect(async () => {
@@ -140,7 +140,7 @@ const ResumeAndCoverLetter = (props) => {
       justifyContent="space-evenly"
     >
       <FileViewAndUpload fileUse='resume' />
-      <Divider {...{orientation}} />
+      <Divider {...orientation} />
       <FileViewAndUpload fileUse='cover_letter' />
     </Stack>
   )

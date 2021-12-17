@@ -111,6 +111,7 @@ function AccountSelection({ createAccount, newLogIn }) {
           <Paper sx={{ mt: 2, mb: 1 }}>
             <TextField
               label="Enter password"
+              type='password'
               fullWidth
               sx={{ '&.Mui-focused': { color: '#4A485B', fontWeight: 700 } }}
               onChange={createAccount
