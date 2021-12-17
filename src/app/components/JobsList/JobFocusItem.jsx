@@ -9,14 +9,14 @@ import ta from 'time-ago';
 import PrimaryButton from '../PrimaryButton';
 
 function JobFocusItem({ job }) {
-  const [description, setDescription] = useState(job.description);
+  const [description, setDescription] = useState(job?.description || '');
 
   // When we polish Description to show HTML please remove the template literals in this useEffect.
   useEffect(() => {
     setDescription(`${job.description} Loading Full Job Description, Please Wait`);
     axios.get('/data/jobsearchdescription', {
       params: {
-        url: job.url,
+        url: job?.url,
       },
     })
       .then((results) => {

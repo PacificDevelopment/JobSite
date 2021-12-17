@@ -7,7 +7,7 @@ import JobFocusItem from './JobFocusItem';
 
 function Main({ jobsData }) {
   // const [jobsState, setJobs] = useState(jobsData.jobs);
-  const [jobFocusState, setItem] = useState(jobsData[0]);
+  const [jobFocusState, setItem] = useState(jobsData?.[0]);
 
   const mainFocusFunction = (targetJobItem) => {
     setItem(targetJobItem);
@@ -17,7 +17,7 @@ function Main({ jobsData }) {
   };
 
   useEffect(() => {
-    setItem(jobsData[0]);
+    setItem(jobsData?.[0]);
   }, [jobsData]);
 
   return (
