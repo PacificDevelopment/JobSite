@@ -1,14 +1,11 @@
 /* eslint-disable no-unused-expressions */
-import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
+import { useLocation, useNavigate } from 'react-router-dom';
 import React, { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { JobSearchContext } from './JobSearchContext';
-import { parseSearchInput } from '../../utils/searchUtils';
 import PrimaryButton from '../PrimaryButton';
 
 function SubmitSearchButton({ setSearchResults, context }) {
-  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const locationHook = useLocation();
   const {
@@ -47,7 +44,7 @@ function SubmitSearchButton({ setSearchResults, context }) {
     if (context === 'jobsearch') {
       axios.get(`http://localhost:3000/data/jobsearch${locationHook.search}`)
         .then((results) => {
-          setSearchResults(results.data);
+          setSearchResults(results?.data);
         });
     }
   }, []);
