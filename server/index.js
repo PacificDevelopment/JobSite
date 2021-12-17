@@ -61,15 +61,17 @@ app.get('/user', (req, res) => {
 
 app.post('/data/upload', user.insertPDF);
 
+app.get('/data/getPDF/:fileUse', user.getPDF);
+
 app.get('/data/jobsearch', jobSearch.jobSearch);
 
 app.get('/data/jobsearchdescription', jobSearch.scrapeDescription);
 
 app.get('/data/employers', employers.retrieveEmployerData);
 
-app.post('/appliedJobs', applications.oneClickApply);
+app.post('/applyToJob', applications.oneClickApply);
 
-app.get('/appliedJx`obs', applications.getAppliedJobs);
+app.get('/appliedJobs', applications.getAppliedJobs);
 
 app.post('/saveJob', savedJobs.saveJob);
 

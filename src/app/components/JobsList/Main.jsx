@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import JobItem from './JobItem';
 import JobFocusItem from './JobFocusItem';

@@ -32,13 +32,12 @@ function Jobs() {
   const getAppliedJobs = (interestParam) => {
     axios.get('/appliedJobs')
       .then((results) => {
-        setJobs(results.data);
+        setJobs(results.data.fields);
         setInterest(interestParam);
-        console.log('got applied jobs', results.data);
       })
       .catch((err) => {
-        console.log('get request to /appliedJobs failed', err);
-        // setJobs({});
+        console.log('get request to /appliedJobs failed with interest level of', interestParam, err);
+        setJobs([{}]);
         setInterest(interestParam);
       });
   };

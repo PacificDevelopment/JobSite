@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import Interweave from 'interweave';
 import ta from 'time-ago';
-import PrimaryButton from '../PrimaryButton';
+import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 
 function JobFocusItem({ job }) {
   const [description, setDescription] = useState(job?.description || '');
@@ -50,7 +50,7 @@ function JobFocusItem({ job }) {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'end' }}>
-            <PrimaryButton text="One-Click Apply" />
+            <OneClickApplyButton job={job} />
           </Box>
         </Box>
 
