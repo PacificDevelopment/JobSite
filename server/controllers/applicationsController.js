@@ -59,10 +59,14 @@ exports.oneClickApply = async (req, res) => {
 };
 
 exports.getAppliedJobs = (req, res) => {
-  const user_id = req.user.id;
-  applicationModel.getAppliedJobs(user_id)
-    .then((data) => {
-      res.status(200).send(data.rows);
-    })
-    .catch((err) => res.status(500).send(err));
+  if (req.user === undefined) {
+    res.status(401).send('Please login to your JobSite account');
+  } else {
+    const user_id = req.user.id;
+    applicationModel.getAppliedJobs(user_id)
+      .then((data) => {
+        res.status(200).send(data.rows);
+      })
+      .catch((err) => res.status(500).send(err));
+  }
 };

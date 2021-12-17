@@ -72,6 +72,7 @@
     "express-session": "^1.17.2",
     "firebase": "^9.6.1",
     "fs": "^0.0.1-security",
+    "interweave": "^12.9.0",
     "openid-client": "^5.1.0",
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
@@ -83,6 +84,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.1.0",
-    "react-router-dom": "^6.1.0"
+    "react-router-dom": "^6.1.0",
+    "time-ago": "^0.2.1"
   }
 }

@@ -20,8 +20,8 @@ const user = {
       WHERE id=$2;`,
     [url, id])
   },
-  getPDF: async (user_id) => {
-    return pool.query('SELECT resume_pdf_url FROM Users WHERE id = $1', [user_id]);
+  getPDF: (fileUse, id) => {
+    return pool.query(`SELECT ${fileUse}_pdf_url FROM Users WHERE id=$1`, [id]);
   },
 };
 

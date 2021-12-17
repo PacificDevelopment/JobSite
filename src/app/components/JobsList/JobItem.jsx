@@ -1,54 +1,56 @@
-import { useState, useEffect } from 'react';
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import React, { useState, useEffect } from 'react';
+import { Card, Box, Typography } from '@mui/material';
+import Interweave from 'interweave';
+import ta from 'time-ago';
 import SaveJobButton from '../SaveJobButton/SaveJobButton';
 import OneClickApplyButton from '../OneClickApplyButton/OneClickApplyButton';
 import PrimaryButton from '../PrimaryButton';
 
-const JobItem = (props) => {
+function JobItem({ handleFocus, job, selected }) {
   const [displayToggle, setDisplayToggle] = useState(true);
 
   const jobSelect = (selectedJob) => {
-    props.handleFocus(selectedJob)
-
-  }
+    handleFocus(selectedJob);
+  };
 
   // useEffect(() => {
   //   if (displayToggle) {
-  //     props.handleFocus(props.job);
+  //     props.handleFocus(job);
   //     setDisplayToggle(false);
   //   }
   // }, []);
 
   return (
-    <Card >
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {props.job.company}
+    <Card
+      variant="outlined"
+      sx={{
+        mb: 2, position: 'relative', width: 450, p: 2, backgroundColor: '#EDFEFF', borderColor: '#9096A3', borderRadius: 2, borderWidth: selected ? 3 : 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+      }}
+    >
+      <Typography sx={{ mb: 1 }} variant="h5" component="div">
+        {job.title}
+      </Typography>
+      <Typography sx={{ fontSize: 14, mb: 1, fontWeight: 700 }} color="text.primary" gutterBottom>
+        {job.company}
+      </Typography>
+      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        {job.locations}
+      </Typography>
+      <Typography variant="body2">
+        <Interweave content={job.description} />
+      </Typography>
+      <Box sx={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: 4,
+      }}
+      >
+        <Typography>
+          {ta.ago(job.date)}
         </Typography>
-        <Typography variant="h5" component="div">
-          {props.job.title}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props.job.locations}
-        </Typography>
-        <Typography variant="body2">
-          {props.job.description}
-          <br />
-          {props.job.date}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <PrimaryButton text="Learn More" onClick={(e) => { jobSelect(props.job) }} />
-        <SaveJobButton job={props.job} />
-        <OneClickApplyButton job={props.job} />
-      </CardActions>
+        <PrimaryButton sx={{ mb: 0, mt: 0 }} text="Learn More" onClick={(e) => { jobSelect(job); }} />
+        <SaveJobButton sx={{ mb: 0, mt: 0 }} job={job} />
+      </Box>
     </Card>
-  )
+  );
 }
 
 export default JobItem;

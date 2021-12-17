@@ -5,6 +5,7 @@ import JobItem from "./JobItem.jsx";
 import Container from '@mui/material/Container';
 
 const JobsList = (props) => {
+  let {listOfJobs = []} = props
 
   const handleFocusItem = (targetJobItem) => {
     props.mainFocusFunction(targetJobItem);
@@ -12,7 +13,7 @@ const JobsList = (props) => {
   return (
 
       <Container >
-      {props.listOfJobs.map((job) =>
+      {listOfJobs.map((job) =>
         <JobItem  key ={job.url} job={job} handleFocus={handleFocusItem}/>
       )}
       </Container>

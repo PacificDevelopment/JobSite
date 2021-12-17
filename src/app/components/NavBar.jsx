@@ -60,8 +60,8 @@ function NavBar() {
     );
   }
   return (
-    <Grid item xs={1} sx={Theme.palette.azure}>
-      <AppBar position="static" style={{ height: '100%' }}>
+    <Grid item xs={1} sx={[{ zIndex: 2 }, Theme.palette.azure]}>
+      <AppBar position="static" elevation={location.pathname === '/dashboard' || location.pathname === '/jobs' ? 0 : 3} style={{ height: '100%' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex' }}>
             <img alt="JobSite" src={TextLogo} height="100" />

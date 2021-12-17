@@ -47,15 +47,15 @@ exports.saveJob = async (req, res) => {
 };
 
 exports.getSavedJobs = (req, res) => {
-// Kevin and Duncan will add the userID. in the meantime, use hard coded:
-  req.user = {
-    id: 1,
-  };
-  savedJobModels.getSavedJobs(req.user.id)
-    .then((data) => {
-      res.status(200).send(data.rows);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
+  if (!req.user) {
+    res.status(401).send('Please login to your JobSite account')
+  } else {
+    savedJobModels.getSavedJobs(req.user.id)
+      .then((data) => {
+        res.status(200).send(data.rows);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
 };
