@@ -20,7 +20,7 @@ const centerStyle = {
   justifyContent: 'center',
 };
 
-function Home({ createAccount, newLogIn }) {
+function Home({ createAccount, newLogIn, nav }) {
   const { width } = useWindowSize();
 
   const paperStyles = {
@@ -95,7 +95,7 @@ function Home({ createAccount, newLogIn }) {
           display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundImage: `url(${Hero})`, backgroundSize: 'cover', p: 0,
         }}
       >
-        <AccountSelection createAccount={createAccount} newLogIn={newLogIn} />
+        <AccountSelection createAccount={createAccount} newLogIn={newLogIn} nav={nav} />
       </Grid>
 
       <Grid xs={4} item container sx={[centerStyle]}>
