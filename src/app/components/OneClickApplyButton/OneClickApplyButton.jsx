@@ -11,7 +11,11 @@ function OneClickApplyButton({ job, refreshJobs }) {
       withCredentials: true,
       data,
     })
-      .then(() => refreshJobs(data.interest_level));
+      .then(() => {
+        if (refreshJobs) {
+          refreshJobs(data.interest_level);
+        }
+      });
   };
 
   return (
