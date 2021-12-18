@@ -84,7 +84,7 @@ function SaveJobButton({
       >
         Save Job
       </Button>
-      <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 10 }}>
+      <Popper id={id} open={open} placement="top" anchorEl={anchorEl} style={{ zIndex: 10 }}>
         {saveStarted ? displayPopper() : null}
       </Popper>
     </Box>
