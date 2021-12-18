@@ -48,6 +48,7 @@ const SalarySlider = () => {
         marks={marks}
         valueLabelFormat={formatLabel}
         valueLabelDisplay={'auto'}
+        color="secondary"
       />
     </>
   );
