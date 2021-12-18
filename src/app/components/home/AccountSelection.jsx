@@ -17,7 +17,6 @@ function AccountSelection({ createAccount, newLogIn, nav }) {
   const navigate = useNavigate();
 
   const register = () => {
-    const curPort = location.port;
     Axios({
       method: 'POST',
       data: {
@@ -34,7 +33,6 @@ function AccountSelection({ createAccount, newLogIn, nav }) {
   };
 
   const login = async (cb) => {
-    const curPort = location.port;
     await Axios({
       method: 'POST',
       data: {
@@ -112,6 +110,7 @@ function AccountSelection({ createAccount, newLogIn, nav }) {
           <Paper sx={{ mt: 1 }}>
             <TextField
               label="Email address"
+              color="secondary"
               sx={{ '&.Mui-focused': { color: '#4A485B', fontWeight: 700 } }}
               fullWidth
               value={userField}
@@ -121,7 +120,8 @@ function AccountSelection({ createAccount, newLogIn, nav }) {
           <Paper sx={{ mt: 2, mb: 1 }}>
             <TextField
               label="Enter password"
-              type='password'
+              color="secondary"
+              type="password"
               fullWidth
               sx={{ '&.Mui-focused': { color: '#4A485B', fontWeight: 700 } }}
               value={userPassword}

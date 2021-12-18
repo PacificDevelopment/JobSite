@@ -5,15 +5,15 @@ import Facebook from '../../assets/Facebook logo.svg';
 import Apple from '../../assets/apple logo.svg';
 
 const fb = {
-  backgroundColor: '#3b5998', color: 'white',
+  backgroundColor: '#3b5998', color: 'white', '&:hover': { backgroundColor: 'rgba(59, 89, 152, 0.8)' },
 };
 
 const apple = {
-  backgroundColor: 'black', color: 'white',
+  backgroundColor: 'black', color: 'white', '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.8)' },
 };
 
 const google = {
-  backgroundColor: 'white', color: 'black',
+  backgroundColor: 'white', color: 'black', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.8)' },
 };
 
 export default function AuthButton({
