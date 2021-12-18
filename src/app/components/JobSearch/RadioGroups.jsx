@@ -72,10 +72,10 @@ export const Experience = () => {
         name="experience"
         onChange={(e) => setExperience(e.target.value)}
       >
-        <FormControlLabel value="experienceLevel=entry" label="Entry Level" control={R} />
-        <FormControlLabel value="experienceLevel=mid" label="Mid Level" control={R} />
-        <FormControlLabel value="experienceLevel=senior" label="Senior Level" control={R} />
-        <FormControlLabel value="experienceLevel=executive" label="Executive Level" control={R} />
+        <FormControlLabel value="experienceLevel=Entry" label="Entry Level" control={R} />
+        <FormControlLabel value="experienceLevel=Mid" label="Mid Level" control={R} />
+        <FormControlLabel value="experienceLevel=Senior" label="Senior Level" control={R} />
+        <FormControlLabel value="experienceLevel=Executive" label="Executive Level" control={R} />
       </RadioGroup>
     </FormControl>
   );
@@ -95,8 +95,8 @@ export const EmploymentType = () => {
         name="employmentType"
         onChange={(e) => setEmploymentType(e.target.value)}
       >
-        <FormControlLabel value="employmentType=Part Time" label="Part Time" control={R} />
-        <FormControlLabel value="employmentType=Full Time" label="Full Time" control={R} />
+        <FormControlLabel value="employmentType=Part-Time" label="Part Time" control={R} />
+        <FormControlLabel value="employmentType=Full-Time" label="Full Time" control={R} />
         <FormControlLabel value="employmentType=Temporary" label="Temporary" control={R} />
         <FormControlLabel value="employmentType=Internship" label="Internship" control={R} />
       </RadioGroup>
@@ -119,8 +119,8 @@ export const WorkSite = () => {
         name="worksite"
         onChange={(e) => setWorkSite(`worksite=${e.target.value}`)}
       >
-        <FormControlLabel value="worksite=remote" label="Remote" control={R} />
-        <FormControlLabel value="worksite=onsite" label="On Site" control={R} />
+        <FormControlLabel value="worksite=Remote" label="Remote" control={R} />
+        <FormControlLabel value="worksite=On-site" label="On Site" control={R} />
         <FormControlLabel value="" label="Mixed" control={R} />
       </RadioGroup>
     </FormControl>
