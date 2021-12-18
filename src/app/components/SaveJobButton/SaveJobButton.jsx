@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
-  Box, Button, Popper, Divider
+  Box, Button, Popper, Divider,
 } from '@mui/material';
 import PrimaryButton from '../PrimaryButton';
 import authUtils from '../../utils/authUtils';
@@ -50,19 +50,23 @@ function SaveJobButton({
 
   function displayPopper() {
     return (
-      <Box xs={boxXs}
+      <Box
+        xs={boxXs}
         sx={{
           border: 1, p: 1, bgcolor: '#4A485B', display: 'flex', flexDirection: 'column', color: '#white',
-        }}>
-        <PrimaryButton text="Interested" sx={sx} onClick={handleInterestLevelClick} />
+        }}
+      >
+        <Button variant="text" sx={[{ textTransform: 'none' }, sx]} onClick={handleInterestLevelClick}>Interested</Button>
         <Divider sx={{ backgroundColor: 'white' }} />
-        <PrimaryButton
-          text="Very Interested"
-          sx={sx}
+        <Button
+          variant="text"
+          sx={[{ textTransform: 'none' }, sx]}
           onClick={handleInterestLevelClick}
-        />
+        >
+          Very Interested
+        </Button>
         <Divider sx={{ backgroundColor: 'white' }} />
-        <PrimaryButton text="Extremely Interested" sx={sx} onClick={handleInterestLevelClick} />
+        <Button variant="text" sx={[{ textTransform: 'none' }, sx]} onClick={handleInterestLevelClick}>Extremely Interested</Button>
       </Box>
     );
   }
